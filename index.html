@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採購供應鏈管理儀表板</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --amber:#BA7517;--amber-light:#FAEEDA;
+  --red:#993C1D;--red-light:#FAECE7;
+  --blue:#185FA5;--blue-light:#E6F1FB;
+  --bg:#F8F7F4;--bg2:#FFFFFF;--bg3:#F1EFE8;
+  --border:#E3E1D9;--border2:#D3D1C7;
+  --text:#1A1917;--text2:#6B6965;--text3:#A09D99;
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;min-height:100vh}
+
+/* ── LAYOUT ── */
+.app{display:flex;min-height:100vh}
+.sidebar{width:220px;background:var(--bg2);border-right:1px solid var(--border);padding:20px 0;display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;z-index:100}
+.main{margin-left:220px;flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:90;gap:12px;flex-wrap:wrap}
+.content{padding:20px 24px;flex:1}
+@media(max-width:768px){.sidebar{display:none}.main{margin-left:0}}
+
+/* ── SIDEBAR ── */
+.sidebar-logo{padding:0 20px 16px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.sidebar-logo h2{font-size:14px;font-weight:600;color:var(--text)}
+.sidebar-logo p{font-size:11px;color:var(--text3);margin-top:2px}
+.nav-section{padding:8px 12px 4px;font-size:10px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;color:var(--text3)}
+.nav-item{display:flex;align-items:center;gap:8px;padding:8px 20px;font-size:12px;color:var(--text2);cursor:pointer;transition:all .15s;border-left:2px solid transparent}
+.nav-item:hover{background:var(--bg3);color:var(--text)}
+.nav-item.active{background:var(--teal-light);color:var(--teal-dark);border-left-color:var(--teal);font-weight:500}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.sidebar-footer{margin-top:auto;padding:16px 20px;border-top:1px solid var(--border);font-size:11px;color:var(--text3)}
+
+/* ── TOPBAR ── */
+.page-title{font-size:15px;font-weight:500;color:var(--text)}
+.controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+select{font-size:11px;padding:5px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--bg2);color:var(--text);cursor:pointer;outline:none}
+select:focus{border-color:var(--teal)}
+.role-tabs{display:flex;gap:4px;background:var(--bg3);padding:3px;border-radius:20px}
+.rtab{padding:4px 12px;border-radius:16px;border:none;font-size:11px;cursor:pointer;background:transparent;color:var(--text2);transition:all .15s;font-family:inherit}
+.rtab.active{background:var(--bg2);color:var(--text);box-shadow:var(--shadow);font-weight:500}
+.update-tag{font-size:10px;color:var(--text3);padding:3px 8px;border:1px solid var(--border);border-radius:10px;white-space:nowrap}
+
+/* ── ALERTS ── */
+.alert-bar{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.alert-pill{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:20px;font-size:11px;border:1px solid}
+.alert-pill.red{background:var(--red-light);color:var(--red);border-color:#F0997B}
+.alert-pill.amber{background:var(--amber-light);color:var(--amber);border-color:#EF9F27}
+.alert-pill.green{background:var(--teal-light);color:var(--teal-dark);border-color:#5DCAA5}
+.tlight{display:inline-block;width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tl-r{background:#E24B4A}.tl-y{background:#EF9F27}.tl-g{background:#1D9E75}
+
+/* ── SECTIONS ── */
+.sec-label{font-size:10px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;color:var(--text3);margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.sec-label:first-child{margin-top:0}
+
+/* ── KPI CARDS ── */
+.kpi-grid{display:grid;gap:10px;margin-bottom:4px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.g4,.g3{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}}
+.kcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);transition:border-color .15s}
+.kcard:hover{border-color:var(--border2)}
+.kcard.flagged{border-color:#F0997B}
+.klabel{font-size:10px;color:var(--text2);margin-bottom:6px;line-height:1.4}
+.kval{font-size:22px;font-weight:500;letter-spacing:-0.5px;line-height:1}
+.ksub{font-size:10px;margin-top:5px}
+.badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:500}
+.g-clr{color:var(--teal)}.g-clr .badge{background:var(--teal-light);color:var(--teal-dark)}
+.w-clr{color:var(--amber)}.w-clr .badge{background:var(--amber-light);color:#633806}
+.r-clr{color:var(--red)}.r-clr .badge{background:var(--red-light);color:var(--red)}
+.n-clr{color:var(--text2)}.n-clr .badge{background:var(--bg3);color:var(--text2)}
+
+/* ── BOXES ── */
+.box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
+.box h3{font-size:12px;font-weight:500;margin-bottom:12px;color:var(--text)}
+.box-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.box-head h3{margin-bottom:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:700px){.row2,.row3{grid-template-columns:1fr}}
+
+/* ── BAR CHART ── */
+.bar-wrap{display:flex;flex-direction:column;gap:8px}
+.bar-row{display:flex;align-items:center;gap:8px}
+.bar-lbl{font-size:11px;color:var(--text2);width:72px;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:10px;background:var(--bg3);border-radius:5px;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px;transition:width .5s ease}
+.bar-pct{font-size:11px;font-weight:500;width:36px;text-align:right;flex-shrink:0}
+
+/* ── DONUT ── */
+.donut-wrap{display:flex;align-items:center;gap:16px}
+.legend-sm{font-size:11px;display:flex;flex-direction:column;gap:7px}
+.leg-row{display:flex;align-items:center;gap:6px}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:11px;min-width:360px}
+th{text-align:left;color:var(--text2);font-weight:500;padding:6px 10px;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--bg3);font-size:10px;text-transform:uppercase;letter-spacing:.3px}
+th:first-child{border-radius:6px 0 0 0}th:last-child{border-radius:0 6px 0 0}
+td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--bg3)}
+.tag{display:inline-block;padding:2px 7px;border-radius:6px;font-size:10px;white-space:nowrap;font-weight:500}
+.tag.g{background:var(--teal-light);color:var(--teal-dark)}
+.tag.y{background:var(--amber-light);color:#633806}
+.tag.r{background:var(--red-light);color:var(--red)}
+.tag.b{background:var(--blue-light);color:var(--blue)}
+.tag.gray{background:var(--bg3);color:var(--text2)}
+
+/* ── RISK BAR ── */
+.risk-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.risk-name{font-size:11px;width:68px;flex-shrink:0;color:var(--text2);text-align:right}
+.risk-track{flex:1;height:12px;background:var(--bg3);border-radius:6px;overflow:hidden;position:relative}
+.risk-fill{height:100%;border-radius:6px}
+.risk-limit{position:absolute;top:0;bottom:0;width:2px;background:var(--red);opacity:.6}
+.risk-pct{font-size:11px;font-weight:500;width:36px;text-align:right;flex-shrink:0}
+
+/* ── PO PIPELINE ── */
+.pipeline{display:flex;align-items:flex-start;margin-bottom:12px}
+.pip-seg{display:flex;flex-direction:column;align-items:center;flex:0 0 auto;width:80px}
+.pip-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;margin-bottom:6px;z-index:1}
+.pip-connector{flex:1;height:2px;margin-top:15px}
+.pip-label{font-size:10px;color:var(--text2);text-align:center;line-height:1.3}
+.pip-count{font-size:15px;font-weight:600;margin-top:2px;line-height:1}
+
+/* ── RANKING ── */
+.rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:560px){.rank-grid{grid-template-columns:1fr}}
+.rank-panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.rank-head{padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.rank-head.best{background:var(--teal-light)}.rank-head.worst{background:var(--red-light)}
+.rank-head .rh-icon{font-size:16px}
+.rank-head.best .rh-icon{color:var(--teal)}.rank-head.worst .rh-icon{color:var(--red)}
+.rank-head .rhtitle{font-size:12px;font-weight:500}
+.rank-head.best .rhtitle{color:var(--teal-dark)}.rank-head.worst .rhtitle{color:var(--red)}
+.sup-row{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border)}
+.sup-row:last-child{border-bottom:none}
+.rnk{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
+.best .rnk-1{background:#1D9E75;color:#E1F5EE}
+.best .rnk-2{background:#5DCAA5;color:var(--teal-dark)}
+.best .rnk-3{background:#9FE1CB;color:var(--teal-dark)}
+.worst .rnk-1{background:#D85A30;color:var(--red-light)}
+.worst .rnk-2{background:#F0997B;color:#712B13}
+.worst .rnk-3{background:#F5C4B3;color:#712B13}
+.sup-info{flex:1;min-width:0}
+.sup-name{font-size:12px;font-weight:500;color:var(--text)}
+.sup-cat{font-size:10px;color:var(--text3);margin-top:1px}
+.sup-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.sup-pct{font-size:17px;font-weight:500;line-height:1}
+.best .sup-pct{color:var(--teal)}.worst .sup-pct{color:var(--red)}
+.micro-bar{width:64px;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.best .micro-fill{height:100%;border-radius:3px;background:var(--teal)}
+.worst .micro-fill{height:100%;border-radius:3px;background:#D85A30}
+.delta-sm{font-size:10px;padding:1px 6px;border-radius:5px}
+.best .delta-sm{background:var(--teal-light);color:var(--teal-dark)}
+.worst .delta-sm{background:var(--red-light);color:var(--red)}
+
+/* ── YOY ── */
+.yoy-bar-row{display:flex;align-items:center;gap:0;margin-bottom:10px}
+.yoy-month{font-size:11px;color:var(--text2);width:36px;flex-shrink:0;text-align:right;padding-right:10px}
+.yoy-bars{flex:1;display:flex;flex-direction:column;gap:3px}
+.yoy-bar-line{display:flex;align-items:center;gap:6px}
+.yoy-track{flex:1;height:11px;background:var(--bg3);border-radius:4px;overflow:hidden}
+.yoy-fill{height:100%;border-radius:4px}
+.yoy-fill.cy{background:var(--teal)}
+.yoy-fill.py{background:#9FE1CB;opacity:.9}
+.yoy-val{font-size:10px;font-weight:500;width:42px;text-align:right;flex-shrink:0}
+.yoy-val.cy{color:var(--teal)}.yoy-val.py{color:var(--text3)}
+.yoy-delta-col{width:48px;padding-left:8px;display:flex;flex-direction:column;gap:3px}
+.delta-badge{font-size:10px;font-weight:500;padding:2px 5px;border-radius:5px;text-align:center;display:inline-block;white-space:nowrap}
+.delta-badge.up{background:var(--teal-light);color:var(--teal-dark)}
+.delta-badge.dn{background:var(--red-light);color:var(--red)}
+.delta-badge.flat{background:var(--bg3);color:var(--text2)}
+.delta-spacer{height:14px}
+.legend-row{display:flex;gap:14px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+.leg-rect{width:12px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* ── CAT BAR ── */
+.cat-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.cat-lbl{font-size:11px;color:var(--text2);width:64px;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat-bars{flex:1;display:flex;flex-direction:column;gap:3px}
+.cat-bar-line{display:flex;align-items:center;gap:5px}
+.cat-track{flex:1;height:9px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.cat-fill{height:100%;border-radius:3px}
+.cat-fill.cy{background:var(--teal)}.cat-fill.py{background:#9FE1CB;opacity:.9}
+.cat-val{font-size:10px;width:36px;text-align:right;flex-shrink:0}
+
+/* ── HIGHLIGHT ── */
+.highlight{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.hl-pill{padding:5px 11px;border-radius:20px;font-size:11px;border:1px solid}
+.hl-pill.up{background:var(--teal-light);color:var(--teal-dark);border-color:#5DCAA5}
+.hl-pill.dn{background:var(--red-light);color:var(--red);border-color:#F0997B}
+.hl-pill.neu{background:var(--bg3);color:var(--text2);border-color:var(--border2)}
+
+/* ── FOOTER KPI ── */
+.footer-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+@media(max-width:560px){.footer-kpi{grid-template-columns:repeat(2,1fr)}}
+.fcard{background:var(--bg3);border-radius:var(--radius-sm);padding:10px 14px;text-align:center}
+.fcard .fv{font-size:18px;font-weight:500}
+.fcard .fl{font-size:10px;color:var(--text3);margin-top:3px}
+
+/* ── MISC ── */
+.note{font-size:10px;color:var(--text3);margin-top:8px;line-height:1.5}
+.spacer{height:8px}
+.arrow-up{color:var(--teal);font-weight:500}
+.arrow-dn{color:var(--red);font-weight:500}
+.pill{display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:500}
+.pill.up{background:var(--teal-light);color:var(--teal-dark)}
+.pill.dn{background:var(--red-light);color:var(--red)}
+.pill.flat{background:var(--bg3);color:var(--text2)}
+
+/* ── VIEW TOGGLE ── */
+.view{display:none}.view.active{display:block}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h2>⚙ 供應鏈儀表板</h2>
+      <p>採購管理系統 v2.0</p>
+    </div>
+    <div class="nav-section">主要視角</div>
+    <div class="nav-item active" onclick="switchRole('exec',this)"><span class="nav-dot"></span>高層總覽</div>
+    <div class="nav-item" onclick="switchRole('mgr',this)"><span class="nav-dot"></span>採購主管</div>
+    <div class="nav-item" onclick="switchRole('ops',this)"><span class="nav-dot"></span>倉管人員</div>
+    <div class="nav-section">快速跳轉</div>
+    <div class="nav-item" onclick="scrollTo('sec-delivery')"><span class="nav-dot"></span>交期履約</div>
+    <div class="nav-item" onclick="scrollTo('sec-quality')"><span class="nav-dot"></span>品質風險</div>
+    <div class="nav-item" onclick="scrollTo('sec-inventory')"><span class="nav-dot"></span>庫存健康</div>
+    <div class="nav-item" onclick="scrollTo('sec-cost')"><span class="nav-dot"></span>採購成本</div>
+    <div class="nav-item" onclick="scrollTo('sec-yoy')"><span class="nav-dot"></span>今年 vs 去年</div>
+    <div class="sidebar-footer">最後更新：2025-06-12<br>資料來源：ERP / Google Sheets</div>
+  </aside>
+
+  <div class="main">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="page-title" id="page-title">高層總覽</div>
+      <div class="controls">
+        <select id="sel-period" onchange="applyFilters()">
+          <option>全部時間</option><option>2025 Q2</option><option>2025 Q1</option><option>2024 Q4</option>
+        </select>
+        <select id="sel-supplier" onchange="applyFilters()">
+          <option>全部供應商</option><option>聯發工業</option><option>慶豐化工</option><option>正泰原料</option><option>鴻基製造</option><option>大成物料</option>
+        </select>
+        <select id="sel-category" onchange="applyFilters()">
+          <option>全部品類</option><option>電子零件</option><option>機械零件</option><option>化工材料</option><option>包裝材料</option><option>原物料</option>
+        </select>
+        <select id="sel-wo" onchange="applyFilters()">
+          <option>全部工令</option><option>WO-2025-441</option><option>WO-2025-438</option><option>WO-2025-420</option>
+        </select>
+        <div class="role-tabs">
+          <button class="rtab active" onclick="switchRole('exec',this)">高層</button>
+          <button class="rtab" onclick="switchRole('mgr',this)">採購主管</button>
+          <button class="rtab" onclick="switchRole('ops',this)">倉管</button>
+        </div>
+        <span class="update-tag">2025-06-12 更新</span>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <!-- ALERT BAR (always visible) -->
+      <div class="alert-bar">
+        <div class="alert-pill red"><span class="tlight tl-r"></span>5 張 PO 已逾期</div>
+        <div class="alert-pill amber"><span class="tlight tl-y"></span>8 張 PO 3天內到期</div>
+        <div class="alert-pill red"><span class="tlight tl-r"></span>慶豐化工不良率 3.2%（超標）</div>
+        <div class="alert-pill amber"><span class="tlight tl-y"></span>50 品項低於安全庫存</div>
+        <div class="alert-pill green"><span class="tlight tl-g"></span>出貨準時率 95.1% 達標</div>
+      </div>
+
+      <!-- ===== 高層視角 ===== -->
+      <div class="view active" id="v-exec">
+        <div class="sec-label" id="sec-delivery">模組一 · 交期與履約</div>
+        <div class="kpi-grid g4">
+          <div class="kcard w-clr"><div class="klabel">OTIF 達交率</div><div class="kval">81.4%</div><div class="ksub"><span class="badge">目標 90%</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">供應商到貨準時率</div><div class="kval">83.2%</div><div class="ksub"><span class="badge">↓ 連3月下滑</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">平均交期延誤天數</div><div class="kval">4.8 天</div><div class="ksub"><span class="badge">目標 ≤3天</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">採購訂單達成率</div><div class="kval">87.6%</div><div class="ksub"><span class="badge">目標 92%</span></div></div>
+        </div>
+
+        <div class="sec-label" id="sec-quality">模組二 · 品質與風險</div>
+        <div class="kpi-grid g4">
+          <div class="kcard g-clr"><div class="klabel">進料驗收合格率 (IQC)</div><div class="kval">97.4%</div><div class="ksub"><span class="badge">目標 95% ✓</span></div></div>
+          <div class="kcard r-clr flagged"><div class="klabel">慶豐化工不良率</div><div class="kval">3.2%</div><div class="ksub"><span class="badge">超標 ▲</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">開立中異常單 (NC)</div><div class="kval">14 張</div><div class="ksub"><span class="badge">7 張處理中</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">最高供應商集中度</div><div class="kval">28%</div><div class="ksub"><span class="badge">風險臨界</span></div></div>
+        </div>
+
+        <div class="sec-label" id="sec-inventory">模組三 · 庫存健康</div>
+        <div class="kpi-grid g4">
+          <div class="kcard n-clr"><div class="klabel">庫存周轉率</div><div class="kval">3.8x</div><div class="ksub"><span class="badge">參考 4x</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">庫存周轉天數 (DOS)</div><div class="kval">28 天</div><div class="ksub"><span class="badge">目標 ≤25天</span></div></div>
+          <div class="kcard r-clr flagged"><div class="klabel">呆滯庫存金額</div><div class="kval">$1.8M</div><div class="ksub"><span class="badge">超標 +20%</span></div></div>
+          <div class="kcard g-clr"><div class="klabel">安全庫存達標率</div><div class="kval">96%</div><div class="ksub"><span class="badge">1,198/1,248品</span></div></div>
+        </div>
+
+        <div class="sec-label" id="sec-cost">模組四 · 採購成本績效</div>
+        <div class="kpi-grid g4">
+          <div class="kcard g-clr"><div class="klabel">本季採購額</div><div class="kval">$6.8M</div><div class="ksub"><span class="badge">預算內 ✓</span></div></div>
+          <div class="kcard g-clr"><div class="klabel">成本節約金額</div><div class="kval">$340K</div><div class="ksub"><span class="badge">達標 102%</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">替代料避免成本</div><div class="kval">$128K</div><div class="ksub"><span class="badge">進行中</span></div></div>
+          <div class="kcard n-clr"><div class="klabel">供應商評鑑平均分</div><div class="kval">82 分</div><div class="ksub"><span class="badge">滿分 100</span></div></div>
+        </div>
+
+        <div class="row2">
+          <div class="box">
+            <h3>OTIF 趨勢（近 6 個月）</h3>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">1 月</span><div class="bar-track"><div class="bar-fill" style="width:91%;background:#1D9E75"></div></div><span class="bar-pct g-clr">91%</span></div>
+              <div class="bar-row"><span class="bar-lbl">2 月</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#EF9F27"></div></div><span class="bar-pct w-clr">88%</span></div>
+              <div class="bar-row"><span class="bar-lbl">3 月</span><div class="bar-track"><div class="bar-fill" style="width:85%;background:#EF9F27"></div></div><span class="bar-pct w-clr">85%</span></div>
+              <div class="bar-row"><span class="bar-lbl">4 月</span><div class="bar-track"><div class="bar-fill" style="width:79%;background:#D85A30"></div></div><span class="bar-pct r-clr">79%</span></div>
+              <div class="bar-row"><span class="bar-lbl">5 月</span><div class="bar-track"><div class="bar-fill" style="width:82%;background:#EF9F27"></div></div><span class="bar-pct w-clr">82%</span></div>
+              <div class="bar-row"><span class="bar-lbl">6 月</span><div class="bar-track"><div class="bar-fill" style="width:81%;background:#EF9F27"></div></div><span class="bar-pct w-clr">81%</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>庫存結構分佈</h3>
+            <div class="donut-wrap">
+              <svg width="110" height="110" viewBox="0 0 110 110">
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#E1F5EE" stroke-width="18"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#1D9E75" stroke-width="18" stroke-dasharray="123 116" stroke-dashoffset="0" transform="rotate(-90 55 55)"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#EF9F27" stroke-width="18" stroke-dasharray="60 179" stroke-dashoffset="-123" transform="rotate(-90 55 55)"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#D85A30" stroke-width="18" stroke-dasharray="56 183" stroke-dashoffset="-183" transform="rotate(-90 55 55)"/>
+                <text x="55" y="51" text-anchor="middle" font-size="13" font-weight="600" fill="#1A1917">$8.0M</text>
+                <text x="55" y="64" text-anchor="middle" font-size="10" fill="#6B6965">總庫存</text>
+              </svg>
+              <div class="legend-sm">
+                <div class="leg-row"><span class="leg-dot" style="background:#1D9E75"></span><span>正常 $4.2M (52%)</span></div>
+                <div class="leg-row"><span class="leg-dot" style="background:#EF9F27"></span><span>安全庫存 $2.0M (25%)</span></div>
+                <div class="leg-row"><span class="leg-dot" style="background:#D85A30"></span><span>呆滯 $1.8M (23%)</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rank-grid">
+          <div class="rank-panel best">
+            <div class="rank-head best"><span class="rh-icon">🏆</span><div class="rhtitle">到貨準時率前三名</div></div>
+            <div class="sup-row"><div class="rnk rnk-1">1</div><div class="sup-info"><div class="sup-name">聯發工業</div><div class="sup-cat">電子零件 · 42筆</div></div><div class="sup-right"><div class="sup-pct">95%</div><div class="micro-bar"><div class="micro-fill" style="width:95%"></div></div><div class="delta-sm">↑ +4%</div></div></div>
+            <div class="sup-row"><div class="rnk rnk-2">2</div><div class="sup-info"><div class="sup-name">信義精密</div><div class="sup-cat">機械零件 · 28筆</div></div><div class="sup-right"><div class="sup-pct">93%</div><div class="micro-bar"><div class="micro-fill" style="width:93%"></div></div><div class="delta-sm">↑ +2%</div></div></div>
+            <div class="sup-row"><div class="rnk rnk-3">3</div><div class="sup-info"><div class="sup-name">豐田物料</div><div class="sup-cat">包裝材料 · 35筆</div></div><div class="sup-right"><div class="sup-pct">91%</div><div class="micro-bar"><div class="micro-fill" style="width:91%"></div></div><div class="delta-sm">→ 持平</div></div></div>
+          </div>
+          <div class="rank-panel worst">
+            <div class="rank-head worst"><span class="rh-icon">⚠</span><div class="rhtitle">到貨準時率後三名</div></div>
+            <div class="sup-row"><div class="rnk rnk-1">1</div><div class="sup-info"><div class="sup-name">慶豐化工</div><div class="sup-cat">化工材料 · 18筆</div></div><div class="sup-right"><div class="sup-pct">68%</div><div class="micro-bar"><div class="micro-fill" style="width:68%"></div></div><div class="delta-sm">↓ -6%</div></div></div>
+            <div class="sup-row"><div class="rnk rnk-2">2</div><div class="sup-info"><div class="sup-name">正泰原料</div><div class="sup-cat">原物料 · 22筆</div></div><div class="sup-right"><div class="sup-pct">71%</div><div class="micro-bar"><div class="micro-fill" style="width:71%"></div></div><div class="delta-sm">↓ -3%</div></div></div>
+            <div class="sup-row"><div class="rnk rnk-3">3</div><div class="sup-info"><div class="sup-name">鴻基製造</div><div class="sup-cat">機械零件 · 31筆</div></div><div class="sup-right"><div class="sup-pct">82%</div><div class="micro-bar"><div class="micro-fill" style="width:82%"></div></div><div class="delta-sm">↓ -1%</div></div></div>
+          </div>
+        </div>
+
+        <!-- YoY in exec view -->
+        <div class="sec-label" id="sec-yoy">今年 vs 去年 · 同月採購額對比</div>
+        <div class="kpi-grid g4" style="margin-bottom:12px">
+          <div class="kcard g-clr"><div class="klabel">2025 累計採購額</div><div class="kval">$6.8M</div><div class="ksub"><span class="badge">YTD 至 6月</span></div></div>
+          <div class="kcard n-clr"><div class="klabel">2024 同期採購額</div><div class="kval">$6.1M</div><div class="ksub"><span class="badge">YTD 至 6月</span></div></div>
+          <div class="kcard g-clr"><div class="klabel">年增金額</div><div class="kval">+$0.7M</div><div class="ksub"><span class="badge">↑ +11.5%</span></div></div>
+          <div class="kcard g-clr"><div class="klabel">最大成長月份</div><div class="kval">3 月</div><div class="ksub"><span class="badge">↑ +22%</span></div></div>
+        </div>
+        <div class="highlight">
+          <div class="hl-pill up">↑ 3月年增最高 +22%（擴產備料）</div>
+          <div class="hl-pill dn">↓ 2月年減 -8%（農曆年停工）</div>
+          <div class="hl-pill up">↑ Q2 整體年增 +14%</div>
+          <div class="hl-pill neu">→ 預算達成率 94%</div>
+        </div>
+        <div class="row2">
+          <div class="box">
+            <div class="box-head">
+              <h3>月度採購額對比（萬元）</h3>
+              <div class="legend-row">
+                <div class="leg-item"><div class="leg-rect" style="background:#1D9E75"></div>2025</div>
+                <div class="leg-item"><div class="leg-rect" style="background:#9FE1CB;opacity:.9"></div>2024</div>
+              </div>
+            </div>
+            <div>
+              <div class="yoy-bar-row"><span class="yoy-month">1月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:72%"></div></div><span class="yoy-val cy">$108萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:65%"></div></div><span class="yoy-val py">$98萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+10%</div><div class="delta-spacer"></div></div></div>
+              <div class="yoy-bar-row"><span class="yoy-month">2月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:42%"></div></div><span class="yoy-val cy">$63萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:46%"></div></div><span class="yoy-val py">$69萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge dn">-8%</div><div class="delta-spacer"></div></div></div>
+              <div class="yoy-bar-row"><span class="yoy-month">3月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:100%"></div></div><span class="yoy-val cy">$150萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:82%"></div></div><span class="yoy-val py">$123萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+22%</div><div class="delta-spacer"></div></div></div>
+              <div class="yoy-bar-row"><span class="yoy-month">4月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:81%"></div></div><span class="yoy-val cy">$122萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:73%"></div></div><span class="yoy-val py">$110萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+11%</div><div class="delta-spacer"></div></div></div>
+              <div class="yoy-bar-row"><span class="yoy-month">5月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:88%"></div></div><span class="yoy-val cy">$132萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:77%"></div></div><span class="yoy-val py">$116萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+14%</div><div class="delta-spacer"></div></div></div>
+              <div class="yoy-bar-row"><span class="yoy-month">6月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:70%"></div></div><span class="yoy-val cy">$105萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:61%"></div></div><span class="yoy-val py">$92萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+14%</div><div class="delta-spacer"></div></div></div>
+            </div>
+            <div class="note">上排深色為 2025，下排淺色為 2024 同月</div>
+          </div>
+          <div class="box">
+            <h3>各品類 YoY 對比</h3>
+            <div class="cat-row"><div class="cat-lbl">電子零件</div><div class="cat-bars"><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill cy" style="width:100%"></div></div><span class="cat-val" style="color:var(--teal)">$210萬</span></div><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill py" style="width:81%"></div></div><span class="cat-val" style="color:var(--text3)">$170萬</span></div></div><span style="font-size:10px;width:40px;text-align:right;color:var(--teal);font-weight:600">↑+24%</span></div>
+            <div class="cat-row"><div class="cat-lbl">原物料</div><div class="cat-bars"><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill cy" style="width:76%"></div></div><span class="cat-val" style="color:var(--teal)">$160萬</span></div><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill py" style="width:67%"></div></div><span class="cat-val" style="color:var(--text3)">$140萬</span></div></div><span style="font-size:10px;width:40px;text-align:right;color:var(--teal);font-weight:600">↑+14%</span></div>
+            <div class="cat-row"><div class="cat-lbl">機械零件</div><div class="cat-bars"><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill cy" style="width:62%"></div></div><span class="cat-val" style="color:var(--teal)">$130萬</span></div><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill py" style="width:58%"></div></div><span class="cat-val" style="color:var(--text3)">$122萬</span></div></div><span style="font-size:10px;width:40px;text-align:right;color:var(--teal);font-weight:600">↑+7%</span></div>
+            <div class="cat-row"><div class="cat-lbl">化工材料</div><div class="cat-bars"><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill cy" style="width:43%"></div></div><span class="cat-val" style="color:var(--red)">$90萬</span></div><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill py" style="width:50%"></div></div><span class="cat-val" style="color:var(--text3)">$105萬</span></div></div><span style="font-size:10px;width:40px;text-align:right;color:var(--red);font-weight:600">↓-14%</span></div>
+            <div class="cat-row"><div class="cat-lbl">包裝材料</div><div class="cat-bars"><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill cy" style="width:48%"></div></div><span class="cat-val" style="color:var(--teal)">$100萬</span></div><div class="cat-bar-line"><div class="cat-track"><div class="cat-fill py" style="width:43%"></div></div><span class="cat-val" style="color:var(--text3)">$90萬</span></div></div><span style="font-size:10px;width:40px;text-align:right;color:var(--teal);font-weight:600">↑+11%</span></div>
+          </div>
+        </div>
+
+        <div class="footer-kpi">
+          <div class="fcard"><div class="fv" style="color:var(--teal)">81.4%</div><div class="fl">OTIF 達交率</div></div>
+          <div class="fcard"><div class="fv" style="color:var(--amber)">4.8天</div><div class="fl">平均延誤天數</div></div>
+          <div class="fcard"><div class="fv" style="color:var(--red)">$1.8M</div><div class="fl">呆滯庫存</div></div>
+          <div class="fcard"><div class="fv" style="color:var(--teal)">+11.5%</div><div class="fl">採購額年增率</div></div>
+        </div>
+      </div>
+
+      <!-- ===== 採購主管視角 ===== -->
+      <div class="view" id="v-mgr">
+        <div class="sec-label">PO 採購單狀態</div>
+        <div class="box">
+          <h3>採購單流程總覽（本季 248 張）</h3>
+          <div class="pipeline">
+            <div class="pip-seg"><div class="pip-dot" style="background:#F1EFE8;color:#444441;border:2px solid #D3D1C7">?</div><div class="pip-label">未確認<div class="pip-count" style="color:#444441">18</div></div></div>
+            <div class="pip-connector" style="background:linear-gradient(90deg,#D3D1C7,#85B7EB)"></div>
+            <div class="pip-seg"><div class="pip-dot" style="background:#E6F1FB;color:#185FA5;border:2px solid #85B7EB">✓</div><div class="pip-label">已確認<div class="pip-count" style="color:#185FA5">62</div></div></div>
+            <div class="pip-connector" style="background:linear-gradient(90deg,#85B7EB,#EF9F27)"></div>
+            <div class="pip-seg"><div class="pip-dot" style="background:#FAEEDA;color:#BA7517;border:2px solid #EF9F27">→</div><div class="pip-label">運輸中<div class="pip-count" style="color:#BA7517">94</div></div></div>
+            <div class="pip-connector" style="background:linear-gradient(90deg,#EF9F27,#1D9E75)"></div>
+            <div class="pip-seg"><div class="pip-dot" style="background:#E1F5EE;color:#0F6E56;border:2px solid #5DCAA5">✓✓</div><div class="pip-label">已到貨<div class="pip-count" style="color:#0F6E56">74</div></div></div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <div class="alert-pill red" style="font-size:10px"><span class="tlight tl-r"></span>逾期未到 5 張</div>
+            <div class="alert-pill amber" style="font-size:10px"><span class="tlight tl-y"></span>3天內到期未出貨 8 張</div>
+          </div>
+        </div>
+
+        <div class="sec-label">異常警示 PO</div>
+        <div class="box">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>狀態</th><th>PO 編號</th><th>供應商</th><th>品項</th><th>預交日</th><th>延誤</th><th>工令</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tlight tl-r" style="display:inline-block"></span></td><td>PO-0841</td><td>慶豐化工</td><td>化工溶劑 B</td><td>05/20</td><td><span class="tag r">+23天</span></td><td>WO-441</td></tr>
+              <tr><td><span class="tlight tl-r" style="display:inline-block"></span></td><td>PO-0876</td><td>正泰原料</td><td>PCB 基板 A</td><td>05/28</td><td><span class="tag r">+15天</span></td><td>WO-438</td></tr>
+              <tr><td><span class="tlight tl-r" style="display:inline-block"></span></td><td>PO-0892</td><td>鴻基製造</td><td>鋁合金板材</td><td>06/05</td><td><span class="tag r">+7天</span></td><td>WO-441</td></tr>
+              <tr><td><span class="tlight tl-y" style="display:inline-block"></span></td><td>PO-0915</td><td>大成物料</td><td>包裝紙箱 L</td><td>06/14</td><td><span class="tag y">2天後到期</span></td><td>WO-445</td></tr>
+              <tr><td><span class="tlight tl-y" style="display:inline-block"></span></td><td>PO-0921</td><td>正泰原料</td><td>螺絲套件 M6</td><td>06/15</td><td><span class="tag y">3天後到期</span></td><td>WO-442</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="sec-label">品質管控</div>
+        <div class="row2">
+          <div class="box">
+            <h3>各供應商不良率 (IQC)</h3>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">慶豐化工</span><div class="bar-track"><div class="bar-fill" style="width:64%;background:#D85A30"></div></div><span class="bar-pct r-clr">3.2%</span></div>
+              <div class="bar-row"><span class="bar-lbl">正泰原料</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:#EF9F27"></div></div><span class="bar-pct w-clr">2.0%</span></div>
+              <div class="bar-row"><span class="bar-lbl">鴻基製造</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#EF9F27"></div></div><span class="bar-pct w-clr">1.4%</span></div>
+              <div class="bar-row"><span class="bar-lbl">大成物料</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#1D9E75"></div></div><span class="bar-pct g-clr">0.7%</span></div>
+              <div class="bar-row"><span class="bar-lbl">聯發工業</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:#1D9E75"></div></div><span class="bar-pct g-clr">0.5%</span></div>
+            </div>
+            <div class="note">警戒線：2%｜慶豐化工已超標，建議列管</div>
+          </div>
+          <div class="box">
+            <h3>異常單 (NC) 追蹤</h3>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">處理中</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#EF9F27"></div></div><span class="bar-pct w-clr">7 張</span></div>
+              <div class="bar-row"><span class="bar-lbl">已改善</span><div class="bar-track"><div class="bar-fill" style="width:35%;background:#378ADD"></div></div><span class="bar-pct" style="color:#185FA5">5 張</span></div>
+              <div class="bar-row"><span class="bar-lbl">已結案</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#1D9E75"></div></div><span class="bar-pct g-clr">2 張</span></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>NC 編號</th><th>供應商</th><th>狀態</th></tr></thead>
+              <tbody>
+                <tr><td>NC-2025-031</td><td>慶豐化工</td><td><span class="tag r">處理中</span></td></tr>
+                <tr><td>NC-2025-028</td><td>正泰原料</td><td><span class="tag y">已改善</span></td></tr>
+                <tr><td>NC-2025-025</td><td>鴻基製造</td><td><span class="tag g">已結案</span></td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+
+        <div class="sec-label">供應商風險集中度</div>
+        <div class="box">
+          <h3>單一供應商採購金額佔比（警戒線 25%）</h3>
+          <div class="risk-row"><span class="risk-name">聯發工業</span><div class="risk-track"><div class="risk-fill" style="width:56%;background:#D85A30"></div><div class="risk-limit" style="left:50%"></div></div><span class="risk-pct r-clr">28%</span></div>
+          <div class="risk-row"><span class="risk-name">正泰原料</span><div class="risk-track"><div class="risk-fill" style="width:44%;background:#EF9F27"></div><div class="risk-limit" style="left:50%"></div></div><span class="risk-pct w-clr">22%</span></div>
+          <div class="risk-row"><span class="risk-name">慶豐化工</span><div class="risk-track"><div class="risk-fill" style="width:34%;background:#EF9F27"></div><div class="risk-limit" style="left:50%"></div></div><span class="risk-pct w-clr">17%</span></div>
+          <div class="risk-row"><span class="risk-name">鴻基製造</span><div class="risk-track"><div class="risk-fill" style="width:26%;background:#1D9E75"></div><div class="risk-limit" style="left:50%"></div></div><span class="risk-pct g-clr">13%</span></div>
+          <div class="risk-row"><span class="risk-name">其他</span><div class="risk-track"><div class="risk-fill" style="width:40%;background:#1D9E75"></div><div class="risk-limit" style="left:50%"></div></div><span class="risk-pct g-clr">20%</span></div>
+          <div class="note">紅色垂直線為 25% 警戒線｜聯發工業超標，建議分散採購</div>
+        </div>
+
+        <div class="sec-label">今年 vs 去年 · 供應商採購額對比</div>
+        <div class="box">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>供應商</th><th>2025 YTD</th><th>2024 同期</th><th>差異</th><th>YoY %</th><th>主因</th></tr></thead>
+            <tbody>
+              <tr><td>聯發工業</td><td>$190萬</td><td>$152萬</td><td class="arrow-up">+$38萬</td><td><span class="pill up">↑ +25%</span></td><td>電子零件需求擴大</td></tr>
+              <tr><td>正泰原料</td><td>$150萬</td><td>$130萬</td><td class="arrow-up">+$20萬</td><td><span class="pill up">↑ +15%</span></td><td>原物料備貨增加</td></tr>
+              <tr><td>鴻基製造</td><td>$88萬</td><td>$83萬</td><td class="arrow-up">+$5萬</td><td><span class="pill up">↑ +6%</span></td><td>小幅成長</td></tr>
+              <tr><td>豐田物料</td><td>$67萬</td><td>$60萬</td><td class="arrow-up">+$7萬</td><td><span class="pill up">↑ +12%</span></td><td>包材需求增加</td></tr>
+              <tr><td>慶豐化工</td><td>$115萬</td><td>$134萬</td><td class="arrow-dn">-$19萬</td><td><span class="pill dn">↓ -14%</span></td><td>品質問題→減少採購</td></tr>
+              <tr><td>大成物料</td><td>$70萬</td><td>$49萬</td><td class="arrow-up">+$21萬</td><td><span class="pill up">↑ +43%</span></td><td>新增品項採購</td></tr>
+            </tbody>
+          </table></div>
+          <div class="note">慶豐化工為唯一年減供應商，與不良率超標（3.2%）直接相關</div>
+        </div>
+
+        <div class="sec-label">採購成本績效</div>
+        <div class="kpi-grid g4">
+          <div class="kcard g-clr"><div class="klabel">本季採購實際額</div><div class="kval">$6.8M</div><div class="ksub"><span class="badge">預算 $7.2M ✓</span></div></div>
+          <div class="kcard g-clr"><div class="klabel">議價節約金額</div><div class="kval">$340K</div><div class="ksub"><span class="badge">達成率 102%</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">替代料避免成本</div><div class="kval">$128K</div><div class="ksub"><span class="badge">3 件進行中</span></div></div>
+          <div class="kcard n-clr"><div class="klabel">最大品類採購</div><div class="kval">電子零件</div><div class="ksub"><span class="badge">$2.1M (31%)</span></div></div>
+        </div>
+      </div>
+
+      <!-- ===== 倉管視角 ===== -->
+      <div class="view" id="v-ops">
+        <div class="sec-label">庫存水位預警</div>
+        <div class="kpi-grid g4">
+          <div class="kcard r-clr flagged"><div class="klabel">低於安全庫存品項</div><div class="kval">50 項</div><div class="ksub"><span class="badge">需立即補貨</span></div></div>
+          <div class="kcard r-clr flagged"><div class="klabel">呆滯 180 天以上</div><div class="kval">87 項</div><div class="ksub"><span class="badge">$1.8M</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">呆滯 90–180 天</div><div class="kval">134 項</div><div class="ksub"><span class="badge">$0.6M</span></div></div>
+          <div class="kcard g-clr"><div class="klabel">安全庫存達標</div><div class="kval">1,198 項</div><div class="ksub"><span class="badge">96% 達標</span></div></div>
+        </div>
+
+        <div class="sec-label">低於安全庫存 · 補貨清單</div>
+        <div class="box">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>狀態</th><th>品項</th><th>現有庫存</th><th>安全庫存</th><th>缺口</th><th>DOS</th><th>建議動作</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tlight tl-r" style="display:inline-block"></span></td><td>PCB 基板 A</td><td>120</td><td>500</td><td><span class="tag r">-380</span></td><td>2天</td><td>緊急採購</td></tr>
+              <tr><td><span class="tlight tl-r" style="display:inline-block"></span></td><td>化工溶劑 B</td><td>30</td><td>100</td><td><span class="tag r">-70</span></td><td>3天</td><td>緊急採購</td></tr>
+              <tr><td><span class="tlight tl-r" style="display:inline-block"></span></td><td>螺絲套件 M6</td><td>85</td><td>300</td><td><span class="tag r">-215</span></td><td>5天</td><td>緊急採購</td></tr>
+              <tr><td><span class="tlight tl-y" style="display:inline-block"></span></td><td>鋁合金板材</td><td>55</td><td>120</td><td><span class="tag y">-65</span></td><td>8天</td><td>預排採購</td></tr>
+              <tr><td><span class="tlight tl-y" style="display:inline-block"></span></td><td>電容 100μF</td><td>500</td><td>1000</td><td><span class="tag y">-500</span></td><td>9天</td><td>預排採購</td></tr>
+              <tr><td><span class="tlight tl-y" style="display:inline-block"></span></td><td>包裝紙箱 L</td><td>200</td><td>400</td><td><span class="tag y">-200</span></td><td>11天</td><td>預排採購</td></tr>
+              <tr><td><span class="tlight tl-y" style="display:inline-block"></span></td><td>氣泡紙（捲）</td><td>8</td><td>20</td><td><span class="tag y">-12</span></td><td>7天</td><td>預排採購</td></tr>
+              <tr><td><span class="tlight tl-y" style="display:inline-block"></span></td><td>橡膠墊片 A</td><td>40</td><td>80</td><td><span class="tag y">-40</span></td><td>10天</td><td>預排採購</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="sec-label">呆滯庫存清單（180天以上）</div>
+        <div class="box">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>品項編號</th><th>品名</th><th>庫存量</th><th>金額</th><th>最後異動</th><th>建議</th></tr></thead>
+            <tbody>
+              <tr><td>M-8801</td><td>舊型電容 A</td><td>5,000</td><td><span class="tag r">$320K</span></td><td>2024-11-02</td><td>報廢評估</td></tr>
+              <tr><td>P-4402</td><td>過時包材 B</td><td>2,000</td><td><span class="tag r">$180K</span></td><td>2024-10-15</td><td>報廢評估</td></tr>
+              <tr><td>M-3301</td><td>備用齒輪 C</td><td>120</td><td><span class="tag y">$96K</span></td><td>2024-12-01</td><td>轉售評估</td></tr>
+              <tr><td>C-1102</td><td>化工原料 D</td><td>80</td><td><span class="tag y">$64K</span></td><td>2024-11-20</td><td>轉售評估</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="sec-label">今日進出貨紀錄</div>
+        <div class="box">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>時間</th><th>類型</th><th>品項</th><th>數量</th><th>供應商/客戶</th><th>狀態</th></tr></thead>
+            <tbody>
+              <tr><td>09:15</td><td><span class="tag g">進貨</span></td><td>電子零件 C型</td><td>+500</td><td>聯發工業</td><td><span class="tag g">驗收通過</span></td></tr>
+              <tr><td>10:30</td><td><span class="tag g">進貨</span></td><td>包裝材料 S</td><td>+1,200</td><td>豐田物料</td><td><span class="tag g">驗收通過</span></td></tr>
+              <tr><td>11:00</td><td><span class="tag r">出貨</span></td><td>成品 A-001</td><td>-80</td><td>台積電</td><td><span class="tag g">準時</span></td></tr>
+              <tr><td>13:45</td><td><span class="tag r">出貨</span></td><td>成品 B-220</td><td>-45</td><td>鴻海精密</td><td><span class="tag g">準時</span></td></tr>
+              <tr><td>14:20</td><td><span class="tag g">進貨</span></td><td>鋁合金板材</td><td>+55</td><td>鴻基製造</td><td><span class="tag y">驗收中</span></td></tr>
+              <tr><td>15:00</td><td><span class="tag r">出貨</span></td><td>零件組 K型</td><td>-200</td><td>廣達電腦</td><td><span class="tag r">延遲 2h</span></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const roleLabels = {exec:'高層總覽',mgr:'採購主管',ops:'倉管人員'};
+function switchRole(r, btn) {
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.rtab').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  document.getElementById('v-' + r).classList.add('active');
+  document.getElementById('page-title').textContent = roleLabels[r];
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(el => {
+    if (el.textContent.trim() === roleLabels[r]) el.classList.add('active');
+  });
+}
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function applyFilters() {
+  // 串接真實資料後在此實作篩選邏輯
+  console.log('篩選條件已更新');
+}
+</script>
+</body>
+</html>
