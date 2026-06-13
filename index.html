@@ -243,6 +243,51 @@ tbody tr:hover td{background:var(--bg3)}
 .sup-detail-section{display:none}
 .sup-detail-section.active{display:block}
 .trend-line-svg{width:100%;height:auto}
+
+/* ── 供應鏈風險雷達分頁專屬 ── */
+.news-head-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+.refresh-btn{background:var(--teal-light);border:1px solid var(--teal);color:var(--teal-dark);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit}
+.refresh-btn:hover{background:var(--teal);color:#0A2419}
+.refresh-btn:active{transform:scale(.97)}
+.risk-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+@media(max-width:640px){.risk-summary{grid-template-columns:1fr}}
+.rsum-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;position:relative;overflow:hidden}
+.rsum-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.rsum-card.m::before{background:var(--amber)}.rsum-card.d::before{background:var(--red-bright)}.rsum-card.f::before{background:var(--blue)}
+.rsum-label{font-size:11px;color:var(--text2);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.rsum-icon{font-size:15px}
+.rsum-headline{font-size:13px;font-weight:500;line-height:1.5;color:var(--text);min-height:38px}
+.rsum-meta{font-size:10px;color:var(--text3);margin-top:8px;display:flex;align-items:center;gap:6px}
+.risk-chip{padding:1px 7px;border-radius:6px;font-size:9px;font-weight:600}
+.risk-chip.high{background:var(--red-light);color:var(--red)}
+.risk-chip.mid{background:var(--amber-light);color:var(--amber)}
+.risk-chip.low{background:var(--teal-light);color:var(--teal-dark)}
+.feed-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.feed-tab{padding:7px 14px;border-radius:20px;border:1px solid var(--border2);background:var(--bg2);color:var(--text2);font-size:11px;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:all .15s}
+.feed-tab.active[data-cat="material"]{background:var(--amber-light);color:var(--amber);border-color:var(--amber);font-weight:600}
+.feed-tab.active[data-cat="disruption"]{background:var(--red-light);color:var(--red);border-color:var(--red-bright);font-weight:600}
+.feed-tab.active[data-cat="fx"]{background:var(--blue-light);color:var(--blue);border-color:var(--blue);font-weight:600}
+.feed-tab.active[data-cat="all"]{background:var(--teal-light);color:var(--teal-dark);border-color:var(--teal);font-weight:600}
+.tab-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-m{background:var(--amber)}.dot-d{background:var(--red-bright)}.dot-f{background:var(--blue)}.dot-a{background:var(--teal)}
+.news-list{display:flex;flex-direction:column;gap:8px}
+.news-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px 16px;cursor:pointer;transition:border-color .15s;text-decoration:none;display:block;color:inherit}
+.news-item:hover{border-color:var(--border2)}
+.news-item-head{display:flex;align-items:flex-start;gap:10px}
+.news-cat-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.news-content{flex:1;min-width:0}
+.news-title{font-size:13px;font-weight:500;line-height:1.5;color:var(--text)}
+.news-desc{font-size:11px;color:var(--text2);margin-top:5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-meta{font-size:10px;color:var(--text3);margin-top:7px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.news-source{color:var(--text2);font-weight:500}
+.news-ext{color:var(--text3);font-size:12px;flex-shrink:0}
+.loading{text-align:center;padding:40px 20px;color:var(--text3);font-size:12px}
+.spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--border2);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-box{background:var(--red-light);border:1px solid #6B3424;border-radius:var(--radius-sm);padding:16px;color:var(--red);font-size:12px;line-height:1.7}
+.error-box b{color:var(--text)}
+.news-disclaimer{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-size:11px;color:var(--text3);line-height:1.7;margin-top:16px}
+.news-disclaimer b{color:var(--text2)}
 </style>
 </head>
 <body>
@@ -257,6 +302,7 @@ tbody tr:hover td{background:var(--bg3)}
     <div class="nav-item" data-role="mgr" onclick="switchRole('mgr',this)"><span class="nav-dot"></span>採購主管</div>
     <div class="nav-item" data-role="ops" onclick="switchRole('ops',this)"><span class="nav-dot"></span>倉管 / 採購</div>
     <div class="nav-item" data-role="single" onclick="switchRole('single',this)"><span class="nav-dot"></span>🔍 單一供應商分析</div>
+    <div class="nav-item" data-role="news" onclick="switchRole('news',this)"><span class="nav-dot"></span>📰 供應鏈風險雷達</div>
     <div class="sidebar-footer">最後更新：2025-06-12<br>資料來源：ERP / Google Sheets</div>
   </aside>
 
@@ -269,6 +315,7 @@ tbody tr:hover td{background:var(--bg3)}
           <button class="rtab" data-role="mgr" onclick="switchRole('mgr',this)">採購主管</button>
           <button class="rtab" data-role="ops" onclick="switchRole('ops',this)">倉管</button>
           <button class="rtab" data-role="single" onclick="switchRole('single',this)">供應商分析</button>
+          <button class="rtab" data-role="news" onclick="switchRole('news',this)">風險雷達</button>
         </div>
         <span class="update-tag" style="font-size:10px;color:var(--text3);padding:3px 8px;border:1px solid var(--border);border-radius:10px">2025-06-12</span>
       </div>
@@ -677,12 +724,55 @@ tbody tr:hover td{background:var(--bg3)}
         </div>
       </div>
 
+      <!-- ===== 新增：供應鏈風險雷達分頁 ===== -->
+      <div class="view" id="v-news">
+        <div class="news-head-row">
+          <div>
+            <div style="font-size:11px;color:var(--text3)">即時財經新聞 · 開啟自動更新 · 來源：Google News RSS</div>
+          </div>
+          <button class="refresh-btn" onclick="loadAllFeeds()">🔄 重新整理</button>
+        </div>
+
+        <div class="risk-summary">
+          <div class="rsum-card m">
+            <div class="rsum-label"><span class="rsum-icon">🏭</span>原物料價格（不鏽鋼/橡膠/塑膠）</div>
+            <div class="rsum-headline" id="sum-material">載入中…</div>
+            <div class="rsum-meta"><span class="risk-chip mid">監控中</span><span id="sum-material-time"></span></div>
+          </div>
+          <div class="rsum-card d">
+            <div class="rsum-label"><span class="rsum-icon">🚢</span>物流中斷（中日台）</div>
+            <div class="rsum-headline" id="sum-disruption">載入中…</div>
+            <div class="rsum-meta"><span class="risk-chip high">高關注</span><span id="sum-disruption-time"></span></div>
+          </div>
+          <div class="rsum-card f">
+            <div class="rsum-label"><span class="rsum-icon">💱</span>匯率成本（人民幣/日幣）</div>
+            <div class="rsum-headline" id="sum-fx">載入中…</div>
+            <div class="rsum-meta"><span class="risk-chip low">追蹤中</span><span id="sum-fx-time"></span></div>
+          </div>
+        </div>
+
+        <div class="feed-tabs">
+          <button class="feed-tab active" data-cat="all" onclick="filterCat('all',this)"><span class="tab-dot dot-a"></span>全部</button>
+          <button class="feed-tab" data-cat="material" onclick="filterCat('material',this)"><span class="tab-dot dot-m"></span>不鏽鋼/橡膠/塑膠</button>
+          <button class="feed-tab" data-cat="disruption" onclick="filterCat('disruption',this)"><span class="tab-dot dot-d"></span>物流中斷</button>
+          <button class="feed-tab" data-cat="fx" onclick="filterCat('fx',this)"><span class="tab-dot dot-f"></span>人民幣/日幣</button>
+        </div>
+
+        <div id="news-container">
+          <div class="loading"><div class="spinner"></div><div>正在載入最新供應鏈新聞…</div></div>
+        </div>
+
+        <div class="news-disclaimer">
+          <b>關於資料來源：</b>本頁透過 rss2json 免費服務抓取 Google News 的供應鏈相關新聞，開啟分頁即自動載入最新內容。新聞由各媒體發布，僅供風險參考，不構成投資建議。免費 API 有每日呼叫上限。
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
 <script>
-const roleLabels = {exec:'高層總覽',mgr:'採購主管',ops:'倉管 / 採購',single:'單一供應商分析'};
+const roleLabels = {exec:'高層總覽',mgr:'採購主管',ops:'倉管 / 採購',single:'單一供應商分析',news:'供應鏈風險雷達'};
 function switchRole(r, btn) {
   document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.rtab').forEach(el => el.classList.remove('active'));
@@ -690,13 +780,78 @@ function switchRole(r, btn) {
   document.getElementById('v-' + r).classList.add('active');
   document.getElementById('page-title').textContent = roleLabels[r];
   document.querySelectorAll('[data-role="'+r+'"]').forEach(el=>el.classList.add('active'));
-  // 單一供應商分頁隱藏全域警示列
-  document.getElementById('global-alerts').style.display = (r==='single') ? 'none' : 'flex';
+  // 單一供應商與新聞分頁隱藏全域警示列
+  document.getElementById('global-alerts').style.display = (r==='single'||r==='news') ? 'none' : 'flex';
+  // 切到新聞分頁時，若尚未載入則自動載入
+  if(r==='news' && !newsLoaded){ loadAllFeeds(); newsLoaded = true; }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function showSupplier(id){
   document.querySelectorAll('.sup-detail-section').forEach(el=>el.classList.remove('active'));
   document.getElementById('sup-'+id).classList.add('active');
+}
+
+// ── 供應鏈風險雷達：RSS 新聞 ──
+const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+const FEEDS = {
+  material: {
+    name: '不鏽鋼/橡膠/塑膠', color: '#F0B254',
+    url: 'https://news.google.com/rss/search?q=' + encodeURIComponent('不鏽鋼 OR 橡膠 OR 塑膠 原物料 價格') + '&hl=zh-TW&gl=TW&ceid=TW:zh-Hant'
+  },
+  disruption: {
+    name: '物流中斷', color: '#F06548',
+    url: 'https://news.google.com/rss/search?q=' + encodeURIComponent('物流 中斷 OR 航運 OR 港口 中國 OR 日本 OR 台灣') + '&hl=zh-TW&gl=TW&ceid=TW:zh-Hant'
+  },
+  fx: {
+    name: '人民幣/日幣', color: '#6FAEE8',
+    url: 'https://news.google.com/rss/search?q=' + encodeURIComponent('人民幣 OR 日幣 匯率 成本') + '&hl=zh-TW&gl=TW&ceid=TW:zh-Hant'
+  }
+};
+let allNews = [], currentFilter = 'all', newsLoaded = false;
+function timeAgo(s){const d=new Date(s),diff=(Date.now()-d.getTime())/1000;if(diff<3600)return Math.floor(diff/60)+' 分鐘前';if(diff<86400)return Math.floor(diff/3600)+' 小時前';return Math.floor(diff/86400)+' 天前';}
+function stripHtml(h){const t=document.createElement('div');t.innerHTML=h||'';return (t.textContent||t.innerText||'').trim();}
+async function fetchFeed(cat){
+  const feed=FEEDS[cat];
+  try{
+    const res=await fetch(RSS2JSON+encodeURIComponent(feed.url));
+    const data=await res.json();
+    if(data.status!=='ok'||!data.items)throw new Error('feed error');
+    return data.items.slice(0,8).map(item=>({cat,catName:feed.name,color:feed.color,title:item.title,desc:stripHtml(item.description).slice(0,160),link:item.link,source:(item.title.split(' - ').pop())||'Google News',pubDate:item.pubDate}));
+  }catch(e){return [];}
+}
+async function loadAllFeeds(){
+  document.getElementById('news-container').innerHTML='<div class="loading"><div class="spinner"></div><div>正在載入最新供應鏈新聞…</div></div>';
+  const results=await Promise.all([fetchFeed('material'),fetchFeed('disruption'),fetchFeed('fx')]);
+  allNews=[...results[0],...results[1],...results[2]].filter(n=>n.pubDate).sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+  updateSummary('material',results[0][0]);updateSummary('disruption',results[1][0]);updateSummary('fx',results[2][0]);
+  if(allNews.length===0){document.getElementById('news-container').innerHTML='<div class="error-box"><b>暫時無法載入新聞</b><br>可能原因：免費 API 達到每日上限，或網路連線問題。請稍後點「重新整理」再試。</div>';return;}
+  renderNews();
+}
+function updateSummary(cat,item){
+  const el=document.getElementById('sum-'+cat),timeEl=document.getElementById('sum-'+cat+'-time');
+  if(item){el.textContent=stripHtml(item.title).replace(/ - .*$/,'');timeEl.textContent=timeAgo(item.pubDate);}else{el.textContent='暫無資料';}
+}
+function renderNews(){
+  const list=currentFilter==='all'?allNews:allNews.filter(n=>n.cat===currentFilter);
+  if(list.length===0){document.getElementById('news-container').innerHTML='<div class="loading">此分類暫無新聞</div>';return;}
+  document.getElementById('news-container').innerHTML='<div class="news-list">'+list.map(n=>`
+    <a class="news-item" href="${n.link}" target="_blank" rel="noopener">
+      <div class="news-item-head">
+        <span class="news-cat-dot" style="background:${n.color}"></span>
+        <div class="news-content">
+          <div class="news-title">${stripHtml(n.title).replace(/ - [^-]*$/,'')}</div>
+          ${n.desc?`<div class="news-desc">${n.desc}</div>`:''}
+          <div class="news-meta"><span class="news-source">${n.source}</span><span>·</span><span style="color:${n.color}">${n.catName}</span><span>·</span><span>${timeAgo(n.pubDate)}</span></div>
+        </div>
+        <span class="news-ext">↗</span>
+      </div>
+    </a>`).join('')+'</div>';
+}
+function filterCat(cat,btn){
+  currentFilter=cat;
+  document.querySelectorAll('.feed-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderNews();
 }
 </script>
 </body>
