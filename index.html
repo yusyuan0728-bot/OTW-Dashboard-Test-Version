@@ -13,7 +13,8 @@
   --blue:#6FAEE8;--blue-light:#152A3F;
   --bg:#121417;--bg2:#1B1E23;--bg3:#262A31;
   --border:#2E323A;--border2:#3D424C;
-  --text:#E8E6E1;--text2:#A3A19B;--text3:#6F6D68;
+  --text:#F0EEE9;--text2:#C2C0BA;--text3:#928F89;
+  --grid:#3A3F48;--axis-text:#B0AEA8;
   --radius:12px;--radius-sm:8px;
   --shadow:0 1px 3px rgba(0,0,0,.3);
 }
@@ -33,7 +34,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .nav-item.active{background:var(--teal-light);color:var(--teal-dark);border-left-color:var(--teal);font-weight:500}
 .nav-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
 .sidebar-footer{margin-top:auto;padding:16px 20px;border-top:1px solid var(--border);font-size:11px;color:var(--text3)}
-.page-title{font-size:15px;font-weight:500;color:var(--text)}
+.page-title{font-size:clamp(14px,2vw,16px);font-weight:500;color:var(--text)}
 .controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 select{font-size:11px;padding:5px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--bg3);color:var(--text);cursor:pointer;outline:none}
 select:focus{border-color:var(--teal)}
@@ -62,7 +63,7 @@ select:focus{border-color:var(--teal)}
 .hero-card.warn::before{background:var(--amber)}
 .hero-card.bad::before{background:var(--red-bright)}
 .hero-label{font-size:11px;color:var(--text2);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.hero-val{font-size:34px;font-weight:600;letter-spacing:-1px;line-height:1}
+.hero-val{font-size:clamp(26px,4.2vw,34px);font-weight:600;letter-spacing:-1px;line-height:1}
 .hero-card.ok .hero-val{color:var(--teal-dark)}
 .hero-card.warn .hero-val{color:var(--amber)}
 .hero-card.bad .hero-val{color:var(--red)}
@@ -75,12 +76,13 @@ select:focus{border-color:var(--teal)}
 .hero-status{margin-left:auto;font-size:18px}
 .kpi-grid{display:grid;gap:10px;margin-bottom:4px}
 .g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
 .kcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);transition:border-color .15s}
 .kcard:hover{border-color:var(--border2)}
 .kcard.flagged{border-color:#8A4A35}
 .klabel{font-size:10px;color:var(--text2);margin-bottom:6px;line-height:1.4}
-.kval{font-size:22px;font-weight:500;letter-spacing:-0.5px;line-height:1}
+.kval{font-size:clamp(18px,2.6vw,22px);font-weight:500;letter-spacing:-0.5px;line-height:1}
 .ksub{font-size:10px;margin-top:5px}
 .badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:500}
 .g-clr{color:var(--teal)}.g-clr .badge{background:var(--teal-light);color:var(--teal-dark)}
@@ -88,7 +90,7 @@ select:focus{border-color:var(--teal)}
 .r-clr{color:var(--red)}.r-clr .badge{background:var(--red-light);color:var(--red)}
 .n-clr{color:var(--text2)}.n-clr .badge{background:var(--bg3);color:var(--text2)}
 .box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
-.box h3{font-size:12px;font-weight:500;margin-bottom:12px;color:var(--text)}
+.box h3{font-size:clamp(11px,1.7vw,13px);font-weight:500;margin-bottom:12px;color:var(--text);line-height:1.35}
 .box-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
 .box-head h3{margin-bottom:0}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
@@ -226,7 +228,7 @@ tbody tr:hover td{background:var(--bg3)}
 .grade-a .sup-avatar{background:var(--teal);color:#0A2419}
 .grade-b .sup-avatar{background:var(--amber);color:#3A2D14}
 .grade-c .sup-avatar{background:var(--red-bright);color:#2A130B}
-.sup-title-info h2{font-size:18px;font-weight:600;color:var(--text)}
+.sup-title-info h2{font-size:clamp(15px,2.4vw,18px);font-weight:600;color:var(--text)}
 .sup-title-info p{font-size:11px;color:var(--text2);margin-top:3px}
 .sup-grade-badge{text-align:center;flex-shrink:0}
 .sup-grade-letter{font-size:32px;font-weight:700;line-height:1}
@@ -243,6 +245,12 @@ tbody tr:hover td{background:var(--bg3)}
 .sup-detail-section{display:none}
 .sup-detail-section.active{display:block}
 .trend-line-svg{width:100%;height:auto}
+.chart-wrap{position:relative}
+.chart-tip{position:absolute;top:6px;right:6px;background:rgba(27,30,35,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:6px 11px;font-size:11px;color:var(--text);pointer-events:none;opacity:0;transition:opacity .15s;z-index:5;white-space:nowrap}
+.chart-tip.show{opacity:1}
+.chart-tip .tip-val{font-weight:500;font-size:13px}
+.trend-line-svg circle[data-val]{cursor:pointer;transition:r .12s}
+.trend-line-svg circle[data-val]:hover{r:7}
 
 /* ── 供應鏈風險雷達分頁專屬 ── */
 .news-head-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
@@ -557,14 +565,15 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="row2">
             <div class="box">
               <div class="box-head"><h3>交期表現 · 準時率趨勢</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
-              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet">
-                <line x1="40" y1="20" x2="540" y2="20" stroke="#2E323A"/><line x1="40" y1="60" x2="540" y2="60" stroke="#2E323A"/><line x1="40" y1="100" x2="540" y2="100" stroke="#2E323A"/><line x1="40" y1="140" x2="540" y2="140" stroke="#2E323A"/>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-lianfa"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-lianfa')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
                 <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
                 <polyline points="65,55 160,50 255,48 350,45 445,42 540,40" fill="none" stroke="#34C28F" stroke-width="2.5"/>
-                <circle cx="65" cy="55" r="4" fill="#34C28F"/><circle cx="160" cy="50" r="4" fill="#34C28F"/><circle cx="255" cy="48" r="4" fill="#34C28F"/><circle cx="350" cy="45" r="4" fill="#34C28F"/><circle cx="445" cy="42" r="4" fill="#34C28F"/><circle cx="540" cy="40" r="4" fill="#34C28F"/>
-                <text x="65" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">6月</text>
-                <text x="33" y="64" fill="#6F6D68" font-size="8" text-anchor="end">90%</text>
-              </svg>
+                <circle cx="65" cy="55" r="4" fill="#34C28F" data-val="91%" data-label="1月" onmouseenter="showTip('tip-lianfa','1月','準時率 91%')"/><circle cx="160" cy="50" r="4" fill="#34C28F" data-val="92%" data-label="2月" onmouseenter="showTip('tip-lianfa','2月','準時率 92%')"/><circle cx="255" cy="48" r="4" fill="#34C28F" data-val="93%" data-label="3月" onmouseenter="showTip('tip-lianfa','3月','準時率 93%')"/><circle cx="350" cy="45" r="4" fill="#34C28F" data-val="94%" data-label="4月" onmouseenter="showTip('tip-lianfa','4月','準時率 94%')"/><circle cx="445" cy="42" r="4" fill="#34C28F" data-val="95%" data-label="5月" onmouseenter="showTip('tip-lianfa','5月','準時率 95%')"/><circle cx="540" cy="40" r="4" fill="#34C28F" data-val="95%" data-label="6月" onmouseenter="showTip('tip-lianfa','6月','準時率 95%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
               <div class="note">🟢 連續 6 個月維持在目標線 90% 以上，交期穩定可靠，平均延誤 0.8 天</div>
             </div>
             <div class="box">
@@ -622,14 +631,15 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="row2">
             <div class="box">
               <div class="box-head"><h3>交期表現 · 準時率趨勢</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
-              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet">
-                <line x1="40" y1="20" x2="540" y2="20" stroke="#2E323A"/><line x1="40" y1="60" x2="540" y2="60" stroke="#2E323A"/><line x1="40" y1="100" x2="540" y2="100" stroke="#2E323A"/><line x1="40" y1="140" x2="540" y2="140" stroke="#2E323A"/>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-qingfeng"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-qingfeng')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
                 <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
                 <polyline points="65,68 160,75 255,85 350,98 445,105 540,110" fill="none" stroke="#F06548" stroke-width="2.5"/>
-                <circle cx="65" cy="68" r="4" fill="#F0B254"/><circle cx="160" cy="75" r="4" fill="#F08A6B"/><circle cx="255" cy="85" r="4" fill="#F08A6B"/><circle cx="350" cy="98" r="4" fill="#F06548"/><circle cx="445" cy="105" r="4" fill="#F06548"/><circle cx="540" cy="110" r="4" fill="#F06548"/>
-                <text x="65" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">6月</text>
-                <text x="33" y="64" fill="#6F6D68" font-size="8" text-anchor="end">90%</text>
-              </svg>
+                <circle cx="65" cy="68" r="4" fill="#F0B254" data-val="82%" onmouseenter="showTip('tip-qingfeng','1月','準時率 82%')"/><circle cx="160" cy="75" r="4" fill="#F08A6B" onmouseenter="showTip('tip-qingfeng','2月','準時率 79%')"/><circle cx="255" cy="85" r="4" fill="#F08A6B" onmouseenter="showTip('tip-qingfeng','3月','準時率 75%')"/><circle cx="350" cy="98" r="4" fill="#F06548" onmouseenter="showTip('tip-qingfeng','4月','準時率 71%')"/><circle cx="445" cy="105" r="4" fill="#F06548" onmouseenter="showTip('tip-qingfeng','5月','準時率 70%')"/><circle cx="540" cy="110" r="4" fill="#F06548" onmouseenter="showTip('tip-qingfeng','6月','準時率 68%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
               <div class="note">🔴 準時率連續 6 個月下滑，從 82% 跌至 68%，平均延誤 8.5 天，已嚴重影響產線備料</div>
             </div>
             <div class="box">
@@ -686,14 +696,15 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="row2">
             <div class="box">
               <div class="box-head"><h3>交期表現 · 準時率趨勢</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
-              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet">
-                <line x1="40" y1="20" x2="540" y2="20" stroke="#2E323A"/><line x1="40" y1="60" x2="540" y2="60" stroke="#2E323A"/><line x1="40" y1="100" x2="540" y2="100" stroke="#2E323A"/><line x1="40" y1="140" x2="540" y2="140" stroke="#2E323A"/>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-zhengtai"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-zhengtai')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
                 <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
                 <polyline points="65,82 160,88 255,80 350,95 445,90 540,98" fill="none" stroke="#F0B254" stroke-width="2.5"/>
-                <circle cx="65" cy="82" r="4" fill="#F0B254"/><circle cx="160" cy="88" r="4" fill="#F08A6B"/><circle cx="255" cy="80" r="4" fill="#F0B254"/><circle cx="350" cy="95" r="4" fill="#F08A6B"/><circle cx="445" cy="90" r="4" fill="#F08A6B"/><circle cx="540" cy="98" r="4" fill="#F08A6B"/>
-                <text x="65" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#A3A19B" font-size="9" text-anchor="middle">6月</text>
-                <text x="33" y="64" fill="#6F6D68" font-size="8" text-anchor="end">90%</text>
-              </svg>
+                <circle cx="65" cy="82" r="4" fill="#F0B254" onmouseenter="showTip('tip-zhengtai','1月','準時率 76%')"/><circle cx="160" cy="88" r="4" fill="#F08A6B" onmouseenter="showTip('tip-zhengtai','2月','準時率 73%')"/><circle cx="255" cy="80" r="4" fill="#F0B254" onmouseenter="showTip('tip-zhengtai','3月','準時率 78%')"/><circle cx="350" cy="95" r="4" fill="#F08A6B" onmouseenter="showTip('tip-zhengtai','4月','準時率 72%')"/><circle cx="445" cy="90" r="4" fill="#F08A6B" onmouseenter="showTip('tip-zhengtai','5月','準時率 74%')"/><circle cx="540" cy="98" r="4" fill="#F08A6B" onmouseenter="showTip('tip-zhengtai','6月','準時率 71%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
               <div class="note">🟡 準時率在 71-78% 間波動，未達目標但尚穩定，平均延誤 4.2 天，建議列入改善輔導</div>
             </div>
             <div class="box">
@@ -789,6 +800,16 @@ function switchRole(r, btn) {
 function showSupplier(id){
   document.querySelectorAll('.sup-detail-section').forEach(el=>el.classList.remove('active'));
   document.getElementById('sup-'+id).classList.add('active');
+}
+function showTip(tipId,label,val){
+  const t=document.getElementById(tipId);
+  if(!t)return;
+  t.innerHTML='<span style="color:var(--text2)">'+label+'</span>　<span class="tip-val">'+val+'</span>';
+  t.classList.add('show');
+}
+function hideTip(tipId){
+  const t=document.getElementById(tipId);
+  if(t)t.classList.remove('show');
 }
 
 // ── 供應鏈風險雷達：RSS 新聞 ──
