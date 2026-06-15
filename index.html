@@ -107,10 +107,11 @@ select:focus{border-color:var(--teal)}
 .bar-lbl.pl .pl-en{display:block;font-size:11px;font-weight:600;color:var(--text)}
 .bar-lbl.pl .pl-zh{display:block;font-size:9px;color:var(--text3)}
 .bar-row.pl-row .bar-track{max-width:58%}
-.bar-pct{font-size:11px;font-weight:500;width:60px;text-align:right;flex-shrink:0}
+.bar-row.pl-row .bar-pct{width:62px;font-size:11px}
 .bar-track{flex:1;height:10px;background:var(--bg3);border-radius:5px;overflow:hidden;position:relative}
 .bar-fill{height:100%;border-radius:5px;transition:width .5s ease}
 .bar-target-mark{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--amber);opacity:.8}
+.bar-pct{font-size:11px;font-weight:500;width:44px;text-align:right;flex-shrink:0}
 .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .hbar-rank{width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0;background:var(--bg3);color:var(--text2)}
 .hbar-rank.top{background:var(--teal);color:#0A2419}
@@ -231,8 +232,18 @@ tbody tr:hover td{background:var(--bg3)}
 .sup-profile-head.grade-b{background:linear-gradient(135deg,var(--amber-light),transparent)}
 .sup-profile-head.grade-c{background:linear-gradient(135deg,var(--red-light),transparent)}
 .sup-title-block{display:flex;align-items:center;gap:14px}
+.sup-avatar{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;flex-shrink:0}
+.grade-a .sup-avatar{background:var(--teal);color:#0A2419}
+.grade-b .sup-avatar{background:var(--amber);color:#3A2D14}
+.grade-c .sup-avatar{background:var(--red-bright);color:#2A130B}
 .sup-title-info h2{font-size:clamp(15px,2.4vw,18px);font-weight:600;color:var(--text)}
 .sup-title-info p{font-size:11px;color:var(--text2);margin-top:3px}
+.sup-grade-badge{text-align:center;flex-shrink:0}
+.sup-grade-letter{font-size:32px;font-weight:700;line-height:1}
+.grade-a .sup-grade-letter{color:var(--teal-dark)}
+.grade-b .sup-grade-letter{color:var(--amber)}
+.grade-c .sup-grade-letter{color:var(--red)}
+.sup-grade-label{font-size:10px;color:var(--text3);margin-top:2px}
 .sup-quick-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid var(--border)}
 @media(max-width:560px){.sup-quick-stats{grid-template-columns:repeat(2,1fr)}}
 .sqstat{padding:14px 16px;border-right:1px solid var(--border);text-align:center}
@@ -245,6 +256,7 @@ tbody tr:hover td{background:var(--bg3)}
 .chart-wrap{position:relative}
 .chart-tip{position:absolute;top:6px;right:6px;background:rgba(27,30,35,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:6px 11px;font-size:11px;color:var(--text);pointer-events:none;opacity:0;transition:opacity .15s;z-index:5;white-space:nowrap}
 .chart-tip.show{opacity:1}
+.chart-tip .tip-val{font-weight:500;font-size:13px}
 .trend-line-svg circle[data-val]{cursor:pointer;transition:r .12s}
 .trend-line-svg circle[data-val]:hover{r:7}
 
@@ -335,58 +347,24 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="alert-pill green"><span class="tlight tl-g"></span>出貨準時率 95.1% 達標</div>
       </div>
 
+      <!-- ===== 高層視角（精簡保留核心）===== -->
       <div class="view active" id="v-exec">
-        
         <div class="sec-label hero">★ 核心指標總覽</div>
-        <div class="box">
-          <div class="box-head"><h3>安全庫存金額追蹤</h3></div>
-          <div style="font-size:24px; font-weight:bold; color:var(--text2); margin-bottom:8px;">等待資料更新...</div>
-          <div class="note">目標基準：$1,800萬。<br>燈號標準：🟢 綠燈 (±10% 內) / 🟡 黃燈 (±11~19%) / 🔴 紅燈 (±20% 以上)<br>※ 待您提供「庫存預計狀況表」後，系統即可自動化比對。</div>
+        <div class="hero-grid">
+          <div class="hero-card ok"><div class="hero-label">FY27 達交率（OTIF）</div><div class="hero-val">100%</div><div class="hero-meta"><span class="hero-badge">目標 99.2%</span><span class="hero-status">✅</span></div></div>
+          <div class="hero-card bad"><div class="hero-label">FY27 PFR（平均產品不良率）</div><div class="hero-val">2.57%</div><div class="hero-meta"><span class="hero-badge">目標 ≤0.8%</span><span class="hero-target">利貫異常</span><span class="hero-status">🔴</span></div></div>
+          <div class="hero-card bad"><div class="hero-label">採購額累積達成率</div><div class="hero-val">18.8%</div><div class="hero-meta"><span class="hero-badge">FY27 目標 4.3億</span><span class="hero-target">至5月累計</span><span class="hero-status">📊</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">安全庫存金額</div><div class="hero-val">待提供</div><div class="hero-meta"><span class="hero-badge">資料待補</span><span class="hero-status">⏳</span></div></div>
         </div>
 
-        <div class="row2">
-          <div class="box">
-            <h3>OTIF 達交率表現</h3>
-            <div class="rank-grid">
-              <div class="rank-panel best">
-                <div class="rank-head best"><span class="rhtitle">🏆 最佳前三名</span></div>
-                <div class="sup-row"><div class="rnk rnk-1">1</div><div class="sup-info"><div class="sup-name">賢隆</div></div><div class="sup-right"><div class="sup-pct">100%</div></div></div>
-                <div class="sup-row"><div class="rnk rnk-2">2</div><div class="sup-info"><div class="sup-name">記豪</div></div><div class="sup-right"><div class="sup-pct">100%</div></div></div>
-                <div class="sup-row"><div class="rnk rnk-3">3</div><div class="sup-info"><div class="sup-name">順翊</div></div><div class="sup-right"><div class="sup-pct">100%</div></div></div>
-              </div>
-              <div class="rank-panel worst">
-                <div class="rank-head worst"><span class="rhtitle">⚠️ 最糟前三名</span></div>
-                <div class="note" style="padding:16px;">目前全數供應商 OTIF 皆達標 100%，暫無落後名單。</div>
-              </div>
-            </div>
-          </div>
-          <div class="box">
-            <h3>PFR 不良率表現</h3>
-            <div class="rank-grid">
-               <div class="rank-panel best">
-                <div class="rank-head best"><span class="rhtitle">🏆 最佳前三名</span></div>
-                <div class="sup-row"><div class="rnk rnk-1">1</div><div class="sup-info"><div class="sup-name">記豪</div></div><div class="sup-right"><div class="sup-pct">0%</div></div></div>
-                <div class="sup-row"><div class="rnk rnk-2">2</div><div class="sup-info"><div class="sup-name">億誠</div></div><div class="sup-right"><div class="sup-pct">0%</div></div></div>
-                <div class="sup-row"><div class="rnk rnk-3">3</div><div class="sup-info"><div class="sup-name">順翊</div></div><div class="sup-right"><div class="sup-pct">0.05%</div></div></div>
-              </div>
-               <div class="rank-panel worst">
-                <div class="rank-head worst"><span class="rhtitle">⚠️ 最糟前三名</span></div>
-                <div class="sup-row"><div class="rnk rnk-1">1</div><div class="sup-info"><div class="sup-name">利貫</div></div><div class="sup-right"><div class="sup-pct">13.4%</div></div></div>
-                <div class="sup-row"><div class="rnk rnk-2">2</div><div class="sup-info"><div class="sup-name">賢隆</div></div><div class="sup-right"><div class="sup-pct">0.30%</div></div></div>
-                <div class="sup-row"><div class="rnk rnk-3">3</div><div class="sup-info"><div class="sup-name">-</div></div><div class="sup-right"><div class="sup-pct">-</div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sec-label">🎯 事業計畫達成率（以採購額為目標）</div>
+        <div class="sec-label hero">🎯 事業計畫達成率（以採購額為目標）</div>
         <div class="box">
           <div class="box-head"><h3>FY27 採購額 vs 事業計畫目標 4.3 億</h3><span style="font-size:10px;color:var(--text3)">黃線 = 時間基準 約 17%（FY27 已過 2/12 月）</span></div>
           <div class="progress-block" style="margin-bottom:10px">
             <div class="progress-head"><span class="progress-name">總採購額累積達成</span><span class="progress-stat">FY27 累計（至 5 月）$8,091萬 / 計畫 $4.30億</span></div>
             <div class="progress-track"><div class="progress-fill" style="width:18.8%;background:#34C28F">18.8%</div><div class="progress-target" style="left:17%"></div></div>
           </div>
-          <div class="note" style="margin-bottom:14px">🟢 FY27 採購額累積達成 18.8%（$8,091萬），時間僅過約 17%，進度略超前。</div>
+          <div class="note" style="margin-bottom:14px">🟢 FY27 採購額累積達成 18.8%（$8,091萬），時間僅過約 17%，進度略超前。FY27 目前僅 4、5 月有實際出貨。</div>
           <div class="tbl-wrap"><table>
             <thead><tr><th>供應商</th><th>FY27 累計（至5月）</th><th>FY26 全年</th><th>FY27 佔比</th><th>狀態</th></tr></thead>
             <tbody>
@@ -397,16 +375,89 @@ tbody tr:hover td{background:var(--bg3)}
               <tr><td>億誠</td><td>$1,004萬</td><td>$5,575萬</td><td>12%</td><td><span class="tag g">正常</span></td></tr>
             </tbody>
           </table></div>
+          <div class="note">FY27 各供應商採購結構與 FY26 相近，賢隆維持最大供應商。（FY27 為實際累計，目標 4.3 億為事業計畫）</div>
+        </div>
+
+
+        <div class="sec-label">各供應商採購金額占比（FY26 全年 / FY27 參考）</div>
+        <div class="box">
+          <div class="box-head"><h3>各供應商採購金額佔比</h3><div class="legend-row"><div class="leg-item"><div class="leg-rect" style="background:#34C28F"></div>FY26 全年</div><div class="leg-item"><div class="leg-rect" style="background:#6FAEE8"></div>FY27 至5月</div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">賢隆</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:100%"></div></div><span class="yoy-val cy">$1.04億</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:100%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,924萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">25%</div><div class="delta-spacer"></div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">記豪</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:74%"></div></div><span class="yoy-val cy">$7,643萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:69%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,337萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">18%</div><div class="delta-spacer"></div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">順翊</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:64%"></div></div><span class="yoy-val cy">$6,662萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:63%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,214萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">16%</div><div class="delta-spacer"></div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">利貫</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:58%"></div></div><span class="yoy-val cy">$6,000萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:60%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,147萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">14%</div><div class="delta-spacer"></div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">億誠</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:54%"></div></div><span class="yoy-val cy">$5,575萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:52%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,004萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">12%</div><div class="delta-spacer"></div></div></div>
+          <div class="note">賢隆為最大供應商（FY26 佔 25%），FY27 採購結構與 FY26 相近。右側百分比為 FY26 全年佔比。</div>
+        </div>
+
+        <div class="row2">
+          <div class="box">
+            <h3>供應商 OTIF 達交率（FY27 納期遵守率）</h3>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">賢隆</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+              <div class="bar-row"><span class="bar-lbl">記豪</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+              <div class="bar-row"><span class="bar-lbl">順翊</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+              <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+              <div class="bar-row"><span class="bar-lbl">億誠</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+            </div>
+            <div class="note">🟢 黃線 = 99.2% 目標。FY27 全體供應商納期遵守率達 100%，交期表現優異。</div>
+          </div>
+          <div class="box">
+            <h3>供應商 PFR 不良率（FY27 累計）</h3>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-bad">13.4%</span></div>
+              <div class="bar-row"><span class="bar-lbl">賢隆</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0.30%</span></div>
+              <div class="bar-row"><span class="bar-lbl">順翊</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0.05%</span></div>
+              <div class="bar-row"><span class="bar-lbl">記豪</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0%</span></div>
+              <div class="bar-row"><span class="bar-lbl">億誠</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0%</span></div>
+            </div>
+            <div class="note">🟠 黃線 = 0.8% 目標。利貫 4 月單月異常（不良 13 萬件）拉高累計至 13.4%，5 月已回穩，需追蹤。</div>
+          </div>
         </div>
       </div>
 
+      <!-- ===== OTW 對客戶（下游出貨視角）===== -->
       <div class="view" id="v-customer">
         <div class="sec-label hero">★ OTW 對客戶 · 出貨關鍵指標</div>
         <div class="hero-grid">
           <div class="hero-card ok"><div class="hero-label">FY27 達交率（OTIF）</div><div class="hero-val">100%</div><div class="hero-meta"><span class="hero-badge">FY27 目標 99.2%</span><span class="hero-status">✅</span></div></div>
           <div class="hero-card bad"><div class="hero-label">客戶集中度（CPCS）</div><div class="hero-val">89%</div><div class="hero-meta"><span class="hero-badge">單一客戶風險</span><span class="hero-status">🔴</span></div></div>
           <div class="hero-card warn"><div class="hero-label">客訴 / 退貨率</div><div class="hero-val">1.4%</div><div class="hero-meta"><span class="hero-badge">目標 ≤1%</span><span class="hero-status">⚠️</span></div></div>
-          <div class="hero-card ok"><div class="hero-label">FY27 對客戶營業額</div><div class="hero-val">資料待補</div><div class="hero-meta"><span class="hero-badge">FY26全年 $4.19億</span><span class="hero-status">✅</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">FY26 對客戶營業額</div><div class="hero-val">$4.19億</div><div class="hero-meta"><span class="hero-badge">穩定</span><span class="hero-status">✅</span></div></div>
+        </div>
+
+        <div class="sec-label">客戶別 OTIF 達交表現</div>
+        <div class="box">
+          <div class="box-head"><h3>主要客戶準時交貨率 ⓘ 示意</h3><span class="target-legend"><span class="target-dash"></span>目標 99.2%</span></div>
+          <div class="bar-wrap">
+            <div class="bar-row"><span class="bar-lbl">CPCS</span><div class="bar-track"><div class="bar-fill" style="width:83%;background:#F0B254"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct cell-warn">83%</span></div>
+            <div class="bar-row"><span class="bar-lbl">OWI</span><div class="bar-track"><div class="bar-fill" style="width:91%;background:#F0B254"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct cell-warn">91%</span></div>
+            <div class="bar-row"><span class="bar-lbl">OMCZ</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#F0B254"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct cell-warn">88%</span></div>
+            <div class="bar-row"><span class="bar-lbl">ELEMASTER</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#F0B254"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct cell-warn">94%</span></div>
+          </div>
+          <div class="note">⚠️ 此為<b>示意值，非真實資料</b>。你提供的廠商品質月報是「對供應商」的進料 OTIF，尚無「對客戶」出貨端的達交資料。若有對客戶的出貨/準時紀錄，這塊即可換成真實數據。</div>
+        </div>
+
+        <div class="row2">
+          <div class="box">
+            <h3>客戶營業額佔比（FY2026）</h3>
+            <div class="hbar-row"><div class="hbar-rank" style="background:#E0653F;color:#2A130B">1</div><div class="hbar-name">CPCS</div><div class="hbar-track"><div class="hbar-fill" style="width:100%;background:#E0653F">89%</div></div><span class="hbar-amt">$3.74億</span></div>
+            <div class="hbar-row"><div class="hbar-rank">2</div><div class="hbar-name">OWI</div><div class="hbar-track"><div class="hbar-fill" style="width:6%;background:#34C28F">5%</div></div><span class="hbar-amt">$2,152萬</span></div>
+            <div class="hbar-row"><div class="hbar-rank">3</div><div class="hbar-name">OMCZ</div><div class="hbar-track"><div class="hbar-fill" style="width:4%;background:#34C28F">3%</div></div><span class="hbar-amt">$1,325萬</span></div>
+            <div class="note">🔴 CPCS 單一客戶佔 89%，是公司最大營運風險，建議積極開發新客戶。</div>
+          </div>
+          <div class="box">
+            <h3>客訴與退貨追蹤（本季）</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>客戶</th><th>客訴件數</th><th>退貨率</th><th>主要原因</th><th>狀態</th></tr></thead>
+              <tbody>
+                <tr><td>CPCS</td><td>3</td><td class="cell-warn">1.6%</td><td>尺寸公差</td><td><span class="tag y">處理中</span></td></tr>
+                <tr><td>OWI</td><td>1</td><td class="cell-good">0.5%</td><td>表面處理</td><td><span class="tag g">已結案</span></td></tr>
+                <tr><td>OMCZ</td><td>0</td><td class="cell-good">0%</td><td>—</td><td><span class="tag g">正常</span></td></tr>
+              </tbody>
+            </table></div>
+            <div class="note">客訴主要集中在 CPCS 的尺寸公差問題，需回溯對應供應商的來料品質。</div>
+          </div>
         </div>
 
         <div class="sec-label">產品線出貨趨勢（對客戶）</div>
@@ -418,9 +469,11 @@ tbody tr:hover td{background:var(--bg3)}
             <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SD</span><span class="pl-zh">手術器械</span></span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$4,286萬</span></div>
             <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">UGN</span><span class="pl-zh">泌尿婦科</span></span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$3,533萬</span></div>
           </div>
+          <div class="note">GI 腸胃內視鏡是對客戶出貨的絕對主力（58%）。完整銷售分析請見「銷售分析」分頁。</div>
         </div>
       </div>
 
+      <!-- ===== OTW 對供應商關鍵資訊追蹤（上游採購視角）===== -->
       <div class="view" id="v-supplier-track">
         <div class="sec-label hero">★ OTW 對供應商 · 關鍵資訊追蹤</div>
         <div class="hero-grid">
@@ -428,6 +481,22 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="hero-card warn"><div class="hero-label">供應商平均 PFR</div><div class="hero-val">1.6%</div><div class="hero-meta"><span class="hero-badge">目標 ≤2%</span><span class="hero-status">⚠️</span></div></div>
           <div class="hero-card bad"><div class="hero-label">老品比例（全供應商）</div><div class="hero-val">79%</div><div class="hero-meta"><span class="hero-badge">新品停滯</span><span class="hero-status">🔴</span></div></div>
           <div class="hero-card warn"><div class="hero-label">生產中止品項</div><div class="hero-val">34 項</div><div class="hero-meta"><span class="hero-badge">2.7%</span><span class="hero-status">⚠️</span></div></div>
+        </div>
+
+        <div class="sec-label">供應商關鍵指標總表</div>
+        <div class="box">
+          <div class="box-head"><h3>六大核心供應商追蹤</h3><span style="font-size:10px;color:var(--text3)">ⓘ OTIF / PFR 為示意值，金額 / 品項 / 老品% 為真實資料</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>供應商</th><th>FY26 金額</th><th>佔比</th><th>OTIF<br><span style="font-size:9px;font-weight:400">FY27/FY26</span></th><th>PFR<br><span style="font-size:9px;font-weight:400">FY27/FY26</span></th><th>老品%</th><th>生產中止</th><th>主材質</th><th>風險等級</th></tr></thead>
+            <tbody>
+              <tr><td><b>賢隆</b></td><td>$1.04億</td><td>25%</td><td class="cell-good">100% / 99.97%</td><td class="cell-good">0.30% / 0.06%</td><td class="cell-bad">87%</td><td>15項</td><td>SUS303</td><td><span class="tag g">低</span></td></tr>
+              <tr><td><b>記豪</b></td><td>$7,643萬</td><td>18%</td><td class="cell-good">100% / 100%</td><td class="cell-good">0% / 0.03%</td><td class="cell-bad">89%</td><td>5項</td><td>SUS303</td><td><span class="tag g">低</span></td></tr>
+              <tr><td><b>順翊</b></td><td>$6,662萬</td><td>16%</td><td class="cell-good">100% / 100%</td><td class="cell-good">0.05% / 0.01%</td><td class="cell-warn">80%</td><td>1項</td><td>BRASS</td><td><span class="tag g">低</span></td></tr>
+              <tr><td><b>利貫</b></td><td>$6,000萬</td><td>14%</td><td class="cell-good">100% / 100%</td><td class="cell-bad">13.4% / 0.01%</td><td class="cell-warn">76%</td><td class="cell-warn">6項</td><td>SUS303</td><td><span class="tag r">高</span></td></tr>
+              <tr><td><b>億誠</b></td><td>$5,575萬</td><td>13%</td><td class="cell-good">100% / 100%</td><td class="cell-good">0% / 0.19%</td><td class="cell-warn">67%</td><td>1項</td><td>RUBBER</td><td><span class="tag g">低</span></td></tr>
+            </tbody>
+          </table></div>
+          <div class="note">🟢 FY27 各供應商 OTIF 全數達 100%（目標 99.2%），交期表現優異。⚠️ <b>利貫 FY27 PFR 達 13.4%</b>（4 月單月不良 13 萬件異常，5 月已回穩 0%），為當前唯一品質警訊，需追蹤後續穩定度。資料來源：FY27/FY26 廠商品質月報表。</div>
         </div>
 
         <div class="row2">
@@ -440,25 +509,62 @@ tbody tr:hover td{background:var(--bg3)}
               <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
               <div class="bar-row"><span class="bar-lbl">億誠</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
             </div>
+            <div class="note">🟢 黃線 = 99.2% 目標。FY27 全體供應商納期遵守率達 100%，交期表現優異，無延遲。</div>
           </div>
           <div class="box">
             <h3>供應商 PFR 不良率（FY27 累計）</h3>
-            <div class="tbl-wrap"><table>
-              <thead><tr><th>供應商</th><th>不良率</th><th>目標</th><th>狀態</th></tr></thead>
-              <tbody>
-                <tr><td>利貫</td><td class="cell-bad">13.4%</td><td>≤ 0.8%</td><td><span class="tag r">異常</span></td></tr>
-                <tr><td>賢隆</td><td class="cell-good">0.30%</td><td>≤ 0.8%</td><td><span class="tag g">達標</span></td></tr>
-                <tr><td>順翊</td><td class="cell-good">0.05%</td><td>≤ 0.8%</td><td><span class="tag g">達標</span></td></tr>
-                <tr><td>記豪</td><td class="cell-good">0%</td><td>≤ 0.8%</td><td><span class="tag g">優良</span></td></tr>
-                <tr><td>億誠</td><td class="cell-good">0%</td><td>≤ 0.8%</td><td><span class="tag g">優良</span></td></tr>
-              </tbody>
-            </table></div>
-            <div class="note" style="margin-top:10px;">利貫 4 月單月異常（PFR 21.6%，不良 13 萬件）拉高累計，5 月已回穩。</div>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-bad">13.4%</span></div>
+              <div class="bar-row"><span class="bar-lbl">賢隆</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0.30%</span></div>
+              <div class="bar-row"><span class="bar-lbl">順翊</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0.05%</span></div>
+              <div class="bar-row"><span class="bar-lbl">記豪</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0%</span></div>
+              <div class="bar-row"><span class="bar-lbl">億誠</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0%</span></div>
+            </div>
+            <div class="note">🟠 黃線 = 0.8% 目標。<b>利貫 4 月單月異常（PFR 21.6%，不良 13 萬件）</b>拉高累計至 13.4%，5 月已回穩，需確認後續。其餘供應商均遠優於目標。</div>
           </div>
+        </div>
+
+        <div class="sec-label">供應商品項老化與生產狀況（真實資料）</div>
+        <div class="box">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>供應商</th><th>總品項</th><th>量產品</th><th>樣品</th><th>待轉量產</th><th>生產中止</th><th>老品(10年+)</th><th>新品(5年內)</th></tr></thead>
+            <tbody>
+              <tr><td>賢隆</td><td>310</td><td>285 (92%)</td><td>10</td><td>0</td><td>15</td><td class="cell-bad">87%</td><td>2%</td></tr>
+              <tr><td>記豪</td><td>256</td><td>250 (98%)</td><td>1</td><td>0</td><td>5</td><td class="cell-bad">89%</td><td>1%</td></tr>
+              <tr><td>順翊</td><td>231</td><td>227 (98%)</td><td>3</td><td>0</td><td>1</td><td class="cell-warn">80%</td><td>3%</td></tr>
+              <tr><td>利貫</td><td>100</td><td>93 (93%)</td><td>1</td><td>0</td><td class="cell-warn">6</td><td class="cell-warn">76%</td><td>2%</td></tr>
+              <tr><td>億誠</td><td>211</td><td>207 (98%)</td><td>3</td><td>0</td><td>1</td><td class="cell-warn">67%</td><td>1%</td></tr>
+              <tr><td>天網電子</td><td>35</td><td>31 (89%)</td><td>0</td><td>0</td><td class="cell-bad">4</td><td class="cell-warn">71%</td><td>6%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="note">資料為 FY26 全年（生產中止數：賢隆15、記豪5、利貫6 較多；FY27 目前 0 項）。全供應商老品比例達 79%、新品稀少，反映新品開發停滯。特別注意：KTM（14項全樣品）、雲林應材（3項全樣品）為少數新品開發供應源。</div>
         </div>
       </div>
 
+
+      <!-- ===== 新增：單一供應商分析頁 ===== -->
       <div class="view" id="v-single">
+
+        <div class="sec-label" style="margin-top:0">供應商比較矩陣（FY2026 真實數據）</div>
+        <div class="box" style="margin-bottom:14px">
+          <div class="box-head">
+            <h3>六大核心供應商一覽比較</h3>
+            <span style="font-size:10px;color:var(--text3)">ⓘ OTIF / PFR 為 FY27 真實數據（廠商品質月報），老品% / 金額 / 品項為真實數據</span>
+          </div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>供應商</th><th>評等</th><th>FY26 金額</th><th>佔比</th><th>品項數</th><th>量產%</th><th>生產中止</th><th>老品%</th><th>新品%</th><th>主材質</th><th>OTIF<br><span style="font-size:9px;font-weight:400">FY27</span></th><th>PFR<br><span style="font-size:9px;font-weight:400">FY27</span></th></tr></thead>
+            <tbody>
+              <tr><td><b>賢隆</b></td><td><span class="tag g">A</span></td><td>$1.04億</td><td class="cell-good">25%</td><td>310</td><td class="cell-good">92%</td><td>5%</td><td class="cell-bad">87%</td><td>2%</td><td>SUS303</td><td class="cell-good">100%</td><td class="cell-good">0.30%</td></tr>
+              <tr><td><b>記豪</b></td><td><span class="tag g">A</span></td><td>$7,643萬</td><td>18%</td><td>256</td><td class="cell-good">98%</td><td>2%</td><td class="cell-bad">89%</td><td>1%</td><td>SUS303</td><td class="cell-good">100%</td><td class="cell-good">0%</td></tr>
+              <tr><td><b>順翊</b></td><td><span class="tag g">A</span></td><td>$6,662萬</td><td>16%</td><td>231</td><td class="cell-good">98%</td><td class="cell-good">0.4%</td><td class="cell-warn">80%</td><td>3%</td><td>BRASS</td><td class="cell-good">100%</td><td class="cell-good">0.05%</td></tr>
+              <tr><td><b>利貫</b></td><td><span class="tag r">C</span></td><td>$6,000萬</td><td>14%</td><td>100</td><td class="cell-good">93%</td><td class="cell-warn">6%</td><td class="cell-warn">76%</td><td>2%</td><td>SUS303</td><td class="cell-good">100%</td><td class="cell-bad">13.4%</td></tr>
+              <tr><td><b>億誠</b></td><td><span class="tag g">A</span></td><td>$5,575萬</td><td>13%</td><td>211</td><td class="cell-good">98%</td><td class="cell-good">0.5%</td><td class="cell-warn">67%</td><td>1%</td><td>RUBBER</td><td class="cell-good">100%</td><td class="cell-good">0%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="note" style="margin-top:10px">
+            💡 FY27 真實品質表現：交期（OTIF）全數 100% 達標。<b>利貫因 4 月單月品質異常，PFR 累計達 13.4%</b>（已從 A 降為 C 評等），其餘供應商不良率均優於 0.8% 目標。特殊供應商：<b>佩爾科技(PT)</b> 僅 2 品項卻達 $2,051萬（斷貨風險高）｜<b>KTM</b>、<b>雲林應材</b> 全為樣品（新品開發供應源）。
+          </div>
+        </div>
         <div class="sup-selector">
           <label>🔍 選擇供應商：</label>
           <select class="sup-select-big" id="sup-picker" onchange="showSupplier(this.value)">
@@ -469,15 +575,91 @@ tbody tr:hover td{background:var(--bg3)}
             <option value="tianwang">天網電子（EL 電子件）</option>
             <option value="qingfeng">億誠（RUBBER 橡膠）</option>
           </select>
+          <span style="font-size:11px;color:var(--text3);margin-left:auto">切換供應商查看完整表現　|　下方為全供應商總覽比較</span>
         </div>
 
+        <!-- 供應商總覽比較矩陣 -->
+        <div class="box">
+          <div class="box-head"><h3>📊 供應商總覽比較（FY2026 真實數據）</h3><span style="font-size:10px;color:var(--text3)">金額/品項/生產狀況/老化為真實；OTIF/不良率為暫估</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>供應商</th><th>採購額</th><th>佔比</th><th>品項數</th><th>量產品</th><th>樣品</th><th>老品率</th><th>主要材質</th><th>OTIF*</th></tr></thead>
+            <tbody>
+              <tr><td><b>賢隆</b></td><td>$1.04億</td><td class="cell-warn">25%</td><td>310</td><td>285</td><td>10</td><td class="cell-bad">87%</td><td>SUS303 金屬</td><td class="cell-good">95%</td></tr>
+              <tr><td><b>記豪</b></td><td>$7,643萬</td><td class="w-clr">18%</td><td>256</td><td>250</td><td class="cell-bad">1</td><td class="cell-bad">89%</td><td>SUS303/304</td><td class="cell-warn">71%</td></tr>
+              <tr><td><b>順翊</b></td><td>$6,662萬</td><td class="w-clr">16%</td><td>231</td><td>227</td><td>3</td><td class="cell-warn">80%</td><td>BRASS 黃銅</td><td class="cell-warn">82%</td></tr>
+              <tr><td><b>利貫</b></td><td>$6,000萬</td><td class="w-clr">14%</td><td>100</td><td>93</td><td>1</td><td class="cell-warn">76%</td><td>SUS303 金屬</td><td class="cell-good">90%</td></tr>
+              <tr><td><b>億誠</b></td><td>$5,575萬</td><td class="w-clr">13%</td><td>211</td><td>207</td><td>3</td><td class="w-clr">67%</td><td>RUBBER 橡膠</td><td class="cell-bad">68%</td></tr>
+              <tr><td>天網電子</td><td>$1,370萬</td><td>3%</td><td>35</td><td>31</td><td>0</td><td class="cell-warn">71%</td><td>EL 電子件</td><td class="cell-good">93%</td></tr>
+              <tr><td>佩爾科技</td><td>$2,052萬</td><td>5%</td><td class="cell-bad">2</td><td>2</td><td>0</td><td class="cell-good">0%</td><td>METAL 金屬</td><td>—</td></tr>
+              <tr><td>泰力士</td><td>$787萬</td><td>2%</td><td>14</td><td>14</td><td>0</td><td class="cell-bad">100%</td><td>PLASTIC 塑膠</td><td>—</td></tr>
+              <tr><td>台月</td><td>$639萬</td><td>2%</td><td>40</td><td>39</td><td>1</td><td class="cell-bad">98%</td><td>METAL 金屬</td><td>—</td></tr>
+            </tbody>
+          </table></div>
+          <div class="note">* OTIF 為暫估值（待補真實交期資料）。🔴 <b>佩爾科技僅 2 個品項卻佔 5%（$2,052萬）</b>，高度集中、斷鏈風險高。🔴 泰力士、台月老品率近 100%。記豪 89% 最老化。</div>
+        </div>
+
+        <!-- 新品開發供應商提示 -->
+        <div class="box">
+          <div class="box-head"><h3>🌱 新品開發供應商（少數還在導入新案的供應源）</h3></div>
+          <div class="highlight">
+            <div class="hl-pill up">KTM：14 項全為樣品（WIRE 線材）</div>
+            <div class="hl-pill up">雲林應材：3 項全樣品（塑膠管）</div>
+            <div class="hl-pill up">佩爾科技：2 項全新品（5年內）</div>
+            <div class="hl-pill neu">穎明 / Intai：小量樣品開發</div>
+          </div>
+          <div class="note">在全公司新品僅 4% 的背景下，這些供應商是少數仍在開發新品的來源，雖金額小但具策略價值，建議列入新品導入重點追蹤。</div>
+        </div>
+
+        <!-- 供應商 A：賢隆（績優 A 級）-->
         <div class="sup-detail-section active" id="sup-lianfa">
           <div class="sup-profile-card">
             <div class="sup-profile-head grade-a">
               <div class="sup-title-block">
+                <div class="sup-avatar">聯</div>
                 <div class="sup-title-info"><h2>賢隆</h2><p>金屬件 · 合作 6 年 · 主要 SUS303 不鏽鋼供應商</p></div>
               </div>
+              <div class="sup-grade-badge"><div class="sup-grade-letter">A</div><div class="sup-grade-label">綜合評等</div></div>
             </div>
+            <div class="sup-quick-stats">
+              <div class="sqstat"><div class="sqstat-val cell-good">95%</div><div class="sqstat-label">到貨準時率</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-good">0.5%</div><div class="sqstat-label">不良率</div></div>
+              <div class="sqstat"><div class="sqstat-val">$190萬</div><div class="sqstat-label">2025 YTD 採購額</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-good">↑+25%</div><div class="sqstat-label">YoY 成長</div></div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="box">
+              <div class="box-head"><h3>交期表現 · 準時率趨勢</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-lianfa"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-lianfa')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
+                <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
+                <polyline points="65,55 160,50 255,48 350,45 445,42 540,40" fill="none" stroke="#34C28F" stroke-width="2.5"/>
+                <circle cx="65" cy="55" r="4" fill="#34C28F" data-val="91%" data-label="1月" onmouseenter="showTip('tip-lianfa','1月','準時率 91%')"/><circle cx="160" cy="50" r="4" fill="#34C28F" data-val="92%" data-label="2月" onmouseenter="showTip('tip-lianfa','2月','準時率 92%')"/><circle cx="255" cy="48" r="4" fill="#34C28F" data-val="93%" data-label="3月" onmouseenter="showTip('tip-lianfa','3月','準時率 93%')"/><circle cx="350" cy="45" r="4" fill="#34C28F" data-val="94%" data-label="4月" onmouseenter="showTip('tip-lianfa','4月','準時率 94%')"/><circle cx="445" cy="42" r="4" fill="#34C28F" data-val="95%" data-label="5月" onmouseenter="showTip('tip-lianfa','5月','準時率 95%')"/><circle cx="540" cy="40" r="4" fill="#34C28F" data-val="95%" data-label="6月" onmouseenter="showTip('tip-lianfa','6月','準時率 95%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
+              <div class="note">🟢 連續 6 個月維持在目標線 90% 以上，交期穩定可靠，平均延誤 0.8 天</div>
+            </div>
+            <div class="box">
+              <h3>品質表現 · 不良率與異常單</h3>
+              <div class="kpi-grid" style="grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+                <div class="kcard g-clr"><div class="klabel">本期不良率</div><div class="kval">0.5%</div><div class="ksub"><span class="badge">遠優於 2%</span></div></div>
+                <div class="kcard g-clr"><div class="klabel">開立異常單</div><div class="kval">0 張</div><div class="ksub"><span class="badge">零異常</span></div></div>
+              </div>
+              <div class="bar-wrap">
+                <div class="bar-row"><span class="bar-lbl">IQC合格</span><div class="bar-track"><div class="bar-fill" style="width:99.5%;background:#34C28F"></div></div><span class="bar-pct cell-good">99.5%</span></div>
+                <div class="bar-row"><span class="bar-lbl">準時交貨</span><div class="bar-track"><div class="bar-fill" style="width:95%;background:#34C28F"></div></div><span class="bar-pct cell-good">95%</span></div>
+                <div class="bar-row"><span class="bar-lbl">完整交貨</span><div class="bar-track"><div class="bar-fill" style="width:98%;background:#34C28F"></div></div><span class="bar-pct cell-good">98%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-head"><h3>採購金額 · FY27 vs FY26（萬元）</h3><div class="legend-row"><div class="leg-item"><div class="leg-rect" style="background:#34C28F"></div>FY27</div><div class="leg-item"><div class="leg-rect" style="background:#6FAEE8"></div>FY26</div></div></div>
+            <div class="yoy-bar-row"><span class="yoy-month">3月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:88%"></div></div><span class="yoy-val cy">$38萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:70%"></div></div><span class="yoy-val py">$30萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+27%</div><div class="delta-spacer"></div></div></div>
+            <div class="yoy-bar-row"><span class="yoy-month">4月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:74%"></div></div><span class="yoy-val cy">$32萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:60%"></div></div><span class="yoy-val py">$26萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+23%</div><div class="delta-spacer"></div></div></div>
+            <div class="yoy-bar-row"><span class="yoy-month">5月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:81%"></div></div><span class="yoy-val cy">$35萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:65%"></div></div><span class="yoy-val py">$28萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+25%</div><div class="delta-spacer"></div></div></div>
+            <div class="yoy-bar-row"><span class="yoy-month">6月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:79%"></div></div><span class="yoy-val cy">$34萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:58%"></div></div><span class="yoy-val py">$25萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+36%</div><div class="delta-spacer"></div></div></div>
           </div>
           <div class="box">
             <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
@@ -492,15 +674,108 @@ tbody tr:hover td{background:var(--bg3)}
               </tbody>
             </table></div>
           </div>
+          <div class="box">
+            <h3>⚠️ 品項老化分析（賢隆共 310 項）</h3>
+            <div class="row2" style="margin-bottom:0">
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生效年齡分層（距 2026）</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">5年內(新)</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#34C28F"></div></div><span class="bar-pct g-clr">2%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">5-10年</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">11%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">10-15年</span><div class="bar-track"><div class="bar-fill" style="width:31%;background:#F0B254"></div></div><span class="bar-pct w-clr">24%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">無日期(舊)</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#F06548"></div></div><span class="bar-pct cell-bad">63%</span></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生產狀況</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">量產品</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:#34C28F"></div></div><span class="bar-pct g-clr">92%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">樣品</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#F0B254"></div></div><span class="bar-pct w-clr">3%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">生產中止</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:#F06548"></div></div><span class="bar-pct cell-bad">5%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">待轉量產</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#B98AE0"></div></div><span class="bar-pct n-clr">0</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="note">🔴 老品（10年+無日期）達 <b>87%</b>，新品僅 2%，且無待轉量產品。賢隆是最老化的供應商之一，建議推動新品開發或評估第二供應源。</div>
+          </div>
         </div>
 
+        <!-- 供應商 B：億誠（風險 C 級）-->
         <div class="sup-detail-section" id="sup-qingfeng">
           <div class="sup-profile-card">
             <div class="sup-profile-head grade-c">
               <div class="sup-title-block">
+                <div class="sup-avatar">慶</div>
                 <div class="sup-title-info"><h2>億誠</h2><p>RUBBER 橡膠 · 合作 4 年 · 橡膠密封件供應商</p></div>
               </div>
+              <div class="sup-grade-badge"><div class="sup-grade-letter">C</div><div class="sup-grade-label">綜合評等</div></div>
             </div>
+            <div class="sup-quick-stats">
+              <div class="sqstat"><div class="sqstat-val cell-bad">68%</div><div class="sqstat-label">到貨準時率</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-bad">3.2%</div><div class="sqstat-label">不良率</div></div>
+              <div class="sqstat"><div class="sqstat-val">$115萬</div><div class="sqstat-label">2025 YTD 採購額</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-bad">↓-14%</div><div class="sqstat-label">YoY 成長</div></div>
+            </div>
+          </div>
+          <div class="alert-bar"><div class="alert-pill red"><span class="tlight tl-r"></span>不良率超標 3.2%（警戒 2%）</div><div class="alert-pill red"><span class="tlight tl-r"></span>準時率 68% 連續下滑</div><div class="alert-pill amber"><span class="tlight tl-y"></span>2 張異常單處理中</div></div>
+          <div class="row2">
+            <div class="box">
+              <div class="box-head"><h3>交期表現 · 準時率趨勢</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-qingfeng"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-qingfeng')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
+                <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
+                <polyline points="65,68 160,75 255,85 350,98 445,105 540,110" fill="none" stroke="#F06548" stroke-width="2.5"/>
+                <circle cx="65" cy="68" r="4" fill="#F0B254" data-val="82%" onmouseenter="showTip('tip-qingfeng','1月','準時率 82%')"/><circle cx="160" cy="75" r="4" fill="#F08A6B" onmouseenter="showTip('tip-qingfeng','2月','準時率 79%')"/><circle cx="255" cy="85" r="4" fill="#F08A6B" onmouseenter="showTip('tip-qingfeng','3月','準時率 75%')"/><circle cx="350" cy="98" r="4" fill="#F06548" onmouseenter="showTip('tip-qingfeng','4月','準時率 71%')"/><circle cx="445" cy="105" r="4" fill="#F06548" onmouseenter="showTip('tip-qingfeng','5月','準時率 70%')"/><circle cx="540" cy="110" r="4" fill="#F06548" onmouseenter="showTip('tip-qingfeng','6月','準時率 68%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
+              <div class="note">🔴 準時率連續 6 個月下滑，從 82% 跌至 68%，平均延誤 8.5 天，已嚴重影響產線備料</div>
+            </div>
+            <div class="box">
+              <h3>品質表現 · 不良率與異常單</h3>
+              <div class="kpi-grid" style="grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+                <div class="kcard r-clr flagged"><div class="klabel">本期不良率</div><div class="kval">3.2%</div><div class="ksub"><span class="badge">超標 🔴</span></div></div>
+                <div class="kcard r-clr flagged"><div class="klabel">開立異常單</div><div class="kval">2 張</div><div class="ksub"><span class="badge">處理中</span></div></div>
+              </div>
+              <div class="bar-wrap">
+                <div class="bar-row"><span class="bar-lbl">IQC合格</span><div class="bar-track"><div class="bar-fill" style="width:96.8%;background:#F0B254"></div></div><span class="bar-pct cell-warn">96.8%</span></div>
+                <div class="bar-row"><span class="bar-lbl">準時交貨</span><div class="bar-track"><div class="bar-fill" style="width:68%;background:#F06548"></div></div><span class="bar-pct cell-bad">68%</span></div>
+                <div class="bar-row"><span class="bar-lbl">完整交貨</span><div class="bar-track"><div class="bar-fill" style="width:81%;background:#F0B254"></div></div><span class="bar-pct cell-warn">81%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-head"><h3>採購金額 · FY27 vs FY26（萬元）</h3><div class="legend-row"><div class="leg-item"><div class="leg-rect" style="background:#34C28F"></div>FY27</div><div class="leg-item"><div class="leg-rect" style="background:#6FAEE8"></div>FY26</div></div></div>
+            <div class="yoy-bar-row"><span class="yoy-month">3月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:60%"></div></div><span class="yoy-val cy">$21萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:66%"></div></div><span class="yoy-val py">$23萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge dn">-9%</div><div class="delta-spacer"></div></div></div>
+            <div class="yoy-bar-row"><span class="yoy-month">4月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:51%"></div></div><span class="yoy-val cy">$18萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:63%"></div></div><span class="yoy-val py">$22萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge dn">-18%</div><div class="delta-spacer"></div></div></div>
+            <div class="yoy-bar-row"><span class="yoy-month">5月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:43%"></div></div><span class="yoy-val cy">$15萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:63%"></div></div><span class="yoy-val py">$22萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge dn">-32%</div><div class="delta-spacer"></div></div></div>
+            <div class="yoy-bar-row"><span class="yoy-month">6月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:37%"></div></div><span class="yoy-val cy">$13萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:63%"></div></div><span class="yoy-val py">$22萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge dn">-41%</div><div class="delta-spacer"></div></div></div>
+            <div class="note">⚠️ 因品質與交期問題，採購量逐月刻意下調，6 月年減 -41%，部分品項已轉單給其他供應商</div>
+          </div>
+          <div class="box">
+            <h3>⚠️ 品項老化分析（億誠共 211 項）</h3>
+            <div class="row2" style="margin-bottom:0">
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生效年齡分層（距 2026）</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">5年內(新)</span><div class="bar-track"><div class="bar-fill" style="width:2%;background:#34C28F"></div></div><span class="bar-pct g-clr">1%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">5-10年</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">31%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">10-15年</span><div class="bar-track"><div class="bar-fill" style="width:52%;background:#F0B254"></div></div><span class="bar-pct w-clr">40%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">無日期(舊)</span><div class="bar-track"><div class="bar-fill" style="width:35%;background:#F06548"></div></div><span class="bar-pct cell-bad">27%</span></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生產狀況</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">量產品</span><div class="bar-track"><div class="bar-fill" style="width:98%;background:#34C28F"></div></div><span class="bar-pct g-clr">98%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">樣品</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:#F0B254"></div></div><span class="bar-pct w-clr">1%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">生產中止</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:#F06548"></div></div><span class="bar-pct n-clr">0.5%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">待轉量產</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#B98AE0"></div></div><span class="bar-pct n-clr">0</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="note">🟡 老品（10年+無日期）達 <b>67%</b>，相對其他供應商略好，但新品仍僅 1%。橡膠件多為成熟規格，但仍應關注新品開發。</div>
           </div>
           <div class="box">
             <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
@@ -517,11 +792,48 @@ tbody tr:hover td{background:var(--bg3)}
           </div>
         </div>
 
+        <!-- 供應商 C：記豪（待觀察 B 級）-->
         <div class="sup-detail-section" id="sup-zhengtai">
           <div class="sup-profile-card">
             <div class="sup-profile-head grade-b">
               <div class="sup-title-block">
+                <div class="sup-avatar">正</div>
                 <div class="sup-title-info"><h2>記豪</h2><p>SUS303/304 · 合作 5 年 · 不鏽鋼精密件供應商</p></div>
+              </div>
+              <div class="sup-grade-badge"><div class="sup-grade-letter">B</div><div class="sup-grade-label">綜合評等</div></div>
+            </div>
+            <div class="sup-quick-stats">
+              <div class="sqstat"><div class="sqstat-val cell-warn">71%</div><div class="sqstat-label">到貨準時率</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-warn">2.0%</div><div class="sqstat-label">不良率</div></div>
+              <div class="sqstat"><div class="sqstat-val">$150萬</div><div class="sqstat-label">2025 YTD 採購額</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-good">↑+15%</div><div class="sqstat-label">YoY 成長</div></div>
+            </div>
+          </div>
+          <div class="alert-bar"><div class="alert-pill amber"><span class="tlight tl-y"></span>準時率 71% 待改善</div><div class="alert-pill amber"><span class="tlight tl-y"></span>不良率 2.0% 達警戒線</div></div>
+          <div class="row2">
+            <div class="box">
+              <div class="box-head"><h3>交期表現 · 準時率趨勢</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-zhengtai"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-zhengtai')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
+                <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
+                <polyline points="65,82 160,88 255,80 350,95 445,90 540,98" fill="none" stroke="#F0B254" stroke-width="2.5"/>
+                <circle cx="65" cy="82" r="4" fill="#F0B254" onmouseenter="showTip('tip-zhengtai','1月','準時率 76%')"/><circle cx="160" cy="88" r="4" fill="#F08A6B" onmouseenter="showTip('tip-zhengtai','2月','準時率 73%')"/><circle cx="255" cy="80" r="4" fill="#F0B254" onmouseenter="showTip('tip-zhengtai','3月','準時率 78%')"/><circle cx="350" cy="95" r="4" fill="#F08A6B" onmouseenter="showTip('tip-zhengtai','4月','準時率 72%')"/><circle cx="445" cy="90" r="4" fill="#F08A6B" onmouseenter="showTip('tip-zhengtai','5月','準時率 74%')"/><circle cx="540" cy="98" r="4" fill="#F08A6B" onmouseenter="showTip('tip-zhengtai','6月','準時率 71%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
+              <div class="note">🟡 準時率在 71-78% 間波動，未達目標但尚穩定，平均延誤 4.2 天，建議列入改善輔導</div>
+            </div>
+            <div class="box">
+              <h3>品質表現 · 不良率與異常單</h3>
+              <div class="kpi-grid" style="grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+                <div class="kcard w-clr"><div class="klabel">本期不良率</div><div class="kval">2.0%</div><div class="ksub"><span class="badge">達警戒線</span></div></div>
+                <div class="kcard w-clr"><div class="klabel">開立異常單</div><div class="kval">1 張</div><div class="ksub"><span class="badge">已改善</span></div></div>
+              </div>
+              <div class="bar-wrap">
+                <div class="bar-row"><span class="bar-lbl">IQC合格</span><div class="bar-track"><div class="bar-fill" style="width:98%;background:#F0B254"></div></div><span class="bar-pct cell-warn">98.0%</span></div>
+                <div class="bar-row"><span class="bar-lbl">準時交貨</span><div class="bar-track"><div class="bar-fill" style="width:71%;background:#F0B254"></div></div><span class="bar-pct cell-warn">71%</span></div>
+                <div class="bar-row"><span class="bar-lbl">完整交貨</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#F0B254"></div></div><span class="bar-pct cell-warn">88%</span></div>
               </div>
             </div>
           </div>
@@ -538,15 +850,102 @@ tbody tr:hover td{background:var(--bg3)}
               </tbody>
             </table></div>
           </div>
+          <div class="box">
+            <h3>⚠️ 品項老化分析（記豪共 256 項）</h3>
+            <div class="row2" style="margin-bottom:0">
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生效年齡分層（距 2026）</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">5年內(新)</span><div class="bar-track"><div class="bar-fill" style="width:2%;background:#34C28F"></div></div><span class="bar-pct g-clr">1%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">5-10年</span><div class="bar-track"><div class="bar-fill" style="width:13%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">10%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">10-15年</span><div class="bar-track"><div class="bar-fill" style="width:27%;background:#F0B254"></div></div><span class="bar-pct w-clr">21%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">無日期(舊)</span><div class="bar-track"><div class="bar-fill" style="width:84%;background:#F06548"></div></div><span class="bar-pct cell-bad">66%</span></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生產狀況</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">量產品</span><div class="bar-track"><div class="bar-fill" style="width:98%;background:#34C28F"></div></div><span class="bar-pct g-clr">98%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">樣品</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#F0B254"></div></div><span class="bar-pct n-clr">0.4%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">生產中止</span><div class="bar-track"><div class="bar-fill" style="width:2%;background:#F06548"></div></div><span class="bar-pct n-clr">2%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">待轉量產</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#B98AE0"></div></div><span class="bar-pct n-clr">0</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="note">🔴 老品（10年+無日期）達 <b>89%</b>，是最老化的供應商，新品僅 1%、無樣品開發。SUS303 不鏽鋼件多為長青規格，但完全沒有新品導入訊號。</div>
+          </div>
         </div>
-
+        <!-- 供應商 D：順翊 B 級 -->
         <div class="sup-detail-section" id="sup-shunyi">
           <div class="sup-profile-card">
             <div class="sup-profile-head grade-b">
               <div class="sup-title-block">
+                <div class="sup-avatar">順</div>
                 <div class="sup-title-info"><h2>順翊</h2><p>BRASS 黃銅 / SUS303 · 合作 5 年 · 黃銅及不鏽鋼精密件</p></div>
               </div>
+              <div class="sup-grade-badge"><div class="sup-grade-letter">B</div><div class="sup-grade-label">綜合評等</div></div>
             </div>
+            <div class="sup-quick-stats">
+              <div class="sqstat"><div class="sqstat-val cell-warn">85%</div><div class="sqstat-label">到貨準時率 ⓘ</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-good">1.2%</div><div class="sqstat-label">不良率 ⓘ</div></div>
+              <div class="sqstat"><div class="sqstat-val">$6,662萬</div><div class="sqstat-label">FY2026 金額</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-good">231 項</div><div class="sqstat-label">供應品項</div></div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="box">
+              <div class="box-head"><h3>交期表現 · 準時率趨勢 ⓘ</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-shunyi"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-shunyi')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
+                <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
+                <polyline points="65,90 160,88 255,85 350,85 445,83 540,83" fill="none" stroke="#F0B254" stroke-width="2.5"/>
+                <circle cx="65" cy="90" r="4" fill="#F0B254" onmouseenter="showTip('tip-shunyi','1月','準時率 83%')"/>
+                <circle cx="160" cy="88" r="4" fill="#F0B254" onmouseenter="showTip('tip-shunyi','2月','準時率 84%')"/>
+                <circle cx="255" cy="85" r="4" fill="#F0B254" onmouseenter="showTip('tip-shunyi','3月','準時率 85%')"/>
+                <circle cx="350" cy="85" r="4" fill="#F0B254" onmouseenter="showTip('tip-shunyi','4月','準時率 85%')"/>
+                <circle cx="445" cy="83" r="4" fill="#F0B254" onmouseenter="showTip('tip-shunyi','5月','準時率 86%')"/>
+                <circle cx="540" cy="83" r="4" fill="#F0B254" onmouseenter="showTip('tip-shunyi','6月','準時率 85%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
+              <div class="note">🟡 準時率穩定 83-86%，略低於 90% 目標但無明顯惡化，平均延誤 3.2 天</div>
+            </div>
+            <div class="box">
+              <h3>品質表現 ⓘ</h3>
+              <div class="kpi-grid" style="grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+                <div class="kcard g-clr"><div class="klabel">本期不良率</div><div class="kval">1.2%</div><div class="ksub"><span class="badge">達標</span></div></div>
+                <div class="kcard g-clr"><div class="klabel">開立異常單</div><div class="kval">0 張</div><div class="ksub"><span class="badge">本期正常</span></div></div>
+              </div>
+              <div class="bar-wrap">
+                <div class="bar-row"><span class="bar-lbl">IQC 合格</span><div class="bar-track"><div class="bar-fill" style="width:98.8%;background:#34C28F"></div></div><span class="bar-pct cell-good">98.8%</span></div>
+                <div class="bar-row"><span class="bar-lbl">準時交貨</span><div class="bar-track"><div class="bar-fill" style="width:85%;background:#F0B254"></div></div><span class="bar-pct cell-warn">85%</span></div>
+                <div class="bar-row"><span class="bar-lbl">完整交貨</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:#34C28F"></div></div><span class="bar-pct cell-good">92%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>⚠️ 品項老化分析（順翊共 231 項 · 真實資料）</h3>
+            <div class="row2" style="margin-bottom:0">
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生效年齡分層（距 2026）</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">5年內(新)</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:#34C28F"></div></div><span class="bar-pct g-clr">3%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">5-10年</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">18%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">10-15年</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#F0B254"></div></div><span class="bar-pct w-clr">22%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">無日期(舊)</span><div class="bar-track"><div class="bar-fill" style="width:72%;background:#F06548"></div></div><span class="bar-pct cell-bad">57%</span></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生產狀況</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">量產品</span><div class="bar-track"><div class="bar-fill" style="width:98%;background:#34C28F"></div></div><span class="bar-pct g-clr">98%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">樣品</span><div class="bar-track"><div class="bar-fill" style="width:1.3%;background:#F0B254"></div></div><span class="bar-pct w-clr">1.3%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">生產中止</span><div class="bar-track"><div class="bar-fill" style="width:0.4%;background:#F06548"></div></div><span class="bar-pct n-clr">0.4%</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="note">🟡 老品（10年+無日期）達 <b>80%</b>，新品 3%，黃銅精密件多為成熟規格。整體老化程度在六家中居中，新品導入仍偏少。</div>
           </div>
           <div class="box">
             <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
@@ -563,13 +962,79 @@ tbody tr:hover td{background:var(--bg3)}
           </div>
         </div>
 
+        <!-- 供應商 E：利貫 B 級 -->
         <div class="sup-detail-section" id="sup-liguan">
           <div class="sup-profile-card">
             <div class="sup-profile-head grade-b">
               <div class="sup-title-block">
+                <div class="sup-avatar">利</div>
                 <div class="sup-title-info"><h2>利貫</h2><p>SUS303 不鏽鋼 · 合作 7 年 · 精密不鏽鋼件</p></div>
               </div>
+              <div class="sup-grade-badge"><div class="sup-grade-letter">B</div><div class="sup-grade-label">綜合評等</div></div>
             </div>
+            <div class="sup-quick-stats">
+              <div class="sqstat"><div class="sqstat-val cell-good">88%</div><div class="sqstat-label">到貨準時率 ⓘ</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-good">0.9%</div><div class="sqstat-label">不良率 ⓘ</div></div>
+              <div class="sqstat"><div class="sqstat-val">$6,000萬</div><div class="sqstat-label">FY2026 金額</div></div>
+              <div class="sqstat"><div class="sqstat-val">100 項</div><div class="sqstat-label">供應品項</div></div>
+            </div>
+          </div>
+          <div class="alert-bar"><div class="alert-pill amber"><span class="tlight tl-y"></span>生產中止品項 6 項（6%），需評估替代規格</div></div>
+          <div class="row2">
+            <div class="box">
+              <div class="box-head"><h3>交期表現 · 準時率趨勢 ⓘ</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-liguan"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-liguan')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
+                <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
+                <polyline points="65,80 160,76 255,72 350,60 445,68 540,68" fill="none" stroke="#34C28F" stroke-width="2.5"/>
+                <circle cx="65" cy="80" r="4" fill="#F0B254" onmouseenter="showTip('tip-liguan','1月','準時率 86%')"/>
+                <circle cx="160" cy="76" r="4" fill="#F0B254" onmouseenter="showTip('tip-liguan','2月','準時率 87%')"/>
+                <circle cx="255" cy="72" r="4" fill="#34C28F" onmouseenter="showTip('tip-liguan','3月','準時率 88%')"/>
+                <circle cx="350" cy="60" r="4" fill="#34C28F" onmouseenter="showTip('tip-liguan','4月','準時率 90% ✓達標')"/>
+                <circle cx="445" cy="68" r="4" fill="#34C28F" onmouseenter="showTip('tip-liguan','5月','準時率 88%')"/>
+                <circle cx="540" cy="68" r="4" fill="#34C28F" onmouseenter="showTip('tip-liguan','6月','準時率 88%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
+              <div class="note">🟢 4 月達標 90%，整體穩定偏上，合作 7 年為六家中最資深，關係穩定，平均延誤 2.1 天</div>
+            </div>
+            <div class="box">
+              <h3>品質表現 ⓘ</h3>
+              <div class="kpi-grid" style="grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+                <div class="kcard g-clr"><div class="klabel">本期不良率</div><div class="kval">0.9%</div><div class="ksub"><span class="badge">達標</span></div></div>
+                <div class="kcard g-clr"><div class="klabel">開立異常單</div><div class="kval">0 張</div><div class="ksub"><span class="badge">本期正常</span></div></div>
+              </div>
+              <div class="bar-wrap">
+                <div class="bar-row"><span class="bar-lbl">IQC 合格</span><div class="bar-track"><div class="bar-fill" style="width:99.1%;background:#34C28F"></div></div><span class="bar-pct cell-good">99.1%</span></div>
+                <div class="bar-row"><span class="bar-lbl">準時交貨</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#34C28F"></div></div><span class="bar-pct cell-good">88%</span></div>
+                <div class="bar-row"><span class="bar-lbl">完整交貨</span><div class="bar-track"><div class="bar-fill" style="width:95%;background:#34C28F"></div></div><span class="bar-pct cell-good">95%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>⚠️ 品項老化分析（利貫共 100 項 · 真實資料）</h3>
+            <div class="row2" style="margin-bottom:0">
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生效年齡分層（距 2026）</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">5年內(新)</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#34C28F"></div></div><span class="bar-pct g-clr">2%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">5-10年</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">22%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">10-15年</span><div class="bar-track"><div class="bar-fill" style="width:35%;background:#F0B254"></div></div><span class="bar-pct w-clr">28%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">15-20年</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:#F0B254"></div></div><span class="bar-pct w-clr">1%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">無日期(舊)</span><div class="bar-track"><div class="bar-fill" style="width:59%;background:#F06548"></div></div><span class="bar-pct cell-bad">47%</span></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生產狀況</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">量產品</span><div class="bar-track"><div class="bar-fill" style="width:93%;background:#34C28F"></div></div><span class="bar-pct g-clr">93%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">樣品</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:#F0B254"></div></div><span class="bar-pct w-clr">1%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">生產中止</span><div class="bar-track"><div class="bar-fill" style="width:6%;background:#F06548"></div></div><span class="bar-pct cell-warn">6%</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="note">🟡 老品（10年+無日期）達 <b>76%</b>，六家中老化程度最低。但 <b>生產中止 6 項（6%）</b>為警訊，應評估是否有替代規格或新品導入計畫。</div>
           </div>
           <div class="box">
             <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
@@ -586,27 +1051,262 @@ tbody tr:hover td{background:var(--bg3)}
           </div>
         </div>
 
+        <!-- 供應商 F：天網電子 B 級 -->
         <div class="sup-detail-section" id="sup-tianwang">
           <div class="sup-profile-card">
             <div class="sup-profile-head grade-b">
               <div class="sup-title-block">
+                <div class="sup-avatar">天</div>
                 <div class="sup-title-info"><h2>天網電子</h2><p>EL PRODUCT 電子件 · 合作 3 年 · 電子組件供應商</p></div>
+              </div>
+              <div class="sup-grade-badge"><div class="sup-grade-letter">B</div><div class="sup-grade-label">綜合評等</div></div>
+            </div>
+            <div class="sup-quick-stats">
+              <div class="sqstat"><div class="sqstat-val cell-warn">82%</div><div class="sqstat-label">到貨準時率 ⓘ</div></div>
+              <div class="sqstat"><div class="sqstat-val cell-warn">1.8%</div><div class="sqstat-label">不良率 ⓘ</div></div>
+              <div class="sqstat"><div class="sqstat-val">$1,370萬</div><div class="sqstat-label">FY2026 金額</div></div>
+              <div class="sqstat"><div class="sqstat-val">35 項</div><div class="sqstat-label">供應品項</div></div>
+            </div>
+          </div>
+          <div class="alert-bar">
+            <div class="alert-pill red"><span class="tlight tl-r"></span>生產中止 4 項（11%）比例偏高，電子件斷貨風險</div>
+            <div class="alert-pill amber"><span class="tlight tl-y"></span>合作僅 3 年，準時率持續下滑中</div>
+          </div>
+          <div class="row2">
+            <div class="box">
+              <div class="box-head"><h3>交期表現 · 準時率趨勢 ⓘ</h3><span class="target-legend"><span class="target-dash"></span>目標 90%</span></div>
+              <div class="chart-wrap"><div class="chart-tip" id="tip-tianwang"></div>
+              <svg viewBox="0 0 560 160" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-tianwang')">
+                <line x1="40" y1="20" x2="540" y2="20" stroke="#3A3F48"/><line x1="40" y1="60" x2="540" y2="60" stroke="#3A3F48"/><line x1="40" y1="100" x2="540" y2="100" stroke="#3A3F48"/><line x1="40" y1="140" x2="540" y2="140" stroke="#3A3F48"/>
+                <line x1="40" y1="60" x2="540" y2="60" stroke="#F0B254" stroke-width="2" stroke-dasharray="6 4"/>
+                <polyline points="65,80 160,85 255,90 350,95 445,98 540,98" fill="none" stroke="#F06548" stroke-width="2.5"/>
+                <circle cx="65" cy="80" r="4" fill="#F0B254" onmouseenter="showTip('tip-tianwang','1月','準時率 86%')"/>
+                <circle cx="160" cy="85" r="4" fill="#F08A6B" onmouseenter="showTip('tip-tianwang','2月','準時率 85%')"/>
+                <circle cx="255" cy="90" r="4" fill="#F08A6B" onmouseenter="showTip('tip-tianwang','3月','準時率 84%')"/>
+                <circle cx="350" cy="95" r="4" fill="#F08A6B" onmouseenter="showTip('tip-tianwang','4月','準時率 82%')"/>
+                <circle cx="445" cy="98" r="4" fill="#F06548" onmouseenter="showTip('tip-tianwang','5月','準時率 82%')"/>
+                <circle cx="540" cy="98" r="4" fill="#F06548" onmouseenter="showTip('tip-tianwang','6月','準時率 82%')"/>
+                <text x="65" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">1月</text><text x="160" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">2月</text><text x="255" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">3月</text><text x="350" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">4月</text><text x="445" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">5月</text><text x="540" y="155" fill="#B0AEA8" font-size="9" text-anchor="middle">6月</text>
+                <text x="33" y="64" fill="#928F89" font-size="8" text-anchor="end">90%</text>
+              </svg></div>
+              <div class="note">🔴 準時率從 86% 持續下滑至 82%，趨勢不佳。合作 3 年仍在磨合，建議設立改善目標</div>
+            </div>
+            <div class="box">
+              <h3>品質表現 ⓘ</h3>
+              <div class="kpi-grid" style="grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+                <div class="kcard w-clr"><div class="klabel">本期不良率</div><div class="kval">1.8%</div><div class="ksub"><span class="badge">接近警戒</span></div></div>
+                <div class="kcard w-clr"><div class="klabel">開立異常單</div><div class="kval">1 張</div><div class="ksub"><span class="badge">追蹤中</span></div></div>
+              </div>
+              <div class="bar-wrap">
+                <div class="bar-row"><span class="bar-lbl">IQC 合格</span><div class="bar-track"><div class="bar-fill" style="width:98.2%;background:#F0B254"></div></div><span class="bar-pct cell-warn">98.2%</span></div>
+                <div class="bar-row"><span class="bar-lbl">準時交貨</span><div class="bar-track"><div class="bar-fill" style="width:82%;background:#F0B254"></div></div><span class="bar-pct cell-warn">82%</span></div>
+                <div class="bar-row"><span class="bar-lbl">完整交貨</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#34C28F"></div></div><span class="bar-pct cell-good">90%</span></div>
               </div>
             </div>
           </div>
-           </div>
+          <div class="box">
+            <h3>⚠️ 品項老化分析（天網電子共 35 項 · 真實資料）</h3>
+            <div class="row2" style="margin-bottom:0">
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生效年齡分層（距 2026）</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">5年內(新)</span><div class="bar-track"><div class="bar-fill" style="width:8%;background:#34C28F"></div></div><span class="bar-pct g-clr">6%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">5-10年</span><div class="bar-track"><div class="bar-fill" style="width:29%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">23%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">10-15年</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:#F0B254"></div></div><span class="bar-pct w-clr">20%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">無日期(舊)</span><div class="bar-track"><div class="bar-fill" style="width:64%;background:#F06548"></div></div><span class="bar-pct cell-bad">51%</span></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--text2);margin-bottom:8px">生產狀況</div>
+                <div class="bar-wrap">
+                  <div class="bar-row"><span class="bar-lbl">量產品</span><div class="bar-track"><div class="bar-fill" style="width:89%;background:#34C28F"></div></div><span class="bar-pct g-clr">89%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">樣品</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#F0B254"></div></div><span class="bar-pct n-clr">0%</span></div>
+                  <div class="bar-row"><span class="bar-lbl">生產中止</span><div class="bar-track"><div class="bar-fill" style="width:11%;background:#F06548"></div></div><span class="bar-pct cell-bad">11%</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="note">🔴 老品（10年+無日期）達 <b>71%</b>，新品 6%（六家中最高）。但 <b>生產中止 11% 且零樣品</b>，電子件可能面臨斷貨風險，建議提早備料或開發替代源。</div>
+          </div>
+        </div>
+
       </div>
 
+      <!-- ===== 新增：銷售分析分頁 ===== -->
+      <div class="view" id="v-sales">
+        <div class="sec-label hero">★ 銷售核心指標（真實資料 · 銷貨實績）</div>
+        <div class="hero-grid">
+          <div class="hero-card warn"><div class="hero-label">FY2026 總營業額</div><div class="hero-val">$4.19億</div><div class="hero-meta"><span class="hero-badge">↓ vs FY2024高峰</span><span class="hero-status">📊</span></div></div>
+          <div class="hero-card bad"><div class="hero-label">最大客戶集中度</div><div class="hero-val">89%</div><div class="hero-meta"><span class="hero-badge">CPCS 單一客戶</span><span class="hero-status">🔴</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">最大產品線（GI）</div><div class="hero-val">$2.41億</div><div class="hero-meta"><span class="hero-badge">腸胃內視鏡 58%</span><span class="hero-status">✅</span></div></div>
+          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">主力材質（SUS303）</div><div class="hero-val" style="color:var(--text)">不鏽鋼</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">金屬件主力</span></div></div>
+        </div>
+
+        <div class="sec-label">年度營業額趨勢（FY2021–FY2026 真實數據）</div>
+        <div class="box">
+          <div class="box-head"><h3>各年度總營業額（萬元）</h3><span style="font-size:10px;color:var(--text3)">FY2027 為未來年度，FORECAST 尚未灌數</span></div>
+          <div class="linechart">
+            <div class="chart-wrap"><div class="chart-tip" id="tip-sales"></div>
+            <svg viewBox="0 0 600 200" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-sales')">
+              <line x1="45" y1="20" x2="585" y2="20" stroke="#3A3F48"/><line x1="45" y1="70" x2="585" y2="70" stroke="#3A3F48"/><line x1="45" y1="120" x2="585" y2="120" stroke="#3A3F48"/><line x1="45" y1="170" x2="585" y2="170" stroke="#3A3F48"/>
+              <text x="38" y="24" fill="#928F89" font-size="9" text-anchor="end">6億</text>
+              <text x="38" y="74" fill="#928F89" font-size="9" text-anchor="end">4億</text>
+              <text x="38" y="124" fill="#928F89" font-size="9" text-anchor="end">2億</text>
+              <text x="38" y="174" fill="#928F89" font-size="9" text-anchor="end">0</text>
+              <polyline points="90,70 190,50 290,32 390,29 490,40 585,65" fill="none" stroke="#34C28F" stroke-width="2.5"/>
+              <circle cx="90" cy="70" r="5" fill="#34C28F" onmouseenter="showTip('tip-sales','FY2021','$3.98億')"/>
+              <circle cx="190" cy="50" r="5" fill="#34C28F" onmouseenter="showTip('tip-sales','FY2022','$4.78億')"/>
+              <circle cx="290" cy="32" r="5" fill="#7FE6BF" onmouseenter="showTip('tip-sales','FY2023','$5.51億')"/>
+              <circle cx="390" cy="29" r="5" fill="#7FE6BF" onmouseenter="showTip('tip-sales','FY2024 高峰','$5.65億')"/>
+              <circle cx="490" cy="40" r="5" fill="#34C28F" onmouseenter="showTip('tip-sales','FY2025','$5.19億')"/>
+              <circle cx="585" cy="65" r="5" fill="#F0B254" onmouseenter="showTip('tip-sales','FY2026','$4.19億')"/>
+              <text x="90" y="192" fill="#B0AEA8" font-size="9" text-anchor="middle">FY21</text><text x="190" y="192" fill="#B0AEA8" font-size="9" text-anchor="middle">FY22</text><text x="290" y="192" fill="#B0AEA8" font-size="9" text-anchor="middle">FY23</text><text x="390" y="192" fill="#B0AEA8" font-size="9" text-anchor="middle">FY24</text><text x="490" y="192" fill="#B0AEA8" font-size="9" text-anchor="middle">FY25</text><text x="585" y="192" fill="#B0AEA8" font-size="9" text-anchor="middle">FY26</text>
+            </svg></div>
+          </div>
+          <div class="note">FY2023-24 為營收高峰（$5.5億+），FY2026 回落至 $4.19億。整體規模穩定在 4-5 億區間，FY2024 高峰主因天網電子 EL 電子產品線大單（$1.24億）。</div>
+        </div>
+
+        <div class="sec-label">⚠️ 客戶集中度風險（重大發現）</div>
+        <div class="box">
+          <div class="box-head"><h3>FY2026 客戶營業額佔比</h3><span class="target-legend"><span class="target-dash" style="border-color:#F06548"></span>單一客戶 50% 風險線</span></div>
+          <div class="hbar-row"><div class="hbar-rank" style="background:#E0653F;color:#2A130B">1</div><div class="hbar-name">CPCS</div><div class="hbar-track"><div class="hbar-fill" style="width:100%;background:#E0653F">89%</div><div class="risk-flag" style="left:56%"></div></div><span class="hbar-amt">$3.74億</span></div>
+          <div class="hbar-row"><div class="hbar-rank">2</div><div class="hbar-name">OWI</div><div class="hbar-track"><div class="hbar-fill" style="width:6%;background:#34C28F">5%</div><div class="risk-flag" style="left:56%"></div></div><span class="hbar-amt">$2,152萬</span></div>
+          <div class="hbar-row"><div class="hbar-rank">3</div><div class="hbar-name">OMCZ</div><div class="hbar-track"><div class="hbar-fill" style="width:4%;background:#34C28F">3%</div><div class="risk-flag" style="left:56%"></div></div><span class="hbar-amt">$1,325萬</span></div>
+          <div class="note">🔴 <b>CPCS 單一客戶佔 89% 營業額（$3.74億）</b>，遠超 50% 風險線。這是公司最大的營運風險——若 CPCS 抽單或減量，營收將直接崩落。歷年皆有此結構（FY2024、FY2025 均達 89%），建議積極開發新客戶分散風險。</div>
+        </div>
+
+        <div class="row2">
+          <div class="box">
+            <h3>產品線銷售佔比（FY2026）</h3>
+            <div class="bar-wrap">
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI</span><span class="pl-zh">腸胃內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr">$2.41億</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI-ET</span><span class="pl-zh">氣體治療</span></span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#34C28F"></div></div><span class="bar-pct" style="color:#7FE6BF">$5,389萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SD</span><span class="pl-zh">手術器械</span></span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$4,286萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">UGN</span><span class="pl-zh">泌尿婦科</span></span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$3,533萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SE</span><span class="pl-zh">手術內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:7%;background:#1F5C45"></div></div><span class="bar-pct n-clr">$1,668萬</span></div>
+            </div>
+            <div class="note">GI 腸胃內視鏡是絕對主力（佔 58%），公司核心競爭力所在。</div>
+          </div>
+          <div class="box">
+            <h3>材質分類銷售佔比（FY2026）</h3>
+            <div class="donut-wrap">
+              <svg width="110" height="110" viewBox="0 0 110 110">
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#262A31" stroke-width="18"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#34C28F" stroke-width="18" stroke-dasharray="191 48" stroke-dashoffset="0" transform="rotate(-90 55 55)"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#F0B254" stroke-width="18" stroke-dasharray="31 208" stroke-dashoffset="-191" transform="rotate(-90 55 55)"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#6FAEE8" stroke-width="18" stroke-dasharray="7 232" stroke-dashoffset="-222" transform="rotate(-90 55 55)"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#B98AE0" stroke-width="18" stroke-dasharray="5 234" stroke-dashoffset="-229" transform="rotate(-90 55 55)"/>
+                <text x="55" y="51" text-anchor="middle" font-size="11" font-weight="600" fill="#F0EEE9">$4.19億</text>
+                <text x="55" y="64" text-anchor="middle" font-size="9" fill="#C2C0BA">總額</text>
+              </svg>
+              <div class="legend-sm">
+                <div class="leg-row"><span class="leg-dot" style="background:#34C28F"></span><span>METAL 金屬 $3.37億 (80%)</span></div>
+                <div class="leg-row"><span class="leg-dot" style="background:#F0B254"></span><span>RUBBER 橡膠 $5,575萬 (13%)</span></div>
+                <div class="leg-row"><span class="leg-dot" style="background:#6FAEE8"></span><span>EL 電子 $1,385萬 (3%)</span></div>
+                <div class="leg-row"><span class="leg-dot" style="background:#B98AE0"></span><span>PLASTIC 塑膠 $789萬 (2%)</span></div>
+              </div>
+            </div>
+            <div class="note">金屬件（不鏽鋼為主，SUS303 系列達 $2.55億）是絕對核心，呼應採購端的不鏽鋼原料關注。</div>
+          </div>
+        </div>
+
+        <div class="sec-label">⚠️ 供應品項老化分析（新品導入是否停滯）</div>
+        <div class="kpi-grid g4">
+          <div class="kcard r-clr flagged"><div class="klabel">老品比例（10年以上+無日期）</div><div class="kval">79%</div><div class="ksub"><span class="badge">過度老化</span></div></div>
+          <div class="kcard r-clr flagged"><div class="klabel">5年內新品比例</div><div class="kval">4%</div><div class="ksub"><span class="badge">新品稀少</span></div></div>
+          <div class="kcard w-clr"><div class="klabel">樣品 + 待轉量產</div><div class="kval">3.5%</div><div class="ksub"><span class="badge">開發停滯</span></div></div>
+          <div class="kcard n-clr"><div class="klabel">量產品佔比</div><div class="kval">94%</div><div class="ksub"><span class="badge">以老品撐營收</span></div></div>
+        </div>
+        <div class="row2">
+          <div class="box">
+            <h3>全公司品項生效年齡分層（距 2026）</h3>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">5年內(新)</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:#34C28F"></div></div><span class="bar-pct g-clr">4%</span></div>
+              <div class="bar-row"><span class="bar-lbl">5-10年</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">17%</span></div>
+              <div class="bar-row"><span class="bar-lbl">10-15年</span><div class="bar-track"><div class="bar-fill" style="width:32%;background:#F0B254"></div></div><span class="bar-pct w-clr">25%</span></div>
+              <div class="bar-row"><span class="bar-lbl">15-20年</span><div class="bar-track"><div class="bar-fill" style="width:2%;background:#F0B254"></div></div><span class="bar-pct w-clr">1%</span></div>
+              <div class="bar-row"><span class="bar-lbl">無日期(舊品)</span><div class="bar-track"><div class="bar-fill" style="width:67%;background:#F06548"></div></div><span class="bar-pct cell-bad">53%</span></div>
+            </div>
+            <div class="note">🔴 <b>10年以上 + 無日期的老品合計達 79%</b>，5年內新品僅 4%。代表營收高度依賴老品項，缺乏新品導入動能。</div>
+          </div>
+          <div class="box">
+            <h3>生產狀況分布（新品開發是否活躍）</h3>
+            <div class="donut-wrap">
+              <svg width="110" height="110" viewBox="0 0 110 110">
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#262A31" stroke-width="18"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#34C28F" stroke-width="18" stroke-dasharray="224 15" stroke-dashoffset="0" transform="rotate(-90 55 55)"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#F0B254" stroke-width="18" stroke-dasharray="8 231" stroke-dashoffset="-224" transform="rotate(-90 55 55)"/>
+                <circle cx="55" cy="55" r="38" fill="none" stroke="#F06548" stroke-width="18" stroke-dasharray="7 232" stroke-dashoffset="-232" transform="rotate(-90 55 55)"/>
+                <text x="55" y="51" text-anchor="middle" font-size="13" font-weight="600" fill="#F0EEE9">94%</text>
+                <text x="55" y="64" text-anchor="middle" font-size="9" fill="#C2C0BA">量產品</text>
+              </svg>
+              <div class="legend-sm">
+                <div class="leg-row"><span class="leg-dot" style="background:#34C28F"></span><span>量產品 1,189 (94%)</span></div>
+                <div class="leg-row"><span class="leg-dot" style="background:#F0B254"></span><span>樣品 43 (3.4%)</span></div>
+                <div class="leg-row"><span class="leg-dot" style="background:#F06548"></span><span>生產中止 34 (2.7%)</span></div>
+                <div class="leg-row"><span class="leg-dot" style="background:#B98AE0"></span><span>待轉量產 1 (0.1%)</span></div>
+              </div>
+            </div>
+            <div class="note">樣品+待轉量產僅 3.5%，反映新品開發管線幾乎停滯——未來營收成長動能堪憂。</div>
+          </div>
+        </div>
+
+        <div class="sec-label">主力供應商（依銷貨對應的進料供應商）</div>
+        <div class="box">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>供應商</th><th>FY2026 對應金額</th><th>主要材質</th><th>佔比</th></tr></thead>
+            <tbody>
+              <tr><td>賢隆</td><td>$1.04億</td><td>SUS303 不鏽鋼</td><td class="cell-good">25%</td></tr>
+              <tr><td>記豪</td><td>$7,643萬</td><td>SUS303/304</td><td class="cell-good">18%</td></tr>
+              <tr><td>順翊</td><td>$6,662萬</td><td>黃銅 BRASS</td><td class="w-clr">16%</td></tr>
+              <tr><td>利貫</td><td>$6,000萬</td><td>SUS303 不鏽鋼</td><td class="w-clr">14%</td></tr>
+              <tr><td>億誠</td><td>$5,575萬</td><td>RUBBER 橡膠</td><td class="w-clr">13%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="note">這些是你銷貨資料中對應的真實供應商，可與「採購主管」「單一供應商分析」分頁的資料對接。</div>
+        </div>
+      </div>
+
+      <!-- ===== 新增：供應鏈風險雷達分頁 ===== -->
       <div class="view" id="v-news">
         <div class="news-head-row">
-          <div><div style="font-size:11px;color:var(--text3)">即時財經新聞 · 開啟自動更新 · 來源：Google News RSS</div></div>
+          <div>
+            <div style="font-size:11px;color:var(--text3)">即時財經新聞 · 開啟自動更新 · 來源：Google News RSS</div>
+          </div>
           <button class="refresh-btn" onclick="loadAllFeeds()">🔄 重新整理</button>
         </div>
+
+        <div class="risk-summary">
+          <div class="rsum-card m">
+            <div class="rsum-label"><span class="rsum-icon">🏭</span>原物料價格（不鏽鋼/橡膠/塑膠）</div>
+            <div class="rsum-headline" id="sum-material">載入中…</div>
+            <div class="rsum-meta"><span class="risk-chip mid">監控中</span><span id="sum-material-time"></span></div>
+          </div>
+          <div class="rsum-card d">
+            <div class="rsum-label"><span class="rsum-icon">🚢</span>物流中斷（中日台）</div>
+            <div class="rsum-headline" id="sum-disruption">載入中…</div>
+            <div class="rsum-meta"><span class="risk-chip high">高關注</span><span id="sum-disruption-time"></span></div>
+          </div>
+          <div class="rsum-card f">
+            <div class="rsum-label"><span class="rsum-icon">💱</span>匯率成本（人民幣/日幣）</div>
+            <div class="rsum-headline" id="sum-fx">載入中…</div>
+            <div class="rsum-meta"><span class="risk-chip low">追蹤中</span><span id="sum-fx-time"></span></div>
+          </div>
+        </div>
+
         <div class="feed-tabs">
           <button class="feed-tab active" data-cat="all" onclick="filterCat('all',this)"><span class="tab-dot dot-a"></span>全部</button>
           <button class="feed-tab" data-cat="material" onclick="filterCat('material',this)"><span class="tab-dot dot-m"></span>不鏽鋼/橡膠/塑膠</button>
+          <button class="feed-tab" data-cat="disruption" onclick="filterCat('disruption',this)"><span class="tab-dot dot-d"></span>物流中斷</button>
+          <button class="feed-tab" data-cat="fx" onclick="filterCat('fx',this)"><span class="tab-dot dot-f"></span>人民幣/日幣</button>
         </div>
-        <div id="news-container"><div class="loading"><div class="spinner"></div><div>正在載入最新供應鏈新聞…</div></div></div>
+
+        <div id="news-container">
+          <div class="loading"><div class="spinner"></div><div>正在載入最新供應鏈新聞…</div></div>
+        </div>
+
+        <div class="news-disclaimer">
+          <b>關於資料來源：</b>本頁透過 rss2json 免費服務抓取 Google News 的供應鏈相關新聞，開啟分頁即自動載入最新內容。新聞由各媒體發布，僅供風險參考，不構成投資建議。免費 API 有每日呼叫上限。
+        </div>
       </div>
 
     </div>
@@ -622,7 +1322,9 @@ function switchRole(r, btn) {
   document.getElementById('v-' + r).classList.add('active');
   document.getElementById('page-title').textContent = roleLabels[r];
   document.querySelectorAll('[data-role="'+r+'"]').forEach(el=>el.classList.add('active'));
+  // 單一供應商與新聞分頁隱藏全域警示列
   document.getElementById('global-alerts').style.display = (r==='exec') ? 'flex' : 'none';
+  // 切到新聞分頁時，若尚未載入則自動載入
   if(r==='news' && !newsLoaded){ loadAllFeeds(); newsLoaded = true; }
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -630,36 +1332,79 @@ function showSupplier(id){
   document.querySelectorAll('.sup-detail-section').forEach(el=>el.classList.remove('active'));
   document.getElementById('sup-'+id).classList.add('active');
 }
+function showTip(tipId,label,val){
+  const t=document.getElementById(tipId);
+  if(!t)return;
+  t.innerHTML='<span style="color:var(--text2)">'+label+'</span>　<span class="tip-val">'+val+'</span>';
+  t.classList.add('show');
+}
+function hideTip(tipId){
+  const t=document.getElementById(tipId);
+  if(t)t.classList.remove('show');
+}
 
 // ── 供應鏈風險雷達：RSS 新聞 ──
 const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
 const FEEDS = {
-  material: { name: '不鏽鋼/橡膠/塑膠', color: '#F0B254', url: 'https://news.google.com/rss/search?q=' + encodeURIComponent('不鏽鋼 OR 橡膠 OR 塑膠 原物料 價格') + '&hl=zh-TW&gl=TW&ceid=TW:zh-Hant' }
+  material: {
+    name: '不鏽鋼/橡膠/塑膠', color: '#F0B254',
+    url: 'https://news.google.com/rss/search?q=' + encodeURIComponent('不鏽鋼 OR 橡膠 OR 塑膠 原物料 價格') + '&hl=zh-TW&gl=TW&ceid=TW:zh-Hant'
+  },
+  disruption: {
+    name: '物流中斷', color: '#F06548',
+    url: 'https://news.google.com/rss/search?q=' + encodeURIComponent('物流 中斷 OR 航運 OR 港口 中國 OR 日本 OR 台灣') + '&hl=zh-TW&gl=TW&ceid=TW:zh-Hant'
+  },
+  fx: {
+    name: '人民幣/日幣', color: '#6FAEE8',
+    url: 'https://news.google.com/rss/search?q=' + encodeURIComponent('人民幣 OR 日幣 匯率 成本') + '&hl=zh-TW&gl=TW&ceid=TW:zh-Hant'
+  }
 };
 let allNews = [], currentFilter = 'all', newsLoaded = false;
 function timeAgo(s){const d=new Date(s),diff=(Date.now()-d.getTime())/1000;if(diff<3600)return Math.floor(diff/60)+' 分鐘前';if(diff<86400)return Math.floor(diff/3600)+' 小時前';return Math.floor(diff/86400)+' 天前';}
 function stripHtml(h){const t=document.createElement('div');t.innerHTML=h||'';return (t.textContent||t.innerText||'').trim();}
 async function fetchFeed(cat){
+  const feed=FEEDS[cat];
   try{
-    const res=await fetch(RSS2JSON+encodeURIComponent(FEEDS[cat].url));
+    const res=await fetch(RSS2JSON+encodeURIComponent(feed.url));
     const data=await res.json();
-    return data.items.slice(0,8).map(item=>({cat,catName:FEEDS[cat].name,color:FEEDS[cat].color,title:item.title,link:item.link,source:item.source,pubDate:item.pubDate}));
+    if(data.status!=='ok'||!data.items)throw new Error('feed error');
+    return data.items.slice(0,8).map(item=>({cat,catName:feed.name,color:feed.color,title:item.title,desc:stripHtml(item.description).slice(0,160),link:item.link,source:(item.title.split(' - ').pop())||'Google News',pubDate:item.pubDate}));
   }catch(e){return [];}
 }
 async function loadAllFeeds(){
-  document.getElementById('news-container').innerHTML='<div class="loading"><div class="spinner"></div><div>載入中…</div></div>';
-  const res = await Promise.all([fetchFeed('material')]);
-  allNews = [...res[0]].sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+  document.getElementById('news-container').innerHTML='<div class="loading"><div class="spinner"></div><div>正在載入最新供應鏈新聞…</div></div>';
+  const results=await Promise.all([fetchFeed('material'),fetchFeed('disruption'),fetchFeed('fx')]);
+  allNews=[...results[0],...results[1],...results[2]].filter(n=>n.pubDate).sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+  updateSummary('material',results[0][0]);updateSummary('disruption',results[1][0]);updateSummary('fx',results[2][0]);
+  if(allNews.length===0){document.getElementById('news-container').innerHTML='<div class="error-box"><b>暫時無法載入新聞</b><br>可能原因：免費 API 達到每日上限，或網路連線問題。請稍後點「重新整理」再試。</div>';return;}
   renderNews();
+}
+function updateSummary(cat,item){
+  const el=document.getElementById('sum-'+cat),timeEl=document.getElementById('sum-'+cat+'-time');
+  if(item){el.textContent=stripHtml(item.title).replace(/ - .*$/,'');timeEl.textContent=timeAgo(item.pubDate);}else{el.textContent='暫無資料';}
 }
 function renderNews(){
   const list=currentFilter==='all'?allNews:allNews.filter(n=>n.cat===currentFilter);
+  if(list.length===0){document.getElementById('news-container').innerHTML='<div class="loading">此分類暫無新聞</div>';return;}
   document.getElementById('news-container').innerHTML='<div class="news-list">'+list.map(n=>`
-    <a class="news-item" href="${n.link}" target="_blank">
-      <div class="news-title">${stripHtml(n.title)}</div>
+    <a class="news-item" href="${n.link}" target="_blank" rel="noopener">
+      <div class="news-item-head">
+        <span class="news-cat-dot" style="background:${n.color}"></span>
+        <div class="news-content">
+          <div class="news-title">${stripHtml(n.title).replace(/ - [^-]*$/,'')}</div>
+          ${n.desc?`<div class="news-desc">${n.desc}</div>`:''}
+          <div class="news-meta"><span class="news-source">${n.source}</span><span>·</span><span style="color:${n.color}">${n.catName}</span><span>·</span><span>${timeAgo(n.pubDate)}</span></div>
+        </div>
+        <span class="news-ext">↗</span>
+      </div>
     </a>`).join('')+'</div>';
 }
-function filterCat(cat,btn){ currentFilter=cat; renderNews(); }
+function filterCat(cat,btn){
+  currentFilter=cat;
+  document.querySelectorAll('.feed-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderNews();
+}
 </script>
 </body>
 </html>
