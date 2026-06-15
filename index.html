@@ -106,6 +106,8 @@ select:focus{border-color:var(--teal)}
 .bar-lbl.pl{width:78px;white-space:normal;line-height:1.25;text-align:right}
 .bar-lbl.pl .pl-en{display:block;font-size:11px;font-weight:600;color:var(--text)}
 .bar-lbl.pl .pl-zh{display:block;font-size:9px;color:var(--text3)}
+.bar-row.pl-row .bar-track{max-width:58%}
+.bar-row.pl-row .bar-pct{width:62px;font-size:11px}
 .bar-track{flex:1;height:10px;background:var(--bg3);border-radius:5px;overflow:hidden;position:relative}
 .bar-fill{height:100%;border-radius:5px;transition:width .5s ease}
 .bar-target-mark{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--amber);opacity:.8}
@@ -351,65 +353,74 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="hero-grid">
           <div class="hero-card ok"><div class="hero-label">FY27 達交率（OTIF）</div><div class="hero-val">100%</div><div class="hero-meta"><span class="hero-badge">目標 99.2%</span><span class="hero-status">✅</span></div></div>
           <div class="hero-card bad"><div class="hero-label">FY27 PFR（平均產品不良率）</div><div class="hero-val">2.57%</div><div class="hero-meta"><span class="hero-badge">目標 ≤0.8%</span><span class="hero-target">利貫異常</span><span class="hero-status">🔴</span></div></div>
-          <div class="hero-card warn"><div class="hero-label">採購金額累積達成率</div><div class="hero-val">47%</div><div class="hero-meta"><span class="hero-badge">對照事業計畫</span><span class="hero-target">YTD 進度</span><span class="hero-status">📊</span></div></div>
-          <div class="hero-card ok"><div class="hero-label">安全庫存金額</div><div class="hero-val">$2.4億</div><div class="hero-meta"><span class="hero-badge">水位健康</span><span class="hero-status">✅</span></div></div>
+          <div class="hero-card bad"><div class="hero-label">採購額累積達成率</div><div class="hero-val">18.8%</div><div class="hero-meta"><span class="hero-badge">FY27 目標 4.3億</span><span class="hero-target">至5月累計</span><span class="hero-status">📊</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">安全庫存金額</div><div class="hero-val">待提供</div><div class="hero-meta"><span class="hero-badge">資料待補</span><span class="hero-status">⏳</span></div></div>
         </div>
 
         <div class="sec-label hero">🎯 事業計畫達成率（以採購額為目標）</div>
         <div class="box">
-          <div class="box-head"><h3>FY27 採購額 vs 事業計畫目標</h3><span style="font-size:10px;color:var(--text3)">黃線 = 時間基準 47%（已過 FY27 約 5.6 個月）</span></div>
+          <div class="box-head"><h3>FY27 採購額 vs 事業計畫目標 4.3 億</h3><span style="font-size:10px;color:var(--text3)">黃線 = 時間基準 約 17%（FY27 已過 2/12 月）</span></div>
           <div class="progress-block" style="margin-bottom:10px">
-            <div class="progress-head"><span class="progress-name">總採購額累積達成</span><span class="progress-stat">YTD 累計 $1.97億 / FY27 計畫 $4.19億</span></div>
-            <div class="progress-track"><div class="progress-fill" style="width:47%;background:#34C28F">47%</div><div class="progress-target" style="left:47%"></div></div>
+            <div class="progress-head"><span class="progress-name">總採購額累積達成</span><span class="progress-stat">FY27 累計（至 5 月）$8,091萬 / 計畫 $4.30億</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:18.8%;background:#34C28F">18.8%</div><div class="progress-target" style="left:17%"></div></div>
           </div>
-          <div class="note" style="margin-bottom:14px">🟢 採購額累積達成 47%，與時間基準同步，整體進度符合事業計畫。（金額為示意值，待真實採購資料替換）</div>
+          <div class="note" style="margin-bottom:14px">🟢 FY27 採購額累積達成 18.8%（$8,091萬），時間僅過約 17%，進度略超前。FY27 目前僅 4、5 月有實際出貨。</div>
           <div class="tbl-wrap"><table>
-            <thead><tr><th>供應商</th><th>FY27 計畫目標</th><th>YTD 累計</th><th>達成率</th><th>vs 時間基準</th></tr></thead>
+            <thead><tr><th>供應商</th><th>FY27 累計（至5月）</th><th>FY26 全年</th><th>FY27 佔比</th><th>狀態</th></tr></thead>
             <tbody>
-              <tr><td>賢隆</td><td>$1.04億</td><td>$4,886萬</td><td class="cell-good">47%</td><td><span class="tag g">同步</span></td></tr>
-              <tr><td>記豪</td><td>$7,643萬</td><td>$3,592萬</td><td class="cell-good">47%</td><td><span class="tag g">同步</span></td></tr>
-              <tr><td>順翊</td><td>$6,662萬</td><td>$2,798萬</td><td class="cell-warn">42%</td><td><span class="tag y">略落後</span></td></tr>
-              <tr><td>利貫</td><td>$6,000萬</td><td>$3,060萬</td><td class="cell-good">51%</td><td><span class="tag g">超前</span></td></tr>
-              <tr><td>億誠</td><td>$5,575萬</td><td>$2,453萬</td><td class="cell-warn">44%</td><td><span class="tag y">略落後</span></td></tr>
+              <tr><td>賢隆</td><td>$1,924萬</td><td>$1.04億</td><td class="cell-good">24%</td><td><span class="tag g">主力</span></td></tr>
+              <tr><td>記豪</td><td>$1,337萬</td><td>$7,643萬</td><td>17%</td><td><span class="tag g">正常</span></td></tr>
+              <tr><td>順翊</td><td>$1,214萬</td><td>$6,662萬</td><td>15%</td><td><span class="tag g">正常</span></td></tr>
+              <tr><td>利貫</td><td>$1,147萬</td><td>$6,000萬</td><td>14%</td><td><span class="tag g">正常</span></td></tr>
+              <tr><td>億誠</td><td>$1,004萬</td><td>$5,575萬</td><td>12%</td><td><span class="tag g">正常</span></td></tr>
             </tbody>
           </table></div>
-          <div class="note">順翊、億誠採購進度略慢於計畫基準，需確認是需求調整或供應狀況。</div>
+          <div class="note">FY27 各供應商採購結構與 FY26 相近，賢隆維持最大供應商。（FY27 為實際累計，目標 4.3 億為事業計畫）</div>
         </div>
 
 
-        <div class="sec-label">供應商採購占比（由大到小）</div>
+        <div class="sec-label">各供應商採購金額占比（FY26 全年 / FY27 參考）</div>
         <div class="box">
-          <div class="box-head"><h3>各供應商採購金額佔比</h3></div>
-          <div class="hbar-row"><div class="hbar-rank top">1</div><div class="hbar-name">賢隆</div><div class="hbar-track"><div class="hbar-fill" style="width:100%;background:#34C28F">25%</div></div><span class="hbar-amt">$1.04億</span></div>
-          <div class="hbar-row"><div class="hbar-rank top">2</div><div class="hbar-name">記豪</div><div class="hbar-track"><div class="hbar-fill" style="width:74%;background:#34C28F">18%</div></div><span class="hbar-amt">$7,643萬</span></div>
-          <div class="hbar-row"><div class="hbar-rank">3</div><div class="hbar-name">順翊</div><div class="hbar-track"><div class="hbar-fill" style="width:64%;background:#34C28F">16%</div></div><span class="hbar-amt">$6,662萬</span></div>
-          <div class="hbar-row"><div class="hbar-rank">4</div><div class="hbar-name">利貫</div><div class="hbar-track"><div class="hbar-fill" style="width:58%;background:#34C28F">14%</div></div><span class="hbar-amt">$6,000萬</span></div>
-          <div class="hbar-row"><div class="hbar-rank">5</div><div class="hbar-name">億誠</div><div class="hbar-track"><div class="hbar-fill" style="width:54%;background:#34C28F">13%</div></div><span class="hbar-amt">$5,575萬</span></div>
-          <div class="note">賢隆為最大供應商（25%），前五大合計約 86%。詳細各家分析請切換到「單一供應商分析」分頁。</div>
+          <div class="box-head"><h3>各供應商採購金額佔比</h3><div class="legend-row"><div class="leg-item"><div class="leg-rect" style="background:#34C28F"></div>FY26 全年</div><div class="leg-item"><div class="leg-rect" style="background:#6FAEE8"></div>FY27 至5月</div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">賢隆</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:100%"></div></div><span class="yoy-val cy">$1.04億</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:100%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,924萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">25%</div><div class="delta-spacer"></div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">記豪</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:74%"></div></div><span class="yoy-val cy">$7,643萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:69%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,337萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">18%</div><div class="delta-spacer"></div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">順翊</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:64%"></div></div><span class="yoy-val cy">$6,662萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:63%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,214萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">16%</div><div class="delta-spacer"></div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">利貫</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:58%"></div></div><span class="yoy-val cy">$6,000萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:60%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,147萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">14%</div><div class="delta-spacer"></div></div></div>
+          <div class="sup-yoy-row"><span class="sup-yoy-name">億誠</span><div class="sup-yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:54%"></div></div><span class="yoy-val cy">$5,575萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:52%"></div></div><span class="yoy-val py" style="color:#6FAEE8">$1,004萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">12%</div><div class="delta-spacer"></div></div></div>
+          <div class="note">賢隆為最大供應商（FY26 佔 25%），FY27 採購結構與 FY26 相近。右側百分比為 FY26 全年佔比。</div>
         </div>
-        <div class="rank-grid">
-          <div class="rank-panel best">
-            <div class="rank-head best"><span class="rh-icon">🏆</span><div class="rhtitle">OTIF 表現（FY27 納期遵守率）</div></div>
-            <div class="sup-row"><div class="rnk rnk-1">1</div><div class="sup-info"><div class="sup-name">記豪 / 順翊 / 利貫 / 億誠</div><div class="sup-cat">全數準時到貨</div></div><div class="sup-right"><div class="sup-pct">100%</div><div class="micro-bar"><div class="micro-fill" style="width:100%"></div></div></div></div>
-            <div class="sup-row"><div class="rnk rnk-2">2</div><div class="sup-info"><div class="sup-name">賢隆</div><div class="sup-cat">SUS303 金屬</div></div><div class="sup-right"><div class="sup-pct">100%</div><div class="micro-bar"><div class="micro-fill" style="width:100%"></div></div></div></div>
-            <div class="sup-row"><div class="rnk rnk-3">—</div><div class="sup-info"><div class="sup-name">全體達標</div><div class="sup-cat">目標 99.2%</div></div><div class="sup-right"><div class="sup-pct">✓</div><div class="micro-bar"><div class="micro-fill" style="width:100%"></div></div></div></div>
-          </div>
-          <div class="rank-panel best">
-            <div class="rank-head best"><span class="rh-icon">✨</span><div class="rhtitle">PFR 表現（FY27 不良率最低）</div></div>
-            <div class="sup-row"><div class="rnk rnk-1">1</div><div class="sup-info"><div class="sup-name">記豪 / 億誠</div><div class="sup-cat">零不良</div></div><div class="sup-right"><div class="sup-pct">0%</div><div class="micro-bar"><div class="micro-fill" style="width:100%"></div></div></div></div>
-            <div class="sup-row"><div class="rnk rnk-2">2</div><div class="sup-info"><div class="sup-name">順翊</div><div class="sup-cat">BRASS 黃銅</div></div><div class="sup-right"><div class="sup-pct">0.05%</div><div class="micro-bar"><div class="micro-fill" style="width:98%"></div></div></div></div>
-            <div class="sup-row"><div class="rnk rnk-3">3</div><div class="sup-info"><div class="sup-name">賢隆</div><div class="sup-cat">SUS303 金屬</div></div><div class="sup-right"><div class="sup-pct">0.30%</div><div class="micro-bar"><div class="micro-fill" style="width:90%"></div></div></div></div>
-          </div>
-        </div>
-        <div class="note" style="margin-bottom:8px">⚠️ 注意：利貫 FY27 因 4 月單月品質異常（不良 13 萬件），累計 PFR 達 13.4%，雖 5 月已回穩，仍需追蹤。</div>
 
+        <div class="row2">
+          <div class="box">
+            <h3>供應商 OTIF 達交率（FY27 納期遵守率）</h3>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">賢隆</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+              <div class="bar-row"><span class="bar-lbl">記豪</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+              <div class="bar-row"><span class="bar-lbl">順翊</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+              <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+              <div class="bar-row"><span class="bar-lbl">億誠</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct g-clr">100%</span></div>
+            </div>
+            <div class="note">🟢 黃線 = 99.2% 目標。FY27 全體供應商納期遵守率達 100%，交期表現優異。</div>
+          </div>
+          <div class="box">
+            <h3>供應商 PFR 不良率（FY27 累計）</h3>
+            <div class="bar-wrap">
+              <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-bad">13.4%</span></div>
+              <div class="bar-row"><span class="bar-lbl">賢隆</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0.30%</span></div>
+              <div class="bar-row"><span class="bar-lbl">順翊</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0.05%</span></div>
+              <div class="bar-row"><span class="bar-lbl">記豪</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0%</span></div>
+              <div class="bar-row"><span class="bar-lbl">億誠</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0%</span></div>
+            </div>
+            <div class="note">🟠 黃線 = 0.8% 目標。利貫 4 月單月異常（不良 13 萬件）拉高累計至 13.4%，5 月已回穩，需追蹤。</div>
+          </div>
+        </div>
       </div>
 
       <!-- ===== OTW 對客戶（下游出貨視角）===== -->
       <div class="view" id="v-customer">
         <div class="sec-label hero">★ OTW 對客戶 · 出貨關鍵指標</div>
         <div class="hero-grid">
-          <div class="hero-card warn"><div class="hero-label">對客戶 OTIF 達交率</div><div class="hero-val">83.2%</div><div class="hero-meta"><span class="hero-badge">目標 95%</span><span class="hero-status">⚠️</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">FY27 達交率（OTIF）</div><div class="hero-val">100%</div><div class="hero-meta"><span class="hero-badge">FY27 目標 99.2%</span><span class="hero-status">✅</span></div></div>
           <div class="hero-card bad"><div class="hero-label">客戶集中度（CPCS）</div><div class="hero-val">89%</div><div class="hero-meta"><span class="hero-badge">單一客戶風險</span><span class="hero-status">🔴</span></div></div>
           <div class="hero-card warn"><div class="hero-label">客訴 / 退貨率</div><div class="hero-val">1.4%</div><div class="hero-meta"><span class="hero-badge">目標 ≤1%</span><span class="hero-status">⚠️</span></div></div>
           <div class="hero-card ok"><div class="hero-label">FY26 對客戶營業額</div><div class="hero-val">$4.19億</div><div class="hero-meta"><span class="hero-badge">穩定</span><span class="hero-status">✅</span></div></div>
@@ -417,14 +428,14 @@ tbody tr:hover td{background:var(--bg3)}
 
         <div class="sec-label">客戶別 OTIF 達交表現</div>
         <div class="box">
-          <div class="box-head"><h3>主要客戶準時交貨率 ⓘ</h3><span class="target-legend"><span class="target-dash"></span>目標 95%</span></div>
+          <div class="box-head"><h3>主要客戶準時交貨率 ⓘ 示意</h3><span class="target-legend"><span class="target-dash"></span>目標 99.2%</span></div>
           <div class="bar-wrap">
-            <div class="bar-row"><span class="bar-lbl">CPCS</span><div class="bar-track"><div class="bar-fill" style="width:83%;background:#F0B254"></div><div class="bar-target-mark" style="left:95%"></div></div><span class="bar-pct cell-warn">83%</span></div>
-            <div class="bar-row"><span class="bar-lbl">OWI</span><div class="bar-track"><div class="bar-fill" style="width:91%;background:#34C28F"></div><div class="bar-target-mark" style="left:95%"></div></div><span class="bar-pct g-clr">91%</span></div>
-            <div class="bar-row"><span class="bar-lbl">OMCZ</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#F0B254"></div><div class="bar-target-mark" style="left:95%"></div></div><span class="bar-pct cell-warn">88%</span></div>
-            <div class="bar-row"><span class="bar-lbl">ELEMASTER</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#34C28F"></div><div class="bar-target-mark" style="left:95%"></div></div><span class="bar-pct g-clr">94%</span></div>
+            <div class="bar-row"><span class="bar-lbl">CPCS</span><div class="bar-track"><div class="bar-fill" style="width:83%;background:#F0B254"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct cell-warn">83%</span></div>
+            <div class="bar-row"><span class="bar-lbl">OWI</span><div class="bar-track"><div class="bar-fill" style="width:91%;background:#F0B254"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct cell-warn">91%</span></div>
+            <div class="bar-row"><span class="bar-lbl">OMCZ</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#F0B254"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct cell-warn">88%</span></div>
+            <div class="bar-row"><span class="bar-lbl">ELEMASTER</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#F0B254"></div><div class="bar-target-mark" style="left:99%"></div></div><span class="bar-pct cell-warn">94%</span></div>
           </div>
-          <div class="note">最大客戶 CPCS 的 OTIF 僅 83%，低於 95% 目標。因 CPCS 佔營收 89%，其達交穩定度直接影響公司信譽，為首要改善對象。（示意值，待真實出貨資料替換）</div>
+          <div class="note">⚠️ 此為<b>示意值，非真實資料</b>。你提供的廠商品質月報是「對供應商」的進料 OTIF，尚無「對客戶」出貨端的達交資料。若有對客戶的出貨/準時紀錄，這塊即可換成真實數據。</div>
         </div>
 
         <div class="row2">
@@ -453,10 +464,10 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="box">
           <h3>主要產品線 FY2026 出貨額</h3>
           <div class="bar-wrap">
-            <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">GI</span><span class="pl-zh">腸胃內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr">$2.41億</span></div>
-            <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">GI-ET</span><span class="pl-zh">氣體治療</span></span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">$5,389萬</span></div>
-            <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">SD</span><span class="pl-zh">手術器械</span></span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$4,286萬</span></div>
-            <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">UGN</span><span class="pl-zh">泌尿婦科</span></span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$3,533萬</span></div>
+            <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI</span><span class="pl-zh">腸胃內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr">$2.41億</span></div>
+            <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI-ET</span><span class="pl-zh">氣體治療</span></span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">$5,389萬</span></div>
+            <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SD</span><span class="pl-zh">手術器械</span></span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$4,286萬</span></div>
+            <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">UGN</span><span class="pl-zh">泌尿婦科</span></span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$3,533萬</span></div>
           </div>
           <div class="note">GI 腸胃內視鏡是對客戶出貨的絕對主力（58%）。完整銷售分析請見「銷售分析」分頁。</div>
         </div>
@@ -503,7 +514,7 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="box">
             <h3>供應商 PFR 不良率（FY27 累計）</h3>
             <div class="bar-wrap">
-              <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-bad">13.4% 🔴</span></div>
+              <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-bad">13.4%</span></div>
               <div class="bar-row"><span class="bar-lbl">賢隆</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0.30%</span></div>
               <div class="bar-row"><span class="bar-lbl">順翊</span><div class="bar-track"><div class="bar-fill" style="width:1%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0.05%</span></div>
               <div class="bar-row"><span class="bar-lbl">記豪</span><div class="bar-track"><div class="bar-fill" style="width:0%;background:#34C28F"></div><div class="bar-target-mark" style="left:6%"></div></div><span class="bar-pct cell-good">0%</span></div>
@@ -526,7 +537,7 @@ tbody tr:hover td{background:var(--bg3)}
               <tr><td>天網電子</td><td>35</td><td>31 (89%)</td><td>0</td><td>0</td><td class="cell-bad">4</td><td class="cell-warn">71%</td><td>6%</td></tr>
             </tbody>
           </table></div>
-          <div class="note">全供應商老品比例達 79%、新品稀少，反映新品開發停滯。特別注意：KTM（14項全樣品）、雲林應材（3項全樣品）為少數新品開發供應源。</div>
+          <div class="note">資料為 FY26 全年（生產中止數：賢隆15、記豪5、利貫6 較多；FY27 目前 0 項）。全供應商老品比例達 79%、新品稀少，反映新品開發停滯。特別注意：KTM（14項全樣品）、雲林應材（3項全樣品）為少數新品開發供應源。</div>
         </div>
       </div>
 
@@ -651,14 +662,15 @@ tbody tr:hover td{background:var(--bg3)}
             <div class="yoy-bar-row"><span class="yoy-month">6月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:79%"></div></div><span class="yoy-val cy">$34萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:58%"></div></div><span class="yoy-val py">$25萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+36%</div><div class="delta-spacer"></div></div></div>
           </div>
           <div class="box">
-            <h3>採購品項明細</h3>
+            <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
             <div class="tbl-wrap"><table>
-              <thead><tr><th>品項編號</th><th>品名</th><th>本季採購量</th><th>金額</th><th>不良率</th><th>交期表現</th></tr></thead>
+              <thead><tr><th>排名</th><th>品名</th><th>出貨營業額</th><th>出貨量</th></tr></thead>
               <tbody>
-                <tr><td>E-0512</td><td>NIPPLE-THREAD END</td><td>12,000</td><td>$68萬</td><td class="cell-good">0.4%</td><td><span class="tag g">準時</span></td></tr>
-                <tr><td>M-1042</td><td>TIP, BALL ELECTRODE</td><td>3,500</td><td>$85萬</td><td class="cell-good">0.6%</td><td><span class="tag g">準時</span></td></tr>
-                <tr><td>E-0820</td><td>電阻陣列</td><td>8,000</td><td>$22萬</td><td class="cell-good">0.3%</td><td><span class="tag g">準時</span></td></tr>
-                <tr><td>E-1133</td><td>連接器組</td><td>4,200</td><td>$15萬</td><td class="cell-good">0.7%</td><td><span class="tag y">略延</span></td></tr>
+                <tr><td>1</td><td>FE LEVER HOLDER</td><td class="cell-good">$1,032萬</td><td>98,000</td></tr>
+                <tr><td>2</td><td>UD Adjust Ring</td><td>$941萬</td><td>97,920</td></tr>
+                <tr><td>3</td><td>Cap Screw</td><td>$867萬</td><td>133,700</td></tr>
+                <tr><td>4</td><td>LG mouthpiece B</td><td>$530萬</td><td>85,000</td></tr>
+                <tr><td>5</td><td>Joint Ring</td><td>$427萬</td><td>67,600</td></tr>
               </tbody>
             </table></div>
           </div>
@@ -765,6 +777,19 @@ tbody tr:hover td{background:var(--bg3)}
             </div>
             <div class="note">🟡 老品（10年+無日期）達 <b>67%</b>，相對其他供應商略好，但新品仍僅 1%。橡膠件多為成熟規格，但仍應關注新品開發。</div>
           </div>
+          <div class="box">
+            <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>排名</th><th>品名</th><th>出貨營業額</th><th>出貨量</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>SW keytop</td><td class="cell-good">$1,226萬</td><td>75,600</td></tr>
+                <tr><td>2</td><td>Cap U MH-946</td><td>$855萬</td><td>67,500</td></tr>
+                <tr><td>3</td><td>Piston U</td><td>$668萬</td><td>77,200</td></tr>
+                <tr><td>4</td><td>GOMU B MH946</td><td>$327萬</td><td>66,000</td></tr>
+                <tr><td>5</td><td>OREDOME U</td><td>$325萬</td><td>14,800</td></tr>
+              </tbody>
+            </table></div>
+          </div>
         </div>
 
         <!-- 供應商 C：記豪（待觀察 B 級）-->
@@ -813,14 +838,15 @@ tbody tr:hover td{background:var(--bg3)}
             </div>
           </div>
           <div class="box">
-            <h3>採購品項明細</h3>
+            <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
             <div class="tbl-wrap"><table>
-              <thead><tr><th>品項編號</th><th>品名</th><th>本季採購量</th><th>金額</th><th>不良率</th><th>交期表現</th></tr></thead>
+              <thead><tr><th>排名</th><th>品名</th><th>出貨營業額</th><th>出貨量</th></tr></thead>
               <tbody>
-                <tr><td>M-4401</td><td>Hauptkoerper (SUS304)</td><td>2,800</td><td>$62萬</td><td class="cell-warn">2.2%</td><td><span class="tag y">略延</span></td></tr>
-                <tr><td>M-2301</td><td>Federring (SUS303)</td><td>15,000</td><td>$45萬</td><td class="cell-warn">1.8%</td><td><span class="tag y">略延</span></td></tr>
-                <tr><td>M-6601</td><td>RUBBER SEAL (NBR)</td><td>6,500</td><td>$28萬</td><td class="cell-good">1.2%</td><td><span class="tag g">準時</span></td></tr>
-                <tr><td>M-5520</td><td>不鏽鋼管</td><td>1,200</td><td>$15萬</td><td class="cell-bad">2.6%</td><td><span class="tag r">延遲</span></td></tr>
+                <tr><td>1</td><td>Mouthpiece S90</td><td class="cell-good">$924萬</td><td>67,300</td></tr>
+                <tr><td>2</td><td>Set Pipe</td><td>$810萬</td><td>4,680,000</td></tr>
+                <tr><td>3</td><td>Mouthpiece S</td><td>$395萬</td><td>23,100</td></tr>
+                <tr><td>4</td><td>UD TOU</td><td>$348萬</td><td>95,400</td></tr>
+                <tr><td>5</td><td>Hauptkoerper</td><td>$273萬</td><td>32,000</td></tr>
               </tbody>
             </table></div>
           </div>
@@ -921,6 +947,19 @@ tbody tr:hover td{background:var(--bg3)}
             </div>
             <div class="note">🟡 老品（10年+無日期）達 <b>80%</b>，新品 3%，黃銅精密件多為成熟規格。整體老化程度在六家中居中，新品導入仍偏少。</div>
           </div>
+          <div class="box">
+            <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>排名</th><th>品名</th><th>出貨營業額</th><th>出貨量</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Kontaktteil</td><td class="cell-good">$1,308萬</td><td>1,440,000</td></tr>
+                <tr><td>2</td><td>Nose</td><td>$549萬</td><td>1,412,000</td></tr>
+                <tr><td>3</td><td>Mouthpiece B</td><td>$428萬</td><td>61,500</td></tr>
+                <tr><td>4</td><td>Mouthpiece A</td><td>$313萬</td><td>60,300</td></tr>
+                <tr><td>5</td><td>Frame Shaft</td><td>$239萬</td><td>19,300</td></tr>
+              </tbody>
+            </table></div>
+          </div>
         </div>
 
         <!-- 供應商 E：利貫 B 級 -->
@@ -996,6 +1035,19 @@ tbody tr:hover td{background:var(--bg3)}
               </div>
             </div>
             <div class="note">🟡 老品（10年+無日期）達 <b>76%</b>，六家中老化程度最低。但 <b>生產中止 6 項（6%）</b>為警訊，應評估是否有替代規格或新品導入計畫。</div>
+          </div>
+          <div class="box">
+            <h3>出貨營業額前五大品項（FY26 真實資料）</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>排名</th><th>品名</th><th>出貨營業額</th><th>出貨量</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Plug</td><td class="cell-good">$1,990萬</td><td>2,685,000</td></tr>
+                <tr><td>2</td><td>Slide Holder SBF</td><td>$1,165萬</td><td>105,000</td></tr>
+                <tr><td>3</td><td>Slide HolderF</td><td>$1,068萬</td><td>98,000</td></tr>
+                <tr><td>4</td><td>Plug（小）</td><td>$503萬</td><td>369,000</td></tr>
+                <tr><td>5</td><td>A mouthpiece holder B</td><td>$209萬</td><td>88,300</td></tr>
+              </tbody>
+            </table></div>
           </div>
         </div>
 
@@ -1126,11 +1178,11 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="box">
             <h3>產品線銷售佔比（FY2026）</h3>
             <div class="bar-wrap">
-              <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">GI</span><span class="pl-zh">腸胃內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr">$2.41億</span></div>
-              <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">GI-ET</span><span class="pl-zh">氣體治療</span></span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#34C28F"></div></div><span class="bar-pct" style="color:#7FE6BF">$5,389萬</span></div>
-              <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">SD</span><span class="pl-zh">手術器械</span></span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$4,286萬</span></div>
-              <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">UGN</span><span class="pl-zh">泌尿婦科</span></span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$3,533萬</span></div>
-              <div class="bar-row"><span class="bar-lbl pl"><span class="pl-en">SE</span><span class="pl-zh">手術內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:7%;background:#1F5C45"></div></div><span class="bar-pct n-clr">$1,668萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI</span><span class="pl-zh">腸胃內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr">$2.41億</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI-ET</span><span class="pl-zh">氣體治療</span></span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#34C28F"></div></div><span class="bar-pct" style="color:#7FE6BF">$5,389萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SD</span><span class="pl-zh">手術器械</span></span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$4,286萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">UGN</span><span class="pl-zh">泌尿婦科</span></span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$3,533萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SE</span><span class="pl-zh">手術內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:7%;background:#1F5C45"></div></div><span class="bar-pct n-clr">$1,668萬</span></div>
             </div>
             <div class="note">GI 腸胃內視鏡是絕對主力（佔 58%），公司核心競爭力所在。</div>
           </div>
