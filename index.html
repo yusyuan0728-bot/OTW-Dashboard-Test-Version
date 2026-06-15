@@ -340,10 +340,6 @@ tbody tr:hover td{background:var(--bg3)}
     </div>
 
     <div class="content">
-              <div class="alert-pill amber"><span class="tlight tl-y"></span>8 張 PO 3天內到期</div>
-        <div class="alert-pill red"><span class="tlight tl-r"></span>億誠不良率 3.2%（超標）</div>
-        <div class="alert-pill green"><span class="tlight tl-g"></span>出貨準時率 95.1% 達標</div>
-      </div>
 
       <!-- ===== 高層視角（精簡保留核心）===== -->
       <div class="view active" id="v-exec">
@@ -576,7 +572,7 @@ tbody tr:hover td{background:var(--bg3)}
 
         <div class="sec-label">供應商關鍵指標總表</div>
         <div class="box">
-          <div class="box-head"><h3>六大核心供應商追蹤</h3><span style="font-size:10px;color:var(--text3)">ⓘ OTIF / PFR 為示意值，金額 / 品項 / 老品% 為真實資料</span></div>
+          <div class="box-head"><h3>五大核心供應商追蹤</h3><span style="font-size:10px;color:var(--text3)">ⓘ OTIF / PFR 為示意值，金額 / 品項 / 老品% 為真實資料</span></div>
           <div class="tbl-wrap"><table>
             <thead><tr><th>供應商</th><th>FY26 金額</th><th>佔比</th><th>OTIF（FY27/FY26）<br><span style="font-size:9px;font-weight:400;color:var(--text3)">目標 99.2%</span></th><th>PFR（FY27/FY26）<br><span style="font-size:9px;font-weight:400;color:var(--text3)">目標 0.8%↓</span></th><th>老品%</th><th>生產中止</th><th>主材質</th><th>風險等級</th></tr></thead>
             <tbody>
@@ -639,7 +635,7 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="sec-label" style="margin-top:0">供應商比較矩陣（FY2026 真實數據）</div>
         <div class="box" style="margin-bottom:14px">
           <div class="box-head">
-            <h3>六大核心供應商一覽比較</h3>
+            <h3>五大核心供應商一覽比較</h3>
             <span style="font-size:10px;color:var(--text3)">ⓘ OTIF / PFR 為 FY27 真實數據（廠商品質月報），老品% / 金額 / 品項為真實數據</span>
           </div>
           <div class="tbl-wrap"><table>
@@ -659,12 +655,32 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="sup-selector">
           <label>🔍 選擇供應商：</label>
           <select class="sup-select-big" id="sup-picker" onchange="showSupplier(this.value)">
+            <optgroup label="── 核心供應商（前五大）──">
             <option value="lianfa">賢隆（SUS303 金屬）</option>
             <option value="zhengtai">記豪（SUS303/304）</option>
             <option value="shunyi">順翊（BRASS 黃銅）</option>
             <option value="liguan">利貫（SUS303 金屬）</option>
-            <option value="tianwang">天網電子（EL 電子件）</option>
             <option value="qingfeng">億誠（RUBBER 橡膠）</option>
+            </optgroup>
+            <optgroup label="── 中型供應商 ──">
+            <option value="peierkj">佩爾科技 PT（METAL）</option>
+            <option value="tianwang">天網電子（EL 電子件）</option>
+            <option value="tailishi">泰力士（PLASTIC）</option>
+            <option value="taiyue">台月（METAL）</option>
+            <option value="anfeinuo">安費諾亞太（EL PARTS）</option>
+            </optgroup>
+            <optgroup label="── 小型 / 開發中供應商 ──">
+            <option value="changda">昌達</option>
+            <option value="xinli">鑫立螺絲</option>
+            <option value="xingkang">幸康電子</option>
+            <option value="ktm">KTM</option>
+            <option value="ruiqing">瑞青</option>
+            <option value="yunlin">雲林應材</option>
+            <option value="yingming">穎明</option>
+            <option value="meishangmei">美上鎂科技</option>
+            <option value="changhua">長華塑膠</option>
+            <option value="intai">Intai</option>
+            </optgroup>
           </select>
           <span style="font-size:11px;color:var(--text3);margin-left:auto">切換供應商查看完整表現　|　下方為全供應商總覽比較</span>
         </div>
@@ -702,12 +718,20 @@ tbody tr:hover td{background:var(--bg3)}
         </div>
 
         <!-- 供應商 A：賢隆（績優 A 級）-->
+        <div class="sup-detail-section" id="sup-placeholder">
+          <div class="box" style="text-align:center;padding:40px 20px">
+            <div style="font-size:32px;margin-bottom:12px">🏭</div>
+            <h3 id="placeholder-name" style="font-size:18px;color:var(--text);margin-bottom:8px"></h3>
+            <div class="note" style="margin:0 auto;max-width:400px">此供應商的個別分析頁面尚在建置中，目前僅在總覽矩陣顯示基本資料。如需詳細分析請聯繫採購團隊。</div>
+          </div>
+        </div>
+
         <div class="sup-detail-section active" id="sup-lianfa">
           <div class="sup-profile-card">
             <div class="sup-profile-head grade-a">
               <div class="sup-title-block">
 
-                <div class="sup-title-info"><h2>賢隆</h2><p>金屬件 · 合作 6 年 · 主要 SUS303 不鏽鋼供應商</p></div>
+                <div class="sup-title-info"><h2>賢隆</h2><p>主材：SUS303 不鏽鋼 · 加工形式：旋削 / 冷間鍛造</p></div>
               </div>
             </div>
             <div class="sup-quick-stats">
@@ -751,34 +775,75 @@ tbody tr:hover td{background:var(--bg3)}
             <div class="yoy-bar-row"><span class="yoy-month">5月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:81%"></div></div><span class="yoy-val cy">$35萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:65%"></div></div><span class="yoy-val py">$28萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+25%</div><div class="delta-spacer"></div></div></div>
             <div class="yoy-bar-row"><span class="yoy-month">6月</span><div class="yoy-bars"><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill cy" style="width:79%"></div></div><span class="yoy-val cy">$34萬</span></div><div class="yoy-bar-line"><div class="yoy-track"><div class="yoy-fill py" style="width:58%"></div></div><span class="yoy-val py">$25萬</span></div></div><div class="yoy-delta-col"><div class="delta-badge up">+36%</div><div class="delta-spacer"></div></div></div>
           </div>
+          <div class="row2">
+            <div class="box">
+              <h3>出貨前五大品項 — 依出貨金額（FY26）</h3>
+              <div class="tbl-wrap"><table>
+                <thead><tr><th style="width:100px">品號</th><th>品名</th><th>出貨金額</th></tr></thead>
+                <tbody><tr><td><code style="font-size:10px;color:var(--teal-dark)">GR431400</code></td><td>FE LEVER HOLDER</td><td class="cell-good">$1032萬</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GR467400</code></td><td>UD Adjust Ring</td><td class="cell-good">$941萬</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GR349200-2</code></td><td>Cap Screw</td><td class="cell-good">$867萬</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">RC041600</code></td><td>LG mouthpiece B</td><td class="cell-good">$530萬</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GR458400</code></td><td>Joint Ring</td><td class="cell-good">$427萬</td></tr>
+</tbody>
+              </table></div>
+            </div>
+            <div class="box">
+              <h3>出貨前五大品項 — 依出貨數量（FY26）</h3>
+              <div class="tbl-wrap"><table>
+                <thead><tr><th style="width:100px">品號</th><th>品名</th><th>出貨數量</th></tr></thead>
+                <tbody><tr><td><code style="font-size:10px;color:var(--teal-dark)">GK350700</code></td><td>HOLDER</td><td class="cell-good">1,969,000</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GR428000</code></td><td>W Tomeuke5</td><td class="cell-good">470,500</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GQ797900</code></td><td>Meihan-Kotei</td><td class="cell-good">344,500</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GK475700</code></td><td>Stopper</td><td class="cell-good">196,800</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GE916700</code></td><td>AW mouthpiece 90</td><td class="cell-good">167,000</td></tr>
+</tbody>
+              </table></div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="box">
+              <h3>供應客戶佔比（FY26 出貨金額）</h3>
+              <div class="bar-wrap">
+<div class="bar-row"><span class="bar-lbl" style="width:88px;font-size:10px">CPCS</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#34C28F"></div></div><span class="bar-pct" style="color:#34C28F">100%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="width:88px;font-size:10px">OWI</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#6FAEE8"></div></div><span class="bar-pct" style="color:#6FAEE8">0%</span></div>
+              </div>
+            </div>
+            <div class="box">
+              <h3>FY26 OTIF 月度趨勢 <span style="font-size:10px;font-weight:400;color:var(--text3)">（真實月報資料）</span></h3>
+              <div class="chart-wrap"><div class="chart-tip" id="otif-lianfa"></div>
+<svg viewBox="0 0 520 100" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('otif-lianfa')">
+  <line x1="36" y1="12" x2="512" y2="12" stroke="#3A3F48"/>
+  <line x1="36" y1="47" x2="512" y2="47" stroke="#F0B254" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <polyline points="36,12 79,12 123,12 166,12 209,12 252,12 296,12 339,12 382,12 425,12 469,12 512,32" fill="none" stroke="#34C28F" stroke-width="2.2"/>
+  <circle cx="36" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','4月','100.00%')"/><circle cx="79" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','5月','100.00%')"/><circle cx="123" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','6月','100.00%')"/><circle cx="166" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','7月','100.00%')"/><circle cx="209" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','8月','100.00%')"/><circle cx="252" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','9月','100.00%')"/><circle cx="296" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','10月','100.00%')"/><circle cx="339" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','11月','100.00%')"/><circle cx="382" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','12月','100.00%')"/><circle cx="425" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','1月','100.00%')"/><circle cx="469" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','2月','100.00%')"/><circle cx="512" cy="32" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-lianfa','3月','99.56%')"/><text x="36" y="97" fill="#928F89" font-size="7" text-anchor="middle">4月</text><text x="79" y="97" fill="#928F89" font-size="7" text-anchor="middle">5月</text><text x="123" y="97" fill="#928F89" font-size="7" text-anchor="middle">6月</text><text x="166" y="97" fill="#928F89" font-size="7" text-anchor="middle">7月</text><text x="209" y="97" fill="#928F89" font-size="7" text-anchor="middle">8月</text><text x="252" y="97" fill="#928F89" font-size="7" text-anchor="middle">9月</text><text x="296" y="97" fill="#928F89" font-size="7" text-anchor="middle">10</text><text x="339" y="97" fill="#928F89" font-size="7" text-anchor="middle">11</text><text x="382" y="97" fill="#928F89" font-size="7" text-anchor="middle">12</text><text x="425" y="97" fill="#928F89" font-size="7" text-anchor="middle">1月</text><text x="469" y="97" fill="#928F89" font-size="7" text-anchor="middle">2月</text><text x="512" y="97" fill="#928F89" font-size="7" text-anchor="middle">3月</text>
+  <text x="34" y="16" fill="#928F89" font-size="7" text-anchor="end">100%</text>
+  <text x="34" y="51" fill="#F0B254" font-size="7" text-anchor="end">99.2%</text>
+</svg></div>
+              <div class="note" style="margin-top:6px">FY26 全年 99.97%　｜　FY27（至5月）100%</div>
+            </div>
+          </div>
           <div class="box">
-            <h3>出貨前五大品項 — 依出貨金額（FY26 真實）</h3>
-            <div class="tbl-wrap"><table>
-              <thead><tr><th>排名</th><th>品名</th><th>出貨金額</th></tr></thead>
-              <tbody>
-                <tr><td>1</td><td>FE LEVER HOLDER</td><td class="cell-good">$1,032萬</td></tr>
-                <tr><td>2</td><td>UD Adjust Ring</td><td>$941萬</td></tr>
-                <tr><td>3</td><td>Cap Screw</td><td>$867萬</td></tr>
-                <tr><td>4</td><td>LG mouthpiece B</td><td>$530萬</td></tr>
-                <tr><td>5</td><td>Joint Ring</td><td>$427萬</td></tr>
-              </tbody>
-            </table></div>
-            <h3 style="margin-top:12px">出貨前五大品項 — 依出貨數量（FY26 真實）</h3>
-            <div class="tbl-wrap"><table>
-              <thead><tr><th>排名</th><th>品名</th><th>出貨數量</th></tr></thead>
-              <tbody>
-                <tr><td>1</td><td>Cap Screw</td><td class="cell-good">133,700</td></tr>
-                <tr><td>2</td><td>FE LEVER HOLDER</td><td>98,000</td></tr>
-                <tr><td>3</td><td>UD Adjust Ring</td><td>97,920</td></tr>
-                <tr><td>4</td><td>LG mouthpiece B</td><td>85,000</td></tr>
-                <tr><td>5</td><td>Joint Ring</td><td>67,600</td></tr>
-              </tbody>
-            </table></div>
-            <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px">
-              <div class="kcard g-clr"><div class="klabel">OTIF FY27</div><div class="kval">100%</div><div class="ksub"><span class="badge">目標 99.2%</span></div></div>
-              <div class="kcard g-clr"><div class="klabel">OTIF FY26</div><div class="kval">99.97%</div><div class="ksub"><span class="badge">全年達標</span></div></div>
-              <div class="kcard g-clr"><div class="klabel">PFR FY27</div><div class="kval">0.300%</div><div class="ksub"><span class="badge">優於 0.8%</span></div></div>
-              <div class="kcard g-clr"><div class="klabel">PFR FY26</div><div class="kval">0.057%</div><div class="ksub"><span class="badge">優異</span></div></div>
+            <h3>FY26 PFR 月度不良率 <span style="font-size:10px;font-weight:400;color:var(--text3)">（目標 0.8%↓）</span></h3>
+            <div class="bar-wrap" style="columns:2;gap:16px">
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">4月</span><div class="bar-track"><div class="bar-fill" style="width:1.6%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.032%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">5月</span><div class="bar-track"><div class="bar-fill" style="width:37.2%;background:#F0B254"></div></div><span class="bar-pct" style="font-size:9px;color:#F0B254">0.744%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">6月</span><div class="bar-track"><div class="bar-fill" style="width:0.9%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.019%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">7月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">8月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">9月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">10月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">11月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">12月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">1月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">2月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">3月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+            </div>
+            <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px">
+              <div class="kcard g-clr"><div class="klabel">OTIF FY27</div><div class="kval">100%</div></div>
+              <div class="kcard g-clr"><div class="klabel">OTIF FY26</div><div class="kval">99.97%</div></div>
+              <div class="kcard g-clr"><div class="klabel">PFR FY27</div><div class="kval">0.300%</div><div class="ksub"><span class="badge">優於目標</span></div></div>
+              <div class="kcard g-clr"><div class="klabel">PFR FY26</div><div class="kval">0.066%</div></div>
             </div>
           </div>
           <div class="box">
@@ -813,7 +878,7 @@ tbody tr:hover td{background:var(--bg3)}
             <div class="sup-profile-head grade-c">
               <div class="sup-title-block">
 
-                <div class="sup-title-info"><h2>億誠</h2><p>RUBBER 橡膠 · 合作 4 年 · 橡膠密封件供應商</p></div>
+                <div class="sup-title-info"><h2>億誠</h2><p>主材：NBR / EPDM 橡膠 · 產品：密封件 / 彈性體零件</p></div>
               </div>
             </div>
             <div class="sup-quick-stats">
@@ -909,7 +974,7 @@ tbody tr:hover td{background:var(--bg3)}
             <div class="sup-profile-head grade-b">
               <div class="sup-title-block">
 
-                <div class="sup-title-info"><h2>記豪</h2><p>SUS303/304 · 合作 5 年 · 不鏽鋼精密件供應商</p></div>
+                <div class="sup-title-info"><h2>記豪</h2><p>主材：SUS303 / SUS304 不鏽鋼 · 加工形式：旋削 / 深拉伸</p></div>
               </div>
             </div>
             <div class="sup-quick-stats">
@@ -947,34 +1012,75 @@ tbody tr:hover td{background:var(--bg3)}
               </div>
             </div>
           </div>
+          <div class="row2">
+            <div class="box">
+              <h3>出貨前五大品項 — 依出貨金額（FY26）</h3>
+              <div class="tbl-wrap"><table>
+                <thead><tr><th style="width:100px">品號</th><th>品名</th><th>出貨金額</th></tr></thead>
+                <tbody><tr><td><code style="font-size:10px;color:var(--teal-dark)">GE846900</code></td><td>Mouthpiece S90</td><td class="cell-good">$924萬</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GK484100</code></td><td>Set Pipe</td><td class="cell-good">$810萬</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">RC673900</code></td><td>Mouthpiece S</td><td class="cell-good">$395萬</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GR431900</code></td><td>UD TOU</td><td class="cell-good">$348萬</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">7029.273</code></td><td>Hauptkoerper</td><td class="cell-good">$273萬</td></tr>
+</tbody>
+              </table></div>
+            </div>
+            <div class="box">
+              <h3>出貨前五大品項 — 依出貨數量（FY26）</h3>
+              <div class="tbl-wrap"><table>
+                <thead><tr><th style="width:100px">品號</th><th>品名</th><th>出貨數量</th></tr></thead>
+                <tbody><tr><td><code style="font-size:10px;color:var(--teal-dark)">GK484100</code></td><td>Set Pipe</td><td class="cell-good">4,680,000</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GK657300</code></td><td>Coil Carrier</td><td class="cell-good">111,600</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GR431900</code></td><td>UD TOU</td><td class="cell-good">95,400</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GQ514200</code></td><td>Stem 2</td><td class="cell-good">84,500</td></tr>
+<tr><td><code style="font-size:10px;color:var(--teal-dark)">GQ787600-1</code></td><td>AW Nut4</td><td class="cell-good">82,800</td></tr>
+</tbody>
+              </table></div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="box">
+              <h3>供應客戶佔比（FY26 出貨金額）</h3>
+              <div class="bar-wrap">
+<div class="bar-row"><span class="bar-lbl" style="width:88px;font-size:10px">CPCS</span><div class="bar-track"><div class="bar-fill" style="width:72.8%;background:#34C28F"></div></div><span class="bar-pct" style="color:#34C28F">73%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="width:88px;font-size:10px">OWI</span><div class="bar-track"><div class="bar-fill" style="width:27.2%;background:#6FAEE8"></div></div><span class="bar-pct" style="color:#6FAEE8">27%</span></div>
+              </div>
+            </div>
+            <div class="box">
+              <h3>FY26 OTIF 月度趨勢 <span style="font-size:10px;font-weight:400;color:var(--text3)">（真實月報資料）</span></h3>
+              <div class="chart-wrap"><div class="chart-tip" id="otif-zhengtai"></div>
+<svg viewBox="0 0 520 100" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('otif-zhengtai')">
+  <line x1="36" y1="12" x2="512" y2="12" stroke="#3A3F48"/>
+  <line x1="36" y1="47" x2="512" y2="47" stroke="#F0B254" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <polyline points="36,12 79,12 123,12 166,12 209,12 252,12 296,12 339,12 382,12 425,12 469,12 512,12" fill="none" stroke="#34C28F" stroke-width="2.2"/>
+  <circle cx="36" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','4月','100.00%')"/><circle cx="79" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','5月','100.00%')"/><circle cx="123" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','6月','100.00%')"/><circle cx="166" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','7月','100.00%')"/><circle cx="209" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','8月','100.00%')"/><circle cx="252" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','9月','100.00%')"/><circle cx="296" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','10月','100.00%')"/><circle cx="339" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','11月','100.00%')"/><circle cx="382" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','12月','100.00%')"/><circle cx="425" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','1月','100.00%')"/><circle cx="469" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','2月','100.00%')"/><circle cx="512" cy="12" r="3.5" fill="#34C28F" onmouseenter="showTip('otif-zhengtai','3月','100.00%')"/><text x="36" y="97" fill="#928F89" font-size="7" text-anchor="middle">4月</text><text x="79" y="97" fill="#928F89" font-size="7" text-anchor="middle">5月</text><text x="123" y="97" fill="#928F89" font-size="7" text-anchor="middle">6月</text><text x="166" y="97" fill="#928F89" font-size="7" text-anchor="middle">7月</text><text x="209" y="97" fill="#928F89" font-size="7" text-anchor="middle">8月</text><text x="252" y="97" fill="#928F89" font-size="7" text-anchor="middle">9月</text><text x="296" y="97" fill="#928F89" font-size="7" text-anchor="middle">10</text><text x="339" y="97" fill="#928F89" font-size="7" text-anchor="middle">11</text><text x="382" y="97" fill="#928F89" font-size="7" text-anchor="middle">12</text><text x="425" y="97" fill="#928F89" font-size="7" text-anchor="middle">1月</text><text x="469" y="97" fill="#928F89" font-size="7" text-anchor="middle">2月</text><text x="512" y="97" fill="#928F89" font-size="7" text-anchor="middle">3月</text>
+  <text x="34" y="16" fill="#928F89" font-size="7" text-anchor="end">100%</text>
+  <text x="34" y="51" fill="#F0B254" font-size="7" text-anchor="end">99.2%</text>
+</svg></div>
+              <div class="note" style="margin-top:6px">FY26 全年 100%　｜　FY27（至5月）100%</div>
+            </div>
+          </div>
           <div class="box">
-            <h3>出貨前五大品項 — 依出貨金額（FY26 真實）</h3>
-            <div class="tbl-wrap"><table>
-              <thead><tr><th>排名</th><th>品名</th><th>出貨金額</th></tr></thead>
-              <tbody>
-                <tr><td>1</td><td>Mouthpiece S90</td><td class="cell-good">$924萬</td></tr>
-                <tr><td>2</td><td>Set Pipe</td><td>$810萬</td></tr>
-                <tr><td>3</td><td>Mouthpiece S</td><td>$395萬</td></tr>
-                <tr><td>4</td><td>UD TOU</td><td>$348萬</td></tr>
-                <tr><td>5</td><td>Hauptkoerper</td><td>$273萬</td></tr>
-              </tbody>
-            </table></div>
-            <h3 style="margin-top:12px">出貨前五大品項 — 依出貨數量（FY26 真實）</h3>
-            <div class="tbl-wrap"><table>
-              <thead><tr><th>排名</th><th>品名</th><th>出貨數量</th></tr></thead>
-              <tbody>
-                <tr><td>1</td><td>Set Pipe</td><td class="cell-good">4,680,000</td></tr>
-                <tr><td>2</td><td>UD TOU</td><td>95,400</td></tr>
-                <tr><td>3</td><td>Mouthpiece S90</td><td>67,300</td></tr>
-                <tr><td>4</td><td>Hauptkoerper</td><td>32,000</td></tr>
-                <tr><td>5</td><td>Mouthpiece S</td><td>23,100</td></tr>
-              </tbody>
-            </table></div>
-            <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px">
-              <div class="kcard g-clr"><div class="klabel">OTIF FY27</div><div class="kval">100%</div><div class="ksub"><span class="badge">目標 99.2%</span></div></div>
-              <div class="kcard g-clr"><div class="klabel">OTIF FY26</div><div class="kval">100%</div><div class="ksub"><span class="badge">全年達標</span></div></div>
+            <h3>FY26 PFR 月度不良率 <span style="font-size:10px;font-weight:400;color:var(--text3)">（目標 0.8%↓）</span></h3>
+            <div class="bar-wrap" style="columns:2;gap:16px">
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">4月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">5月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">6月</span><div class="bar-track"><div class="bar-fill" style="width:3.5%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.070%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">7月</span><div class="bar-track"><div class="bar-fill" style="width:10.5%;background:#F0B254"></div></div><span class="bar-pct" style="font-size:9px;color:#F0B254">0.211%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">8月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">9月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">10月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">11月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">12月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">1月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">2月</span><div class="bar-track"><div class="bar-fill" style="width:0.7%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.013%</span></div>
+<div class="bar-row"><span class="bar-lbl" style="font-size:9px;width:28px">3月</span><div class="bar-track"><div class="bar-fill" style="width:0.0%;background:#34C28F"></div></div><span class="bar-pct" style="font-size:9px;color:#34C28F">0.000%</span></div>
+            </div>
+            <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px">
+              <div class="kcard g-clr"><div class="klabel">OTIF FY27</div><div class="kval">100%</div></div>
+              <div class="kcard g-clr"><div class="klabel">OTIF FY26</div><div class="kval">100%</div></div>
               <div class="kcard g-clr"><div class="klabel">PFR FY27</div><div class="kval">0%</div><div class="ksub"><span class="badge">零不良</span></div></div>
-              <div class="kcard g-clr"><div class="klabel">PFR FY26</div><div class="kval">0.031%</div><div class="ksub"><span class="badge">優異</span></div></div>
+              <div class="kcard g-clr"><div class="klabel">PFR FY26</div><div class="kval">0.025%</div></div>
             </div>
           </div>
           <div class="box">
@@ -1008,7 +1114,7 @@ tbody tr:hover td{background:var(--bg3)}
             <div class="sup-profile-head grade-b">
               <div class="sup-title-block">
 
-                <div class="sup-title-info"><h2>順翊</h2><p>BRASS 黃銅 / SUS303 · 合作 5 年 · 黃銅及不鏽鋼精密件</p></div>
+                <div class="sup-title-info"><h2>順翊</h2><p>主材：C3604 黃銅 / SUS303 不鏽鋼 · 加工形式：旋削 / 壓鑄</p></div>
               </div>
             </div>
             <div class="sup-quick-stats">
@@ -1099,7 +1205,7 @@ tbody tr:hover td{background:var(--bg3)}
             <div class="sup-profile-head grade-b">
               <div class="sup-title-block">
 
-                <div class="sup-title-info"><h2>利貫</h2><p>SUS303 不鏽鋼 · 合作 7 年 · 精密不鏽鋼件</p></div>
+                <div class="sup-title-info"><h2>利貫</h2><p>主材：SUS303 不鏽鋼 · 產品：Plug / Slide Holder / 精密套管</p></div>
               </div>
             </div>
             <div class="sup-quick-stats">
@@ -1191,7 +1297,7 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="sup-profile-card">
             <div class="sup-profile-head grade-b">
               <div class="sup-title-block">
-                <div class="sup-title-info"><h2>天網電子</h2><p>EL PRODUCT 電子件 · 合作 3 年 · 電子組件供應商</p></div>
+                <div class="sup-title-info"><h2>天網電子</h2><p>主材：EL PRODUCT / EL PARTS · 產品：POWER SUPPLY / Transformer</p></div>
               </div>
             </div>
             <div class="sup-quick-stats">
@@ -1463,7 +1569,12 @@ function switchRole(r, btn) {
 }
 function showSupplier(id){
   document.querySelectorAll('.sup-detail-section').forEach(el=>el.classList.remove('active'));
-  document.getElementById('sup-'+id).classList.add('active');
+  const el=document.getElementById('sup-'+id);
+  if(el){ el.classList.add('active'); }
+  else {
+    document.getElementById('sup-placeholder').classList.add('active');
+    document.getElementById('placeholder-name').textContent=document.getElementById('sup-picker').options[document.getElementById('sup-picker').selectedIndex].text;
+  }
 }
 function showTip(tipId,label,val){
   const t=document.getElementById(tipId);
