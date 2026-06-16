@@ -309,10 +309,10 @@ tbody tr:hover td{background:var(--bg3)}
 .monthly-tbl th, .monthly-tbl td { min-width:0; white-space:nowrap; }
 .monthly-tbl th:nth-child(1), .monthly-tbl td:nth-child(1) { width:36px; }
 .monthly-tbl th:nth-child(2), .monthly-tbl td:nth-child(2),
-.monthly-tbl th:nth-child(3), .monthly-tbl td:nth-child(3) { width:140px; }
-.monthly-tbl th:nth-child(4), .monthly-tbl td:nth-child(4) { width:80px; }
+.monthly-tbl th:nth-child(3), .monthly-tbl td:nth-child(3),
+.monthly-tbl th:nth-child(4), .monthly-tbl td:nth-child(4),
 .monthly-tbl th:nth-child(5), .monthly-tbl td:nth-child(5),
-.monthly-tbl th:nth-child(6), .monthly-tbl td:nth-child(6) { width:130px; font-size:11px; }
+.monthly-tbl th:nth-child(6), .monthly-tbl td:nth-child(6) { width:calc((100% - 36px) / 5); font-size:11px; }
 </style>
 </head>
 <body>
@@ -323,10 +323,10 @@ tbody tr:hover td{background:var(--bg3)}
       <p>採購管理系統 v4.0</p>
     </div>
     <div class="nav-section">主要視角</div>
-    <div class="nav-item active" data-role="exec" onclick="switchRole('exec',this)"><span class="nav-dot"></span>📊 戰情總部 / 核心指標總覽</div>
-    <div class="nav-item" data-role="customer" onclick="switchRole('customer',this)"><span class="nav-dot"></span>👥 客戶需求與交期追蹤</div>
-    <div class="nav-item" data-role="supplier-track" onclick="switchRole('supplier-track',this)"><span class="nav-dot"></span>🏢 供應商績效監控</div>
-    <div class="nav-item" data-role="single" onclick="switchRole('single',this)"><span class="nav-dot"></span>🔍 供應商深度剖析</div>
+    <div class="nav-item active" data-role="exec" onclick="switchRole('exec',this)"><span class="nav-dot"></span>總覽 ｜ 📊 核心指標追蹤</div>
+    <div class="nav-item" data-role="customer" onclick="switchRole('customer',this)"><span class="nav-dot"></span>客戶 ｜ 👥 需求與交期追蹤</div>
+    <div class="nav-item" data-role="supplier-track" onclick="switchRole('supplier-track',this)"><span class="nav-dot"></span>總覽 ｜ 🏢 供應商績效監控</div>
+    <div class="nav-item" data-role="single" onclick="switchRole('single',this)"><span class="nav-dot"></span>個別 ｜ 🔍 供應商深度剖析</div>
     <div class="nav-item" data-role="inventory" onclick="switchRole('inventory',this)"><span class="nav-dot"></span>📦 庫存分析</div>
     <div class="nav-item" data-role="sales" onclick="switchRole('sales',this)"><span class="nav-dot"></span>📈 銷售預測分析</div>
     <div class="nav-item" data-role="news" onclick="switchRole('news',this)"><span class="nav-dot"></span>🚨 供應鏈風險預警雷達</div>
@@ -338,10 +338,10 @@ tbody tr:hover td{background:var(--bg3)}
       <div class="page-title" id="page-title">高層總覽</div>
       <div class="controls">
         <div class="role-tabs">
-          <button class="rtab active" data-role="exec" onclick="switchRole('exec',this)">📊 戰情總部</button>
-          <button class="rtab" data-role="customer" onclick="switchRole('customer',this)">👥 客戶追蹤</button>
-          <button class="rtab" data-role="supplier-track" onclick="switchRole('supplier-track',this)">🏢 供應商績效</button>
-          <button class="rtab" data-role="single" onclick="switchRole('single',this)">🔍 深度剖析</button>
+          <button class="rtab active" data-role="exec" onclick="switchRole('exec',this)">總覽 ｜ 📊 核心指標追蹤</button>
+          <button class="rtab" data-role="customer" onclick="switchRole('customer',this)">客戶 ｜ 👥 需求與交期追蹤</button>
+          <button class="rtab" data-role="supplier-track" onclick="switchRole('supplier-track',this)">總覽 ｜ 🏢 供應商績效監控</button>
+          <button class="rtab" data-role="single" onclick="switchRole('single',this)">個別 ｜ 🔍 供應商深度剖析</button>
           <button class="rtab" data-role="inventory" onclick="switchRole('inventory',this)">📦 庫存</button>
           <button class="rtab" data-role="sales" onclick="switchRole('sales',this)">📈 銷售分析</button>
           <button class="rtab" data-role="news" onclick="switchRole('news',this)">🚨 風險雷達</button>
@@ -357,9 +357,9 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="sec-label hero">★ 核心指標總覽</div>
         <div class="hero-grid">
           <div class="hero-card ok"><div class="hero-label">FY27 達交率（OTIF）</div><div class="hero-val">100%</div><div class="hero-meta"><span class="hero-badge">目標 99.8%</span><span class="hero-status">✅</span></div></div>
-          <div class="hero-card bad"><div class="hero-label">FY27 不良案件量</div><div class="hero-val">待確認</div><div class="hero-meta"><span class="hero-badge">數據確認中</span><span class="hero-target">利貫 4 月異常</span><span class="hero-status">⏳</span></div></div>
-          <div class="hero-card ok"><div class="hero-label">FY27 採購額達成率</div><div class="hero-val">120.9%</div><div class="hero-meta"><span class="hero-badge">數據確認中</span><span class="hero-target">至5月 vs 計畫</span><span class="hero-status">⏳</span></div></div>
-          <div class="hero-card bad"><div class="hero-label">庫存金額（目標 $1,972萬）</div><div class="hero-val">待確認</div><div class="hero-meta"><span class="hero-badge">數據確認中</span><span class="hero-target">🔴 亮紅燈</span><span class="hero-status">⏳</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">FY27 不良筆數（至5月）</div><div class="hero-val">8 筆</div><div class="hero-meta"><span class="hero-badge">全年目標 ≤21筆</span><span class="hero-status">✅</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">FY27 採購額達成率</div><div class="hero-val">120.9%</div><div class="hero-meta"><span class="hero-badge">至5月 vs 計畫</span><span class="hero-status">✅</span></div></div>
+          <div class="hero-card bad"><div class="hero-label">庫存金額（水位線 $1,800萬）</div><div class="hero-val">$2,854萬</div><div class="hero-meta"><span class="hero-badge">超標 +58.6%</span><span class="hero-target">🔴 超水位線 +$1,054萬</span><span class="hero-status">🔴</span></div></div>
         </div>
 
         <div class="sec-label hero">🎯 事業計畫達成率（FY27 vs 計畫 vs FY26）</div>
@@ -478,7 +478,17 @@ tbody tr:hover td{background:var(--bg3)}
                 <td class="n-clr" style="font-size:11px;white-space:nowrap">—</td>
                 <td class="n-clr" style="font-size:11px;white-space:nowrap">—</td>
               </tr>
-            </tbody></tbody>
+            </tbody>
+            <tfoot>
+              <tr style="font-weight:700;border-top:2px solid var(--border);background:rgba(52,194,143,0.06)">
+                <td style="font-weight:700">全年合計</td>
+                <td style="font-size:11px;white-space:nowrap">$4.19億</td>
+                <td style="font-size:11px;white-space:nowrap">$3.85億</td>
+                <td class="cell-good" style="font-size:11px;white-space:nowrap">$8,091萬</td>
+                <td class="cell-good" style="font-size:11px;white-space:nowrap">+$938萬 (+13.1%)</td>
+                <td class="cell-good" style="font-size:11px;white-space:nowrap">+$1,396萬 (+20.9%)</td>
+              </tr>
+            </tfoot>
           </table></div>
         </div>
         <div class="box">
@@ -498,157 +508,246 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="note">🟢 FY27 前兩個月實績均超越計畫（4月 124%、5月 118%）。FY27 全年計畫 $3.85億 略低於 FY26 全年 $4.19億（-8.2%）。</div>
         </div>
 
-                <div class="sec-label">各供應商採購金額占比（FY26 全年 / FY27 參考）</div>
+                <div class="sec-label">供應商採購佔比與關鍵指標（FY26 全年 / FY27 至5月）</div>
         <div class="box">
-          <div class="box-head"><h3>Top 10 供應商採購金額佔比</h3>
+          <div class="box-head">
+            <h3>核心供應商一覽</h3>
             <div class="legend-row">
-              <div class="leg-item"><div class="leg-rect" style="background:#34C28F"></div>FY26 全年</div>
-              <div class="leg-item"><div class="leg-rect" style="background:#6FAEE8"></div>FY27 至5月</div>
+              <div class="leg-item"><div class="leg-rect" style="background:#34C28F"></div>FY26</div>
+              <div class="leg-item"><div class="leg-rect" style="background:#6FAEE8;opacity:.75"></div>FY27</div>
+              <div class="leg-item" style="margin-left:8px;color:var(--text3);font-size:10px">OTIF 來源：廠商品質月報第 26 行</div>
             </div>
           </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank top" style="margin-top:4px">1</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">賢隆</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:62%;background:#34C28F">24.7%</div></div>
-                <span class="hbar-amt" style="width:68px">$1.04億</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:62%;background:#4AAFFF;opacity:0.75">23.8%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$1,924萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank top" style="margin-top:4px">2</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">記豪</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:45%;background:#34C28F">18.2%</div></div>
-                <span class="hbar-amt" style="width:68px">$7,643萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:42%;background:#4AAFFF;opacity:0.75">16.5%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$1,337萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank" style="margin-top:4px">3</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">順翊</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:39%;background:#34C28F">15.9%</div></div>
-                <span class="hbar-amt" style="width:68px">$6,662萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:39%;background:#4AAFFF;opacity:0.75">15.0%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$1,214萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank" style="margin-top:4px">4</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">利貫</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:35%;background:#34C28F">14.3%</div></div>
-                <span class="hbar-amt" style="width:68px">$5,997萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:36%;background:#4AAFFF;opacity:0.75">14.2%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$1,147萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank" style="margin-top:4px">5</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">億誠</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:33%;background:#34C28F">13.3%</div></div>
-                <span class="hbar-amt" style="width:68px">$5,575萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:32%;background:#4AAFFF;opacity:0.75">12.4%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$1,004萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank" style="margin-top:4px">6</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">佩爾科技(PT)</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:12%;background:#5DCAA5">4.9%</div></div>
-                <span class="hbar-amt" style="width:68px">$2,052萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:10%;background:#6FAEE8;opacity:0.75">4.0%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$324萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank" style="margin-top:4px">7</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">天網電子</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:8%;background:#5DCAA5">3.3%</div></div>
-                <span class="hbar-amt" style="width:68px">$1,370萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:19%;background:#6FAEE8;opacity:0.75">7.6%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$619萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank" style="margin-top:4px">8</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">泰力士</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:4%;background:#2A8A66">1.9%</div></div>
-                <span class="hbar-amt" style="width:68px">$787萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:6%;background:#2A7ACC;opacity:0.75">2.6%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$207萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank" style="margin-top:4px">9</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">台月</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:3%;background:#2A8A66">1.5%</div></div>
-                <span class="hbar-amt" style="width:68px">$639萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:4%;background:#2A7ACC;opacity:0.75">1.6%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$129萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="hbar-row" style="align-items:flex-start;padding:4px 0">
-            <div class="hbar-rank" style="margin-top:4px">10</div>
-            <div class="hbar-name" style="width:78px;margin-top:4px">安費諾亞太</div>
-            <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:1%;background:#1F5C45">0.7%</div></div>
-                <span class="hbar-amt" style="width:68px">$304萬</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div class="hbar-track" style="flex:1"><div class="hbar-fill" style="width:0%;background:#1A5C8A;opacity:0.75">0.2%</div></div>
-                <span class="hbar-amt" style="width:68px;color:var(--blue)">$15萬</span>
-              </div>
-            </div>
-          </div>
-          <div class="note">FY26 全年（深色）vs FY27 至5月（淺色藍）。天網電子 FY27 比重明顯上升（3.3%→7.6%），值得關注。佩爾科技僅 2 品項卻佔 5%，集中風險高。</div>
-
+          <div class="tbl-wrap"><table style="table-layout:fixed;width:100%">
+            <colgroup>
+              <col style="width:80px">
+              <col>
+              <col style="width:58px">
+              <col style="width:58px">
+              <col style="width:50px">
+              <col style="width:50px">
+              <col style="width:62px">
+              <col style="width:72px">
+              <col style="width:72px">
+            </colgroup>
+            <thead><tr>
+              <th>供應商</th>
+              <th>採購金額　FY26 全年 ／ FY27 至5月</th>
+              <th style="white-space:nowrap">FY26 佔比</th>
+              <th style="white-space:nowrap">FY27 佔比</th>
+              <th style="white-space:nowrap">品項數</th>
+              <th style="white-space:nowrap">老品率</th>
+              <th style="white-space:nowrap">主要材質</th>
+              <th style="white-space:nowrap">OTIF FY26</th>
+              <th style="white-space:nowrap">OTIF FY27</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><b>賢隆</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:100.0%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$1.04億</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:18.6%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$1,924萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">24.7%</td>
+                <td style="font-size:11px;color:var(--blue)">23.8%</td>
+                <td style="font-size:11px">310</td>
+                <td class="cell-bad" style="font-size:11px">87%</td>
+                <td style="font-size:10px">SUS303</td>
+                <td class="cell-warn" style="font-size:11px">98.75%</td>
+                <td class="cell-good" style="font-size:11px">100%</td>
+              </tr>
+              <tr>
+                <td><b>記豪</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:73.8%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$7,643萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:12.9%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$1,337萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">18.2%</td>
+                <td style="font-size:11px;color:var(--blue)">16.5%</td>
+                <td style="font-size:11px">256</td>
+                <td class="cell-bad" style="font-size:11px">89%</td>
+                <td style="font-size:10px">SUS303</td>
+                <td class="cell-good" style="font-size:11px">99.96%</td>
+                <td class="cell-good" style="font-size:11px">100%</td>
+              </tr>
+              <tr>
+                <td><b>順翊</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:64.3%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$6,662萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:11.7%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$1,214萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">15.9%</td>
+                <td style="font-size:11px;color:var(--blue)">15.0%</td>
+                <td style="font-size:11px">231</td>
+                <td class="cell-bad" style="font-size:11px">80%</td>
+                <td style="font-size:10px">BRASS</td>
+                <td class="cell-good" style="font-size:11px">100%</td>
+                <td class="cell-good" style="font-size:11px">100%</td>
+              </tr>
+              <tr>
+                <td><b>利貫</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:57.9%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$5,997萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:11.1%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$1,147萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">14.3%</td>
+                <td style="font-size:11px;color:var(--blue)">14.2%</td>
+                <td style="font-size:11px">100</td>
+                <td class="cell-warn" style="font-size:11px">76%</td>
+                <td style="font-size:10px">SUS303</td>
+                <td class="cell-good" style="font-size:11px">100%</td>
+                <td class="cell-good" style="font-size:11px">100%</td>
+              </tr>
+              <tr>
+                <td><b>億誠</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:53.8%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$5,575萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:9.7%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$1,004萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">13.3%</td>
+                <td style="font-size:11px;color:var(--blue)">12.4%</td>
+                <td style="font-size:11px">211</td>
+                <td class="cell-warn" style="font-size:11px">67%</td>
+                <td style="font-size:10px">RUBBER</td>
+                <td class="cell-good" style="font-size:11px">99.89%</td>
+                <td class="cell-good" style="font-size:11px">100%</td>
+              </tr>
+              <tr>
+                <td><b>佩爾科技</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:19.8%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$2,052萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:3.1%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$324萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">4.9%</td>
+                <td style="font-size:11px;color:var(--blue)">4.0%</td>
+                <td style="font-size:11px">2</td>
+                <td class="cell-good" style="font-size:11px">0%</td>
+                <td style="font-size:10px">METAL</td>
+                <td class="" style="font-size:11px">—</td>
+                <td class="" style="font-size:11px">—</td>
+              </tr>
+              <tr>
+                <td><b>天網電子</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:13.2%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$1,370萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:6.0%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$619萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">3.3%</td>
+                <td style="font-size:11px;color:var(--blue)">7.6%</td>
+                <td style="font-size:11px">35</td>
+                <td class="cell-warn" style="font-size:11px">71%</td>
+                <td style="font-size:10px">EL件</td>
+                <td class="" style="font-size:11px">—</td>
+                <td class="" style="font-size:11px">—</td>
+              </tr>
+              <tr>
+                <td><b>泰力士</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:7.6%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$787萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:2.0%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$207萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">1.9%</td>
+                <td style="font-size:11px;color:var(--blue)">2.6%</td>
+                <td style="font-size:11px">14</td>
+                <td class="cell-bad" style="font-size:11px">100%</td>
+                <td style="font-size:10px">PLASTIC</td>
+                <td class="" style="font-size:11px">—</td>
+                <td class="" style="font-size:11px">—</td>
+              </tr>
+              <tr>
+                <td><b>台月</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:6.2%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$639萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:1.2%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$129萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">1.5%</td>
+                <td style="font-size:11px;color:var(--blue)">1.6%</td>
+                <td style="font-size:11px">40</td>
+                <td class="cell-bad" style="font-size:11px">98%</td>
+                <td style="font-size:10px">METAL</td>
+                <td class="" style="font-size:11px">—</td>
+                <td class="" style="font-size:11px">—</td>
+              </tr>
+              <tr>
+                <td><b>安費諾亞太</b></td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                    <div style="width:2.9%;height:7px;background:#34C28F;border-radius:3px;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--text);white-space:nowrap">$304萬</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:4px">
+                    <div style="width:0.1%;height:7px;background:#6FAEE8;border-radius:3px;opacity:.8;min-width:2px"></div>
+                    <span style="font-size:10px;color:var(--blue);white-space:nowrap">$15萬</span>
+                  </div>
+                </td>
+                <td style="font-size:11px">0.7%</td>
+                <td style="font-size:11px;color:var(--blue)">0.2%</td>
+                <td style="font-size:11px">20</td>
+                <td class="" style="font-size:11px">—</td>
+                <td style="font-size:10px">EL件</td>
+                <td class="" style="font-size:11px">—</td>
+                <td class="" style="font-size:11px">—</td>
+              </tr>
+            </tbody>
+          </table></div>
+          <div class="note">🔴 <b>佩爾科技僅 2 品項佔 5%（$2,052萬）</b>，斷鏈風險高。天網電子 FY27 佔比從 3.3% 升至 7.6%（需關注）。OTIF「—」代表無月報資料。</div>
         </div>
+
+
 
         <div class="rank-grid">
           <div class="rank-panel best">
@@ -679,6 +778,42 @@ tbody tr:hover td{background:var(--bg3)}
           </div>
         </div>
         <div class="note" style="margin-bottom:8px">FY27 OTIF 全體 100%（目標 99.8%）。⚠️ 利貫 FY27 PFR 13.4% 因 4 月單月異常（不良 13 萬件），5 月已回 0%，需持續追蹤。FY26 PFR 全體優異（0.007%-0.194%）。</div>
+
+
+
+
+
+
+
+        <div class="sec-label">主力供應商 FY27 不良件數追蹤（後工程返品，全年目標 ≤21 筆）</div>
+        <div class="box">
+          <div class="box-head"><h3>主力供應商 FY27 不良件數（OTW發行 + 客戶抱怨）</h3><span style="font-size:10px;color:var(--text3)">資料來源：廠商品質月報表 · 後工程返品件數分類　Q1: 4-6月 ｜ Q2: 7-9月 ｜ Q3: 10-12月 ｜ Q4: 1-3月</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>供應商</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>FY27 累計</th><th>FY26 全年</th><th>狀態</th></tr></thead>
+            <tbody>
+              <tr><td>賢隆</td><td>3</td><td>—</td><td>—</td><td>—</td><td>3</td><td>11</td><td><span class="tag g">正常</span></td></tr>
+              <tr><td>記豪</td><td>0</td><td>—</td><td>—</td><td>—</td><td>0</td><td>4</td><td><span class="tag g">零異常</span></td></tr>
+              <tr><td>順翊</td><td>2</td><td>—</td><td>—</td><td>—</td><td>2</td><td>4</td><td><span class="tag g">正常</span></td></tr>
+              <tr><td>利貫</td><td>3</td><td>—</td><td>—</td><td>—</td><td>3</td><td>5</td><td><span class="tag g">正常</span></td></tr>
+              <tr><td>億誠</td><td>0</td><td>—</td><td>—</td><td>—</td><td>0</td><td>8</td><td><span class="tag g">零異常</span></td></tr>
+              <tr style="font-weight:600;border-top:2px solid var(--border)">
+                <td>合計</td>
+                <td class="cell-good">8筆</td>
+                <td class="n-clr">—</td>
+                <td class="n-clr">—</td>
+                <td class="n-clr">—</td>
+                <td class="cell-good">8筆</td>
+                <td>32筆</td>
+                <td><span class="tag g">剩餘 13 筆</span></td>
+              </tr>
+            </tbody>
+          </table></div>
+          <div class="note">FY27 全年目標 ≤21 筆，至5月（Q1 部分）已使用 8 筆，<b>剩餘額度 13 筆（已使用 38%）</b>。Q2-Q4 待月報資料匯入後更新。</div>
+        </div>
+
+
+
+
       </div>
 
       <!-- ===== 客戶狀態追蹤（下游出貨視角）===== -->
@@ -686,62 +821,87 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="sec-label hero">★ 客戶需求與交期追蹤</div>
         <div class="hero-grid">
           <div class="hero-card ok"><div class="hero-label">FY27 對客戶 OTIF</div><div class="hero-val">100%</div><div class="hero-meta"><span class="hero-badge">目標 99.8% ✓</span><span class="hero-status">✅</span></div></div>
-          <div class="hero-card warn"><div class="hero-label">不良案件數（FY27）</div><div class="hero-val">待確認</div><div class="hero-meta"><span class="hero-badge">數據確認中</span><span class="hero-status">⏳</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">FY27 不良筆數（至5月）</div><div class="hero-val">8 筆</div><div class="hero-meta"><span class="hero-badge">全年目標 ≤21筆</span><span class="hero-status">✅</span></div></div>
           <div class="hero-card ok"><div class="hero-label">FY27 對客戶營業額</div><div class="hero-val">$8,091萬</div><div class="hero-meta"><span class="hero-badge">至5月 ↑20.9%超計畫</span><span class="hero-status">✅</span></div></div>
           <div class="hero-card bad"><div class="hero-label">客戶集中度（CPCS）</div><div class="hero-val">89%</div><div class="hero-meta"><span class="hero-badge">單一客戶風險</span><span class="hero-status">🔴</span></div></div>
         </div>
 
         <div class="sec-label">不良案件累積情況</div>
-        <div class="row2">
-          <div class="box">
-            <h3>CPCS <span style="font-size:11px;font-weight:400;color:var(--text3)">FY27 至今（4-5月）</span></h3>
-            <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
-              <div class="kcard n-clr"><div class="klabel">本月不良件數</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-              <div class="kcard n-clr"><div class="klabel">FY27 累計件數</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-              <div class="kcard n-clr"><div class="klabel">FY27 不良率</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-            </div>
-            <div class="tbl-wrap"><table>
-              <thead><tr><th>月份</th><th>出貨件數</th><th>不良件數</th><th>不良率</th><th>主因</th></tr></thead>
-              <tbody>
-                <tr><td>4月</td><td>—</td><td>—</td><td>—</td><td><span class="tag y">待填入</span></td></tr>
-                <tr><td>5月</td><td>—</td><td>—</td><td>—</td><td><span class="tag y">待填入</span></td></tr>
-              </tbody>
-            </table></div>
-            <div class="note">⚠️ CPCS 為最大客戶（89%），不良件數直接影響交貨信譽，請優先填入。</div>
-          </div>
-          <div class="box">
-            <h3>OWI 群 <span style="font-size:11px;font-weight:400;color:var(--text3)">（OWI / OMCZ / Ensinger / Elemaster）FY27 至今</span></h3>
-            <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
-              <div class="kcard n-clr"><div class="klabel">本月不良件數</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-              <div class="kcard n-clr"><div class="klabel">FY27 累計件數</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-              <div class="kcard n-clr"><div class="klabel">FY27 不良率</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-            </div>
-            <div class="tbl-wrap"><table>
-              <thead><tr><th>客戶</th><th>FY26 全年營業額</th><th>FY27 至5月</th><th>FY27 累計不良件</th></tr></thead>
-              <tbody>
-                <tr><td>OWI</td><td>$2,152萬 (5.1%)</td><td>$366萬</td><td>—</td></tr>
-                <tr><td>OMCZ</td><td>$1,325萬 (3.2%)</td><td>$215萬</td><td>—</td></tr>
-                <tr><td>Ensinger</td><td>$100萬 (0.2%)</td><td>$90萬</td><td>—</td></tr>
-                <tr><td>Elemaster</td><td>$764萬 (1.8%)</td><td>$178萬</td><td>—</td></tr>
-              </tbody>
-            </table></div>
-            <div class="note">OWI 群合計 FY27 至5月 $850萬（10.5%），為第二大客群，不良案件待補入。</div>
-          </div>
-        </div>
         <div class="box">
-          <h3>OSTA <span style="font-size:11px;font-weight:400;color:var(--text3)">FY27 至今（4-5月）</span></h3>
-          <div class="row2" style="margin-bottom:0">
-            <div>
-              <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);gap:8px">
-                <div class="kcard n-clr"><div class="klabel">本月不良件數</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-                <div class="kcard n-clr"><div class="klabel">FY27 累計件數</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-                <div class="kcard n-clr"><div class="klabel">FY27 不良率</div><div class="kval">—</div><div class="ksub"><span class="badge">待填入</span></div></div>
-              </div>
-            </div>
-            <div>
-              <div class="note" style="margin-top:0">FY26 全年 OSTA $29萬（0.1%），FY27 至5月 $11萬。為小規模客戶，不良案件待補入。</div>
-            </div>
-          </div>
+          <div class="box-head"><h3>各客戶群不良案件追蹤（FY27 至今 4-5月）</h3><span style="font-size:10px;color:var(--text3)">⚠️ 資料待填入</span></div>
+          <div class="tbl-wrap"><table style="table-layout:fixed;width:100%">
+            <colgroup>
+              <col style="width:90px">
+              <col style="width:90px">
+              <col style="width:120px">
+              <col style="width:100px">
+              <col style="width:120px">
+              <col>
+            </colgroup>
+            <thead><tr style="height:36px">
+              <th>客戶群</th>
+              <th>客戶</th>
+              <th>FY26 全年營業額</th>
+              <th>FY27 至5月</th>
+              <th>FY27 不良累積件數</th>
+              <th>主因</th>
+            </tr></thead>
+            <tbody>
+              <tr style="height:40px;background:rgba(224,101,63,0.08)">
+                <td><b>CPCS</b><br><span style="font-size:9px;color:var(--text3)">佔比 89%</span></td>
+                <td>CPCS</td>
+                <td>$3.74億</td>
+                <td>$7,184萬</td>
+                <td><span class="tag y">待填入</span></td>
+                <td>—</td>
+              </tr>
+              <tr style="height:40px;background:rgba(111,174,232,0.06)">
+                <td rowspan="4"><b>OSTE 群</b><br><span style="font-size:9px;color:var(--text3)">佔比 10.5%</span></td>
+                <td>OWI</td>
+                <td>$2,152萬 (5.1%)</td>
+                <td>$366萬</td>
+                <td><span class="tag y">待填入</span></td>
+                <td>—</td>
+              </tr>
+              <tr style="height:40px;background:rgba(111,174,232,0.06)">
+                <td>OMCZ</td>
+                <td>$1,325萬 (3.2%)</td>
+                <td>$215萬</td>
+                <td><span class="tag y">待填入</span></td>
+                <td>—</td>
+              </tr>
+              <tr style="height:40px;background:rgba(111,174,232,0.06)">
+                <td>Ensinger</td>
+                <td>$100萬 (0.2%)</td>
+                <td>$90萬</td>
+                <td><span class="tag y">待填入</span></td>
+                <td>—</td>
+              </tr>
+              <tr style="height:40px;background:rgba(111,174,232,0.06)">
+                <td>Elemaster</td>
+                <td>$764萬 (1.8%)</td>
+                <td>$178萬</td>
+                <td><span class="tag y">待填入</span></td>
+                <td>—</td>
+              </tr>
+              <tr style="height:40px;background:rgba(93,202,165,0.06)">
+                <td><b>OSTA</b><br><span style="font-size:9px;color:var(--text3)">佔比 0.1%</span></td>
+                <td>OSTA</td>
+                <td>$29萬 (0.1%)</td>
+                <td>$11萬</td>
+                <td><span class="tag y">待填入</span></td>
+                <td>—</td>
+              </tr>
+              <tr style="height:40px;font-weight:600;border-top:2px solid var(--border)">
+                <td colspan="2">合計</td>
+                <td>$4.19億</td>
+                <td>$8,091萬</td>
+                <td>—</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table></div>
+          <div class="note">CPCS 為最大客戶（89%），不良案件直接影響交貨信譽，請優先填入。OSTE 群（OWI/OMCZ/Ensinger/Elemaster）合計 FY27 至5月 $850萬（10.5%）。</div>
         </div>
 
         <div class="sec-label">客戶營業額分布</div>
@@ -860,29 +1020,12 @@ tbody tr:hover td{background:var(--bg3)}
       </div>
 
 
+
+
+
       <!-- ===== 新增：單一供應商分析頁 ===== -->
       <div class="view" id="v-single">
-
-        <div class="sec-label" style="margin-top:0">供應商比較矩陣（FY2026 真實數據）</div>
-        <div class="box" style="margin-bottom:14px">
-          <div class="box-head">
-            <h3>五大核心供應商一覽比較</h3>
-            <span style="font-size:10px;color:var(--text3)">ⓘ OTIF / PFR 為 FY27 真實數據（廠商品質月報），老品% / 金額 / 品項為真實數據</span>
-          </div>
-          <div class="tbl-wrap"><table>
-            <thead><tr><th>供應商</th><th>評等</th><th>FY26 金額</th><th>佔比</th><th>品項數</th><th>量產%</th><th>生產中止</th><th>老品%</th><th>新品%</th><th>主材質</th><th>OTIF<br><span style="font-size:9px;font-weight:400">FY27</span></th><th>PFR<br><span style="font-size:9px;font-weight:400">FY27</span></th></tr></thead>
-            <tbody>
-              <tr><td><b>賢隆</b></td><td><span class="tag g">A</span></td><td>$1.04億</td><td class="cell-good">25%</td><td>310</td><td class="cell-good">92%</td><td>5%</td><td class="cell-bad">87%</td><td>2%</td><td>SUS303</td><td class="cell-good">100%</td><td class="cell-good">0.30%</td></tr>
-              <tr><td><b>記豪</b></td><td><span class="tag g">A</span></td><td>$7,643萬</td><td>18%</td><td>256</td><td class="cell-good">98%</td><td>2%</td><td class="cell-bad">89%</td><td>1%</td><td>SUS303</td><td class="cell-good">100%</td><td class="cell-good">0%</td></tr>
-              <tr><td><b>順翊</b></td><td><span class="tag g">A</span></td><td>$6,662萬</td><td>16%</td><td>231</td><td class="cell-good">98%</td><td class="cell-good">0.4%</td><td class="cell-warn">80%</td><td>3%</td><td>BRASS</td><td class="cell-good">100%</td><td class="cell-good">0.05%</td></tr>
-              <tr><td><b>利貫</b></td><td><span class="tag r">C</span></td><td>$6,000萬</td><td>14%</td><td>100</td><td class="cell-good">93%</td><td class="cell-warn">6%</td><td class="cell-warn">76%</td><td>2%</td><td>SUS303</td><td class="cell-good">100%</td><td class="cell-bad">13.4%</td></tr>
-              <tr><td><b>億誠</b></td><td><span class="tag g">A</span></td><td>$5,575萬</td><td>13%</td><td>211</td><td class="cell-good">98%</td><td class="cell-good">0.5%</td><td class="cell-warn">67%</td><td>1%</td><td>RUBBER</td><td class="cell-good">100%</td><td class="cell-good">0%</td></tr>
-            </tbody>
-          </table></div>
-          <div class="note" style="margin-top:10px">
-            💡 FY27 真實品質表現：交期（OTIF）全數 100% 達標。<b>利貫因 4 月單月品質異常，PFR 累計達 13.4%</b>（已從 A 降為 C 評等），其餘供應商不良率均優於 0.8% 目標。特殊供應商：<b>佩爾科技(PT)</b> 僅 2 品項卻達 $2,051萬（斷貨風險高）｜<b>KTM</b>、<b>雲林應材</b> 全為樣品（新品開發供應源）。
-          </div>
-        </div>
+        <div class="sec-label hero">🔍 供應商深度剖析 — 選擇供應商查看完整分析</div>
         <div class="sup-selector">
           <label>🔍 選擇供應商：</label>
           <select class="sup-select-big" id="sup-picker" onchange="showSupplier(this.value)">
@@ -913,39 +1056,7 @@ tbody tr:hover td{background:var(--bg3)}
             <option value="intai">Intai</option>
             </optgroup>
           </select>
-          <span style="font-size:11px;color:var(--text3);margin-left:auto">切換供應商查看完整表現　|　下方為全供應商總覽比較</span>
-        </div>
-
-        <!-- 供應商總覽比較矩陣 -->
-        <div class="box">
-          <div class="box-head"><h3>📊 供應商總覽比較（FY2026 真實數據）</h3><span style="font-size:10px;color:var(--text3)">金額/品項/生產狀況/老化為真實；OTIF/不良率為暫估</span></div>
-          <div class="tbl-wrap"><table>
-            <thead><tr><th>供應商</th><th>採購額</th><th>佔比</th><th>品項數</th><th>量產品</th><th>樣品</th><th>老品率</th><th>主要材質</th><th>OTIF FY26<br><span style="font-size:9px;font-weight:400;color:var(--text3)">全年實績</span></th><th>OTIF FY27<br><span style="font-size:9px;font-weight:400;color:var(--text3)">至5月</span></th></tr></thead>
-            <tbody>
-              <tr><td><b>賢隆</b></td><td>$1.04億</td><td class="cell-warn">25%</td><td>310</td><td>285</td><td>10</td><td class="cell-bad">87%</td><td>SUS303 金屬</td><td class="cell-warn">98.75%</td><td class="cell-good">100%</td></tr>
-              <tr><td><b>記豪</b></td><td>$7,643萬</td><td class="w-clr">18%</td><td>256</td><td>250</td><td class="cell-bad">1</td><td class="cell-bad">89%</td><td>SUS303/304</td><td class="cell-good">99.96%</td><td class="cell-good">100%</td></tr>
-              <tr><td><b>順翊</b></td><td>$6,662萬</td><td class="w-clr">16%</td><td>231</td><td>227</td><td>3</td><td class="cell-warn">80%</td><td>BRASS 黃銅</td><td class="cell-good">100%</td><td class="cell-good">100%</td></tr>
-              <tr><td><b>利貫</b></td><td>$6,000萬</td><td class="w-clr">14%</td><td>100</td><td>93</td><td>1</td><td class="cell-warn">76%</td><td>SUS303 金屬</td><td class="cell-good">100%</td><td class="cell-good">100%</td></tr>
-              <tr><td><b>億誠</b></td><td>$5,575萬</td><td class="w-clr">13%</td><td>211</td><td>207</td><td>3</td><td class="w-clr">67%</td><td>RUBBER 橡膠</td><td class="cell-good">99.89%</td><td class="cell-good">100%</td></tr>
-              <tr><td>天網電子</td><td>$1,370萬</td><td>3%</td><td>35</td><td>31</td><td>0</td><td class="cell-warn">71%</td><td>EL 電子件</td><td>—</td><td>—</td></tr>
-              <tr><td>佩爾科技</td><td>$2,052萬</td><td>5%</td><td class="cell-bad">2</td><td>2</td><td>0</td><td class="cell-good">0%</td><td>METAL 金屬</td><td>—</td><td>—</td></tr>
-              <tr><td>泰力士</td><td>$787萬</td><td>2%</td><td>14</td><td>14</td><td>0</td><td class="cell-bad">100%</td><td>PLASTIC 塑膠</td><td>—</td><td>—</td></tr>
-              <tr><td>台月</td><td>$639萬</td><td>2%</td><td>40</td><td>39</td><td>1</td><td class="cell-bad">98%</td><td>METAL 金屬</td><td>—</td><td>—</td></tr>
-            </tbody>
-          </table></div>
-          <div class="note">OTIF 來源：廠商品質月報表第 26 行（真實數據）。天網電子 / 佩爾科技 / 泰力士 / 台月 無月報資料（—）。🔴 <b>佩爾科技僅 2 個品項卻佔 5%（$2,052萬）</b>，高度集中、斷鏈風險高。🔴 泰力士、台月老品率近 100%。記豪 89% 最老化。</div>
-        </div>
-
-        <!-- 新品開發供應商提示 -->
-        <div class="box">
-          <div class="box-head"><h3>🌱 新品開發供應商（少數還在導入新案的供應源）</h3></div>
-          <div class="highlight">
-            <div class="hl-pill up">KTM：14 項全為樣品（WIRE 線材）</div>
-            <div class="hl-pill up">雲林應材：3 項全樣品（塑膠管）</div>
-            <div class="hl-pill up">佩爾科技：2 項全新品（5年內）</div>
-            <div class="hl-pill neu">穎明 / Intai：小量樣品開發</div>
-          </div>
-          <div class="note">在全公司新品僅 4% 的背景下，這些供應商是少數仍在開發新品的來源，雖金額小但具策略價值，建議列入新品導入重點追蹤。</div>
+          
         </div>
 
         <!-- 供應商 A：賢隆（績優 A 級）-->
@@ -1699,7 +1810,7 @@ tbody tr:hover td{background:var(--bg3)}
       <div class="view" id="v-inventory">
         <div class="sec-label hero">★ 庫存分析（資料來源：庫存預計狀況表 2026-06-10）</div>
         <div class="hero-grid">
-          <div class="hero-card bad"><div class="hero-label">庫存總金額</div><div class="hero-val">$2,854萬</div><div class="hero-meta"><span class="hero-badge">安全存量目標 $1,972萬</span><span class="hero-target">超標 +44.7%</span><span class="hero-status">🔴</span></div></div>
+          <div class="hero-card bad"><div class="hero-label">庫存總金額（水位線 $1,800萬）</div><div class="hero-val">$2,854萬</div><div class="hero-meta"><span class="hero-badge">超水位線 +58.6%</span><span class="hero-target">🔴 超出 +$1,054萬</span><span class="hero-status">🔴</span></div></div>
           <div class="hero-card warn"><div class="hero-label">商品庫存</div><div class="hero-val">$2,543萬</div><div class="hero-meta"><span class="hero-badge">安全存量 $1,680萬</span><span class="hero-target">超標 +51.4%</span><span class="hero-status">⚠️</span></div></div>
           <div class="hero-card ok"><div class="hero-label">製成品庫存</div><div class="hero-val">$311萬</div><div class="hero-meta"><span class="hero-badge">安全存量 $292萬</span><span class="hero-target">超標 +6.5%</span><span class="hero-status">🟡</span></div></div>
           <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">原料 / 半成品</div><div class="hero-val" style="color:var(--text3)">—</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text3)">無進貨價資料</span></div></div>
@@ -1996,7 +2107,7 @@ tbody tr:hover td{background:var(--bg3)}
 </div>
 
 <script>
-const roleLabels = {exec:'📊 戰情總部 / 核心指標總覽',customer:'👥 客戶需求與交期追蹤',['supplier-track']:'🏢 供應商績效監控',single:'🔍 供應商深度剖析',inventory:'📦 庫存分析',sales:'📈 銷售預測分析',news:'🚨 供應鏈風險預警雷達'};
+const roleLabels = {exec:'總覽 ｜ 📊 核心指標追蹤',customer:'客戶 ｜ 👥 需求與交期追蹤',['supplier-track']:'🏢 供應商績效監控',single:'🔍 供應商深度剖析',inventory:'📦 庫存分析',sales:'📈 銷售預測分析',news:'🚨 供應鏈風險預警雷達'};
 function switchRole(r, btn) {
   document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.rtab').forEach(el => el.classList.remove('active'));
