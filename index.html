@@ -304,6 +304,15 @@ tbody tr:hover td{background:var(--bg3)}
 .error-box b{color:var(--text)}
 .news-disclaimer{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-size:11px;color:var(--text3);line-height:1.7;margin-top:16px}
 .news-disclaimer b{color:var(--text2)}
+
+/* ── 月度對比表欄寬統一 ── */
+.monthly-tbl th, .monthly-tbl td { min-width:0; white-space:nowrap; }
+.monthly-tbl th:nth-child(1), .monthly-tbl td:nth-child(1) { width:36px; }
+.monthly-tbl th:nth-child(2), .monthly-tbl td:nth-child(2),
+.monthly-tbl th:nth-child(3), .monthly-tbl td:nth-child(3) { width:140px; }
+.monthly-tbl th:nth-child(4), .monthly-tbl td:nth-child(4) { width:80px; }
+.monthly-tbl th:nth-child(5), .monthly-tbl td:nth-child(5),
+.monthly-tbl th:nth-child(6), .monthly-tbl td:nth-child(6) { width:130px; font-size:11px; }
 </style>
 </head>
 <body>
@@ -363,7 +372,7 @@ tbody tr:hover td{background:var(--bg3)}
               <div class="leg-item"><div class="leg-rect" style="background:#34C28F"></div>FY27 實際</div>
             </div>
           </div>
-          <div class="tbl-wrap"><table>
+          <div class="tbl-wrap"><table class="monthly-tbl">
             <thead><tr>
                 <th>月份</th>
                 <th>FY26 實績</th>
@@ -762,23 +771,23 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="box">
             <h3>主要產品線出貨額 — FY26 全年</h3>
             <div class="bar-wrap">
-              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI</span><span class="pl-zh">腸胃內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr">$2.41億</span></div>
-              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI-ET</span><span class="pl-zh">氣體治療</span></span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">$5,389萬</span></div>
-              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SD</span><span class="pl-zh">手術器械</span></span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$4,286萬</span></div>
-              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">UGN</span><span class="pl-zh">泌尿婦科</span></span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$3,533萬</span></div>
-              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SE</span><span class="pl-zh">手術內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:7%;background:#1F5C45"></div></div><span class="bar-pct" style="color:#5DCAA5">$1,668萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI</span><span class="pl-zh">腸胃內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr">$2.41億<span style="font-size:9px;margin-left:3px;color:var(--text3)">57.6%</span></span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">GI-ET</span><span class="pl-zh">氣體治療</span></span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">$5,389萬<span style="font-size:9px;margin-left:3px;color:var(--text3)">12.9%</span></span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SD</span><span class="pl-zh">手術器械</span></span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$4,286萬<span style="font-size:9px;margin-left:3px;color:var(--text3)">10.2%</span></span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">UGN</span><span class="pl-zh">泌尿婦科</span></span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#2A8A66"></div></div><span class="bar-pct" style="color:#5DCAA5">$3,533萬<span style="font-size:9px;margin-left:3px;color:var(--text3)">8.4%</span></span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">SE</span><span class="pl-zh">手術內視鏡</span></span><div class="bar-track"><div class="bar-fill" style="width:7%;background:#1F5C45"></div></div><span class="bar-pct" style="color:#5DCAA5">$1,668萬<span style="font-size:9px;margin-left:3px;color:var(--text3)">4.0%</span></span></div>
             </div>
-            <div class="note">GI 腸胃內視鏡絕對主力（57.6%）。</div>
+            <div class="note">GI 腸胃內視鏡絕對主力，佔 FY26 全年 57.6%（$2.41億）。</div>
           </div>
           <div class="box">
             <h3>FY27 至5月出貨分布（材質分類，產品線待補）</h3>
             <div class="bar-wrap">
-              <div class="bar-row"><span class="bar-lbl">METAL</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F">76.7%</div></div><span class="bar-pct g-clr">$6,209萬</span></div>
-              <div class="bar-row"><span class="bar-lbl">RUBBER</span><div class="bar-track"><div class="bar-fill" style="width:16%;background:#F0B254">12.4%</div></div><span class="bar-pct cell-warn">$1,004萬</span></div>
-              <div class="bar-row"><span class="bar-lbl">EL PRODUCT</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:#6FAEE8">7.4%</div></div><span class="bar-pct" style="color:#6FAEE8">$602萬</span></div>
-              <div class="bar-row"><span class="bar-lbl">PLASTIC</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#B98AE0">2.6%</div></div><span class="bar-pct n-clr">$209萬</span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">METAL</span><span class="pl-zh">金屬件</span></span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr">$6,209萬<span style="font-size:9px;margin-left:3px;color:var(--text3)">76.7%</span></span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">RUBBER</span><span class="pl-zh">橡膠件</span></span><div class="bar-track"><div class="bar-fill" style="width:16%;background:#F0B254"></div></div><span class="bar-pct cell-warn">$1,004萬<span style="font-size:9px;margin-left:3px;color:var(--text3)">12.4%</span></span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">EL</span><span class="pl-zh">電子件</span></span><div class="bar-track"><div class="bar-fill" style="width:10%;background:#6FAEE8"></div></div><span class="bar-pct" style="color:#6FAEE8">$602萬<span style="font-size:9px;margin-left:3px;color:var(--text3)">7.4%</span></span></div>
+              <div class="bar-row pl-row"><span class="bar-lbl pl"><span class="pl-en">PLASTIC</span><span class="pl-zh">塑膠件</span></span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#B98AE0"></div></div><span class="bar-pct n-clr">$209萬<span style="font-size:9px;margin-left:3px;color:var(--text3)">2.6%</span></span></div>
             </div>
-            <div class="note">FY27 尚無產品線細分資料（系列欄未填），以材質分類呈現。待 ERP 資料完整後可更新為產品線。</div>
+            <div class="note">FY27 至5月以材質分類呈現（總計 $8,091萬）。ERP 系列欄補齊後可更新為產品線。</div>
           </div>
         </div>
       </div>
@@ -1759,8 +1768,8 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="box">
             <h3>商品庫存金額 vs 安全存量</h3>
             <div class="bar-wrap">
-              <div class="bar-row"><span class="bar-lbl">實際庫存</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548">$2,543萬</div></div></div>
-              <div class="bar-row"><span class="bar-lbl">安全存量目標</span><div class="bar-track"><div class="bar-fill" style="width:66%;background:#34C28F">$1,680萬</div></div></div>
+              <div class="bar-row"><span class="bar-lbl">實際庫存</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548"></div></div><span class="bar-pct cell-bad">$2,543萬</span></div>
+              <div class="bar-row"><span class="bar-lbl">安全存量</span><div class="bar-track"><div class="bar-fill" style="width:66%;background:#34C28F"></div></div><span class="bar-pct g-clr">$1,680萬</span></div>
             </div>
             <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px">
               <div class="kcard r-clr"><div class="klabel">超標金額</div><div class="kval">+$863萬</div></div>
@@ -1772,8 +1781,8 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="box">
             <h3>製成品庫存金額 vs 安全存量</h3>
             <div class="bar-wrap">
-              <div class="bar-row"><span class="bar-lbl">實際庫存</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F0B254">$311萬</div></div></div>
-              <div class="bar-row"><span class="bar-lbl">安全存量目標</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#34C28F">$292萬</div></div></div>
+              <div class="bar-row"><span class="bar-lbl">實際庫存</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F0B254"></div></div><span class="bar-pct cell-warn">$311萬</span></div>
+              <div class="bar-row"><span class="bar-lbl">安全存量</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#34C28F"></div></div><span class="bar-pct g-clr">$292萬</span></div>
             </div>
             <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px">
               <div class="kcard g-clr"><div class="klabel">超標金額</div><div class="kval">+$19萬</div></div>
