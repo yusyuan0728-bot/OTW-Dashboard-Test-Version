@@ -359,7 +359,7 @@ tbody tr:hover td{background:var(--bg3)}
           <div class="hero-card ok"><div class="hero-label">FY27 達交率（OTIF）</div><div class="hero-val">100%</div><div class="hero-meta"><span class="hero-badge">目標 99.8%</span><span class="hero-status">✅</span></div></div>
           <div class="hero-card ok"><div class="hero-label">FY27 不良筆數（至5月）</div><div class="hero-val">8 筆</div><div class="hero-meta"><span class="hero-badge">全年目標 ≤21筆</span><span class="hero-status">✅</span></div></div>
           <div class="hero-card ok"><div class="hero-label">FY27 採購額達成率</div><div class="hero-val">+5.2%</div><div class="hero-meta"><span class="hero-badge">累計至5月 vs 計畫</span><span class="hero-status">✅</span></div></div>
-          <div class="hero-card bad"><div class="hero-label">庫存金額（水位線 $1,800萬）</div><div class="hero-val">$2,854萬</div><div class="hero-meta"><span class="hero-badge">超標 +58.6%</span><span class="hero-target">🔴 超水位線 +$1,054萬</span><span class="hero-status">🔴</span></div></div>
+          <div class="hero-card warn"><div class="hero-label">庫存金額（推算值，水位線 $1,800萬）</div><div class="hero-val">$2,678萬</div><div class="hero-meta"><span class="hero-badge">超標 +48.8%</span><span class="hero-target">⚠️ 超水位線 +$878萬</span><span class="hero-status">⚠️</span></div></div>
         </div>
 
         <div class="sec-label hero">🎯 事業計畫達成率（FY27 vs 計畫 vs FY26）</div>
@@ -1909,34 +1909,43 @@ tbody tr:hover td{background:var(--bg3)}
 
       <!-- ===== 庫存分析 ===== -->
       <div class="view" id="v-inventory">
-        <div class="sec-label hero">★ 庫存分析（資料來源：庫存預計狀況表 2026-06-10）</div>
+        <div class="sec-label hero">★ 庫存分析（資料來源：庫存預計狀況表）</div>
+        <div class="box" style="padding:10px 16px;margin-bottom:10px;background:var(--bg2);display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-size:13px;color:var(--text);font-weight:600">📅 調查日期：2026/06/10</span>
+          <span style="font-size:11px;color:var(--text3)">內部規定每月 10 / 20 / 30 日進行庫存盤點調查，本頁數據為最近一次調查結果</span>
+        </div>
+        <div class="box" style="padding:10px 16px;margin-bottom:14px;background:rgba(240,178,84,0.08);border:1px solid rgba(240,178,84,0.3);display:flex;align-items:center;gap:8px">
+          <span style="font-size:16px">⚠️</span>
+          <span style="font-size:12px;color:var(--amber);font-weight:600">本頁所有金額均為推算值，非公司正式金額制資料</span>
+          <span style="font-size:11px;color:var(--text3)">原始庫存表僅提供「數量」與「單價」欄位，並無現成的金額欄位。本頁金額 = 數量 × 單價 自行推算，僅供參考，正式庫存金額請以財會系統或 ERP 資料為準。</span>
+        </div>
         <div class="hero-grid">
-          <div class="hero-card bad"><div class="hero-label">庫存總金額（水位線 $1,800萬）</div><div class="hero-val">$2,854萬</div><div class="hero-meta"><span class="hero-badge">超水位線 +58.6%</span><span class="hero-target">🔴 超出 +$1,054萬</span><span class="hero-status">🔴</span></div></div>
-          <div class="hero-card warn"><div class="hero-label">商品庫存</div><div class="hero-val">$2,543萬</div><div class="hero-meta"><span class="hero-badge">安全存量 $1,680萬</span><span class="hero-target">超標 +51.4%</span><span class="hero-status">⚠️</span></div></div>
-          <div class="hero-card ok"><div class="hero-label">製成品庫存</div><div class="hero-val">$311萬</div><div class="hero-meta"><span class="hero-badge">安全存量 $292萬</span><span class="hero-target">超標 +6.5%</span><span class="hero-status">🟡</span></div></div>
+          <div class="hero-card warn"><div class="hero-label">庫存總金額（推算值，水位線 $1,800萬）</div><div class="hero-val">$2,678萬</div><div class="hero-meta"><span class="hero-badge">超水位線 +48.8%</span><span class="hero-target">⚠️ 超出 +$878萬</span><span class="hero-status">⚠️</span></div></div>
+          <div class="hero-card warn"><div class="hero-label">商品庫存（推算值）</div><div class="hero-val">$2,406萬</div><div class="hero-meta"><span class="hero-badge">安全存量 $1,680萬</span><span class="hero-target">超標 +43.2%</span><span class="hero-status">⚠️</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">製成品庫存（推算值）</div><div class="hero-val">$271萬</div><div class="hero-meta"><span class="hero-badge">安全存量 $292萬</span><span class="hero-target">低於安全存量 -7.2%</span><span class="hero-status">🟢</span></div></div>
           <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">原料 / 半成品</div><div class="hero-val" style="color:var(--text3)">—</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text3)">無進貨價資料</span></div></div>
         </div>
 
-        <div class="sec-label">安全庫存金額對照（目標 = J欄安全存量 × 進貨價）</div>
+        <div class="sec-label">安全庫存金額對照（推算值：庫存金額 = G欄庫存結餘 × I欄單價；安全存量金額 = H欄安全存量 × I欄單價）</div>
         <div class="box">
-          <div class="box-head"><h3>各類別庫存金額 vs 安全存量目標</h3><span style="font-size:10px;color:var(--text3)">🔴 ≥+20% ｜ 🟡 +11~19% ｜ 🟢 ±10%以內</span></div>
+          <div class="box-head"><h3>各類別庫存金額 vs 安全存量目標<span style="font-size:10px;font-weight:400;color:var(--amber);margin-left:8px">⚠️ 推算值，非正式金額制資料</span></h3><span style="font-size:10px;color:var(--text3)">🔴 ≥+20% ｜ 🟡 +11~19% ｜ 🟢 ±10%以內</span></div>
           <div class="tbl-wrap"><table>
-            <thead><tr><th>類別</th><th>品項數</th><th>庫存金額</th><th>安全存量金額</th><th>差異</th><th>差異率</th><th>燈號</th></tr></thead>
+            <thead><tr><th>類別</th><th>品項數</th><th>庫存金額<br><span style="font-size:9px;font-weight:400;color:var(--text3)">數量×單價</span></th><th>安全存量金額<br><span style="font-size:9px;font-weight:400;color:var(--text3)">數量×單價</span></th><th>差異</th><th>差異率</th><th>燈號</th></tr></thead>
             <tbody>
               <tr>
                 <td><b>商品</b></td><td>2,210</td>
-                <td class="cell-bad">$2,543萬</td>
+                <td class="cell-bad">$2,406萬</td>
                 <td>$1,680萬</td>
-                <td class="cell-bad">+$863萬</td>
-                <td class="cell-bad">+51.4%</td>
+                <td class="cell-bad">+$726萬</td>
+                <td class="cell-bad">+43.2%</td>
                 <td>🔴</td>
               </tr>
               <tr>
                 <td><b>製成品</b></td><td>193</td>
-                <td class="cell-warn">$311萬</td>
+                <td class="cell-good">$271萬</td>
                 <td>$292萬</td>
-                <td class="cell-warn">+$19萬</td>
-                <td class="cell-warn">+6.5%</td>
+                <td class="cell-good">-$21萬</td>
+                <td class="cell-good">-7.2%</td>
                 <td>🟢</td>
               </tr>
               <tr>
@@ -1965,43 +1974,43 @@ tbody tr:hover td{background:var(--bg3)}
               </tr>
               <tr style="font-weight:600;border-top:2px solid var(--border)">
                 <td>合計</td><td>2,688</td>
-                <td class="cell-bad">$2,854萬</td>
+                <td class="cell-bad">$2,678萬</td>
                 <td>$1,972萬</td>
-                <td class="cell-bad">+$882萬</td>
-                <td class="cell-bad">+44.7%</td>
+                <td class="cell-bad">+$706萬</td>
+                <td class="cell-bad">+35.8%</td>
                 <td>🔴</td>
               </tr>
             </tbody>
           </table></div>
-          <div class="note">商品（成品）超標最嚴重（+51.4%），建議優先盤點並加速出貨或凍結採購。半成品/原料/耗材目前無進貨單價資料，無法計算金額，待 ERP 補齊後可自動計算。</div>
+          <div class="note">⚠️ 數字已修正：庫存金額應以「庫存結餘」（G欄 = 製表日庫存 - 銷貨數量 + 領用數量）計算，而非製表日當天表面數字（D欄）。商品超標 +43.2%，需優先盤點；製成品反而低於安全存量 -7.2%，無需處理。半成品/原料/耗材無進貨單價資料，待 ERP 補齊後可自動計算。</div>
         </div>
 
         <div class="row2">
           <div class="box">
-            <h3>商品庫存金額 vs 安全存量</h3>
+            <h3>商品庫存金額 vs 安全存量<span style="font-size:10px;font-weight:400;color:var(--amber);margin-left:6px">⚠️ 推算值</span></h3>
             <div class="bar-wrap">
-              <div class="bar-row"><span class="bar-lbl">實際庫存</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548"></div></div><span class="bar-pct cell-bad">$2,543萬</span></div>
-              <div class="bar-row"><span class="bar-lbl">安全存量</span><div class="bar-track"><div class="bar-fill" style="width:66%;background:#34C28F"></div></div><span class="bar-pct g-clr">$1,680萬</span></div>
+              <div class="bar-row"><span class="bar-lbl">實際庫存</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F06548"></div></div><span class="bar-pct cell-bad">$2,406萬</span></div>
+              <div class="bar-row"><span class="bar-lbl">安全存量</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:#34C28F"></div></div><span class="bar-pct g-clr">$1,680萬</span></div>
             </div>
             <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px">
-              <div class="kcard r-clr"><div class="klabel">超標金額</div><div class="kval">+$863萬</div></div>
-              <div class="kcard r-clr"><div class="klabel">超標比率</div><div class="kval">+51.4%</div></div>
+              <div class="kcard r-clr"><div class="klabel">超標金額</div><div class="kval">+$726萬</div></div>
+              <div class="kcard r-clr"><div class="klabel">超標比率</div><div class="kval">+43.2%</div></div>
               <div class="kcard n-clr"><div class="klabel">品項數</div><div class="kval">2,210</div></div>
             </div>
-            <div class="note">🔴 商品庫存超標逾 50%，需確認是否有滯銷或採購過量品項。</div>
+            <div class="note">🔴 商品庫存超標逾 40%，需確認是否有滯銷或採購過量品項。</div>
           </div>
           <div class="box">
-            <h3>製成品庫存金額 vs 安全存量</h3>
+            <h3>製成品庫存金額 vs 安全存量<span style="font-size:10px;font-weight:400;color:var(--amber);margin-left:6px">⚠️ 推算值</span></h3>
             <div class="bar-wrap">
-              <div class="bar-row"><span class="bar-lbl">實際庫存</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F0B254"></div></div><span class="bar-pct cell-warn">$311萬</span></div>
-              <div class="bar-row"><span class="bar-lbl">安全存量</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#34C28F"></div></div><span class="bar-pct g-clr">$292萬</span></div>
+              <div class="bar-row"><span class="bar-lbl">實際庫存</span><div class="bar-track"><div class="bar-fill" style="width:93%;background:#34C28F"></div></div><span class="bar-pct g-clr">$271萬</span></div>
+              <div class="bar-row"><span class="bar-lbl">安全存量</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#5DCAA5"></div></div><span class="bar-pct" style="color:#5DCAA5">$292萬</span></div>
             </div>
             <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px">
-              <div class="kcard g-clr"><div class="klabel">超標金額</div><div class="kval">+$19萬</div></div>
-              <div class="kcard g-clr"><div class="klabel">超標比率</div><div class="kval">+6.5%</div></div>
+              <div class="kcard g-clr"><div class="klabel">差異金額</div><div class="kval">-$21萬</div></div>
+              <div class="kcard g-clr"><div class="klabel">差異比率</div><div class="kval">-7.2%</div></div>
               <div class="kcard n-clr"><div class="klabel">品項數</div><div class="kval">193</div></div>
             </div>
-            <div class="note">🟢 製成品庫存在安全水位內（+6.5%），無需立即處理。</div>
+            <div class="note">🟢 製成品庫存略低於安全存量水位（-7.2%），屬正常範圍，無需立即處理。</div>
           </div>
         </div>
         <div class="box">
