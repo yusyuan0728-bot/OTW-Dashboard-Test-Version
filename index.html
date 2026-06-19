@@ -2033,40 +2033,79 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="sec-label hero">★ 銷售核心指標（真實資料 · 銷貨實績）</div>
         <div class="hero-grid">
           <div class="hero-card warn"><div class="hero-label">FY2026 總營業額</div><div class="hero-val">$4.19億</div><div class="hero-meta"><span class="hero-badge">↓ vs FY24高峰 $5.65億</span><span class="hero-target">-25.8% / -$1.46億</span><span class="hero-status">📊</span></div></div>
-          <div class="hero-card bad"><div class="hero-label">最大客戶集中度</div><div class="hero-val">89%</div><div class="hero-meta"><span class="hero-badge">CPCS 單一客戶</span><span class="hero-status">🔴</span></div></div>
-          <div class="hero-card ok"><div class="hero-label">最大產品線（GI）</div><div class="hero-val">$2.41億</div><div class="hero-meta"><span class="hero-badge">腸胃內視鏡 58%</span><span class="hero-status">✅</span></div></div>
-          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">主力材質（SUS303）</div><div class="hero-val" style="color:var(--text)">不鏽鋼</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">金屬件主力</span></div></div>
+          <div class="hero-card bad"><div class="hero-label">最大客戶集中度</div><div class="hero-val">89%</div><div class="hero-meta"><span class="hero-badge">CPCS 連續4年穩定</span><span class="hero-status">🔴</span></div></div>
+          <div class="hero-card bad"><div class="hero-label">EL PRODUCT 佔比衰退</div><div class="hero-val">3.3%</div><div class="hero-meta"><span class="hero-badge">FY24高峰時 21.9%</span><span class="hero-target">-18.6pt</span><span class="hero-status">🔴</span></div></div>
+          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">主力材質（METAL）</div><div class="hero-val" style="color:var(--text)">80.4%</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">SUS303 不鏽鋼為主</span></div></div>
         </div>
 
-        <div class="sec-label">年度營業額趨勢（FY2021–FY2026 真實數據）</div>
+        <div class="sec-label">年度營業額趨勢（FY2023–FY2026 真實數據，多維度分析）</div>
         <div class="box">
-          <div class="box-head"><h3>各年度總營業額（萬元）</h3><span style="font-size:10px;color:var(--text3)">FY2027 為未來年度，FORECAST 尚未灌數</span></div>
-          <div class="linechart">
-            <div class="chart-wrap"><div class="chart-tip" id="tip-sales"></div>
-            <svg viewBox="0 0 600 130" class="trend-line-svg" style="max-height:130px" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-sales')">
-              <line x1="45" y1="10" x2="585" y2="10" stroke="#3A3F48"/><line x1="45" y1="43" x2="585" y2="43" stroke="#3A3F48"/><line x1="45" y1="76" x2="585" y2="76" stroke="#3A3F48"/><line x1="45" y1="109" x2="585" y2="109" stroke="#3A3F48"/>
-              <text x="38" y="14" fill="#928F89" font-size="9" text-anchor="end">6億</text>
-              <text x="38" y="47" fill="#928F89" font-size="9" text-anchor="end">4億</text>
-              <text x="38" y="80" fill="#928F89" font-size="9" text-anchor="end">2億</text>
-              <text x="38" y="113" fill="#928F89" font-size="9" text-anchor="end">0</text>
-              <polyline points="90,43 190,29 290,16 390,13 490,22 585,40" fill="none" stroke="#34C28F" stroke-width="2.5"/>
-              <circle cx="90" cy="43" r="5" fill="#34C28F" onmouseenter="showTip('tip-sales','FY2021','$3.98億')"/>
-              <circle cx="190" cy="29" r="5" fill="#34C28F" onmouseenter="showTip('tip-sales','FY2022','$4.78億')"/>
-              <circle cx="290" cy="16" r="5" fill="#7FE6BF" onmouseenter="showTip('tip-sales','FY2023','$5.51億')"/>
-              <circle cx="390" cy="13" r="5" fill="#7FE6BF" onmouseenter="showTip('tip-sales','FY2024 高峰','$5.65億')"/>
-              <circle cx="490" cy="22" r="5" fill="#34C28F" onmouseenter="showTip('tip-sales','FY2025','$5.19億')"/>
-              <circle cx="585" cy="40" r="5" fill="#F0B254" onmouseenter="showTip('tip-sales','FY2026','$4.19億')"/>
-              <text x="90" y="35" fill="#B0AEA8" font-size="9" font-weight="600" text-anchor="start">$3.98億</text>
-              <text x="190" y="21" fill="#B0AEA8" font-size="9" font-weight="600" text-anchor="middle">$4.78億</text>
-              <text x="290" y="9" fill="#7FE6BF" font-size="9" font-weight="600" text-anchor="middle">$5.51億</text>
-              <text x="390" y="6" fill="#7FE6BF" font-size="9" font-weight="600" text-anchor="middle">$5.65億</text>
-              <text x="490" y="14" fill="#B0AEA8" font-size="9" font-weight="600" text-anchor="middle">$5.19億</text>
-              <text x="585" y="32" fill="#F0B254" font-size="9" font-weight="600" text-anchor="end">$4.19億</text>
-              <text x="90" y="126" fill="#B0AEA8" font-size="9" text-anchor="middle">FY21</text><text x="190" y="126" fill="#B0AEA8" font-size="9" text-anchor="middle">FY22</text><text x="290" y="126" fill="#B0AEA8" font-size="9" text-anchor="middle">FY23</text><text x="390" y="126" fill="#B0AEA8" font-size="9" text-anchor="middle">FY24</text><text x="490" y="126" fill="#B0AEA8" font-size="9" text-anchor="middle">FY25</text><text x="585" y="126" fill="#B0AEA8" font-size="9" text-anchor="middle">FY26</text>
-            </svg></div>
-          </div>
-          <div class="note">FY2023-24 為營收高峰（$5.5億+），FY2026 回落至 $4.19億。整體規模穩定在 4-5 億區間，FY2024 高峰主因天網電子 EL 電子產品線大單（$1.24億）。</div>
+          <div class="box-head"><h3>各年度營業額與關鍵指標總覽</h3><span style="font-size:10px;color:var(--text3)">FY2021/22 僅有總額，無細項資料</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>年度</th><th>總營業額</th><th>YoY 增減</th><th>CPCS 佔比</th><th>METAL 佔比</th><th>GI 產品線佔比</th></tr></thead>
+            <tbody>
+              <tr><td>FY2021</td><td>$3.98億</td><td class="n-clr">—</td><td class="n-clr">—</td><td class="n-clr">—</td><td class="n-clr">—</td></tr>
+              <tr><td>FY2022</td><td>$4.78億</td><td class="cell-good">+20.1%</td><td class="n-clr">—</td><td class="n-clr">—</td><td class="n-clr">—</td></tr>
+              <tr><td>FY2023</td><td>$5.51億</td><td class="cell-good">+15.3%</td><td>89.9%</td><td>65.3%</td><td>77.6%</td></tr>
+              <tr><td>FY2024<span style="color:var(--amber);font-size:9px"> 高峰</span></td><td>$5.65億</td><td class="cell-good">+2.6%</td><td>89.1%</td><td>64.8%</td><td>76.9%</td></tr>
+              <tr><td>FY2025</td><td>$5.19億</td><td class="cell-bad">-8.1%</td><td>88.9%</td><td>79.0%</td><td>76.2%</td></tr>
+              <tr style="background:rgba(240,178,84,0.06)"><td>FY2026</td><td>$4.19億</td><td class="cell-bad">-19.3%</td><td>89.4%</td><td>80.4%</td><td>57.6%</td></tr>
+              <tr style="font-weight:700;border-top:2px solid var(--border)">
+                <td>FY26 vs FY24高峰</td>
+                <td class="cell-bad">-$1.46億</td>
+                <td class="cell-bad">-25.8%</td>
+                <td colspan="3" style="color:var(--text3);font-size:10px">CPCS集中度持穩；METAL佔比上升；GI產品線佔比明顯下滑（EL電子大單流失）</td>
+              </tr>
+            </tbody>
+          </table></div>
+          <div class="note">FY2023-24 為營收高峰（$5.5億+），FY2026 回落至 $4.19億（-25.8% vs 高峰）。<b>GI 產品線佔比從 FY23 的 77.6% 降至 FY26 的 57.6%</b>，主因 EL PRODUCT（電子件，天網電子供應）佔比從 19.9% 大幅萎縮至 3.3%，反映電子產品線大單流失是營收下滑的核心原因，而非醫療器械本業萎縮。</div>
         </div>
+
+        <div class="sec-label">多維度歷年對照（客戶 ／ 材質 ／ 產品線）</div>
+        <div class="box">
+          <div class="box-head"><h3>各年度客戶佔比變化</h3><span style="font-size:10px;color:var(--text3)">CPCS 集中度長期維持 89% 左右</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>客戶</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>FY2026</th></tr></thead>
+            <tbody>
+              <tr><td><b>CPCS</b></td><td class="cell-bad">89.9%</td><td class="cell-bad">89.1%</td><td class="cell-bad">88.9%</td><td class="cell-bad">89.4%</td></tr>
+              <tr><td>OWI</td><td>4.3%</td><td>5.5%</td><td>4.6%</td><td>5.1%</td></tr>
+              <tr><td>OMCZ</td><td>2.7%</td><td>3.4%</td><td>2.6%</td><td>3.2%</td></tr>
+              <tr><td>Elemaster</td><td>1.7%</td><td>0.8%</td><td>2.5%</td><td>1.8%</td></tr>
+              <tr><td>Ensinger</td><td>0.6%</td><td>—</td><td>1.0%</td><td>0.2%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="note">🔴 CPCS 集中度連續四年穩定在 89% 左右，結構性風險長期存在，並非單一年度現象。</div>
+        </div>
+        <div class="row2">
+          <div class="box">
+            <h3>材質分類歷年佔比</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>材質</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>FY2026</th></tr></thead>
+              <tbody>
+                <tr><td><b>METAL</b></td><td>65.3%</td><td>64.8%</td><td class="cell-good">79.0%</td><td class="cell-good">80.4%</td></tr>
+                <tr><td>RUBBER</td><td>11.2%</td><td>10.3%</td><td>12.5%</td><td>13.3%</td></tr>
+                <tr><td>EL PRODUCT</td><td class="cell-bad">19.9%</td><td class="cell-bad">21.9%</td><td class="cell-bad">5.3%</td><td class="cell-bad">3.3%</td></tr>
+                <tr><td>PLASTIC</td><td>1.7%</td><td>1.4%</td><td>2.0%</td><td>1.9%</td></tr>
+              </tbody>
+            </table></div>
+            <div class="note">🔴 <b>EL PRODUCT 從 FY24 的 21.9% 崩跌至 FY26 的 3.3%</b>，是公司營收下滑的主要原因。METAL 佔比因此相對提升。</div>
+          </div>
+          <div class="box">
+            <h3>產品線歷年佔比</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>產品線</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>FY2026</th></tr></thead>
+              <tbody>
+                <tr><td><b>GI 腸胃內視鏡</b></td><td class="cell-bad">77.6%</td><td class="cell-bad">76.9%</td><td>76.2%</td><td class="cell-warn">57.6%</td></tr>
+                <tr><td>SE 手術內視鏡</td><td>12.6%</td><td>12.2%</td><td>6.7%</td><td>4.0%</td></tr>
+                <tr><td>UGN 泌尿婦科</td><td>5.9%</td><td>7.4%</td><td>6.4%</td><td>8.4%</td></tr>
+                <tr><td>SD 手術器械</td><td>2.5%</td><td>1.7%</td><td>3.8%</td><td>10.2%</td></tr>
+              </tbody>
+            </table></div>
+            <div class="note">GI 雖佔比下滑（77.6%→57.6%），但 SD 手術器械佔比逐年攀升（2.5%→10.2%），顯示產品組合正在分散化。</div>
+          </div>
+        </div>
+
+
 
         <div class="sec-label">⚠️ 客戶集中度風險（重大發現）</div>
         <div class="box">
