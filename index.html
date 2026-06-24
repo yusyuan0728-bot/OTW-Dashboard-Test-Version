@@ -329,6 +329,7 @@ tbody tr:hover td{background:var(--bg3)}
     <div class="nav-item" data-role="single" onclick="switchRole('single',this)"><span class="nav-dot"></span>個別 ｜ 🔍 供應商深度剖析</div>
     <div class="nav-item" data-role="inventory" onclick="switchRole('inventory',this)"><span class="nav-dot"></span>📦 庫存分析</div>
     <div class="nav-item" data-role="sales" onclick="switchRole('sales',this)"><span class="nav-dot"></span>📈 銷售預測分析</div>
+    <div class="nav-item" data-role="forecast" onclick="switchRole('forecast',this)"><span class="nav-dot"></span>📋 客戶FORECAST物料分析</div>
     <div class="nav-item" data-role="news" onclick="switchRole('news',this)"><span class="nav-dot"></span>🚨 供應鏈風險預警雷達</div>
     <div class="sidebar-footer">最後更新：2026-06-15 09:59<br>資料來源：品質月報 / 銷貨實績 / 庫存表</div>
   </aside>
@@ -344,6 +345,7 @@ tbody tr:hover td{background:var(--bg3)}
           <button class="rtab" data-role="single" onclick="switchRole('single',this)">個別 ｜ 🔍 供應商深度剖析</button>
           <button class="rtab" data-role="inventory" onclick="switchRole('inventory',this)">📦 庫存</button>
           <button class="rtab" data-role="sales" onclick="switchRole('sales',this)">📈 銷售分析</button>
+          <button class="rtab" data-role="forecast" onclick="switchRole('forecast',this)">📋 FORECAST</button>
           <button class="rtab" data-role="news" onclick="switchRole('news',this)">🚨 風險雷達</button>
         </div>
         <span class="update-tag" style="font-size:10px;color:var(--text3);padding:3px 8px;border:1px solid var(--border);border-radius:10px">2026-06-15 09:59</span>
@@ -2208,6 +2210,277 @@ tbody tr:hover td{background:var(--bg3)}
         </div>
       </div>
 
+      <div class="view" id="v-forecast">
+        <div class="sec-label hero">★ 三方比對：事業計畫 ／ 客戶FORECAST ／ 銷售實績（資料來源：CPC事業計畫 + OTW Forecast + 銷貨實績）</div>
+        <div class="box" style="padding:10px 16px;margin-bottom:14px;background:var(--bg2);display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-size:13px;color:var(--text);font-weight:600">📋 方法：銷售實績取自銷貨實績已發生的真實出貨金額；OTW Forecast 為「需求量」乘銷貨實績「售價定價一」換算；事業計畫金額直接取 CPC 表「予測売上」欄</span>
+          <span style="font-size:11px;color:var(--text3)">範圍：FY27 5-12月（8個月）／ 每月採當時最新可得版本（5-6月來自2604/2605版，7-12月來自2606版）／ 689個OTW品項 ／ 684個與CPC共同品項</span>
+        </div>
+        <div class="hero-grid">
+          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">事業計畫 CPC表（5-12月）</div><div class="hero-val" style="color:var(--text)">$25,674萬</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">予測売上加總</span></div></div>
+          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">OTW Forecast（5-12月）</div><div class="hero-val" style="color:var(--text)">$25,369萬</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">需求量×銷售單價</span></div></div>
+          <div class="hero-card ok"><div class="hero-label">整體吻合度</div><div class="hero-val">98.8%</div><div class="hero-meta"><span class="hero-badge">差距僅 $305萬</span><span class="hero-status">✅</span></div></div>
+          <div class="hero-card warn"><div class="hero-label">最大落差月份</div><div class="hero-val">7月</div><div class="hero-meta"><span class="hero-badge">吻合度僅87.6%</span><span class="hero-status">⚠️</span></div></div>
+        </div>
+
+
+        <div class="sec-label">🔺 三方完整比對：事業計畫 ／ OTW Forecast ／ 銷售實績</div>
+        <div class="box">
+          <div class="box-head"><h3>FY27 4月-12月 三方金額對照</h3><span style="font-size:10px;color:var(--text3)">銷售實績為已發生的真實出貨（目前僅4-5月已結束）；OTW Forecast 採每月最新可得版本</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr>
+              <th>月份</th>
+              <th>事業計畫<br><span style="font-size:9px;font-weight:400;color:var(--text3)">CPC予測売上</span></th>
+              <th>OTW Forecast<br><span style="font-size:9px;font-weight:400;color:var(--text3)">需求量×銷售單價</span></th>
+              <th>銷售實績<br><span style="font-size:9px;font-weight:400;color:var(--text3)">已發生</span></th>
+              <th>實績 vs 計畫</th>
+              <th>實績 vs FC</th>
+              <th>狀態</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td>4月</td>
+                <td>$3,247萬</td>
+                <td><span style="color:var(--text3)">—</span></td>
+                <td style="font-weight:600">$4,074萬</td>
+                <td class="cell-good" style="font-size:11px;white-space:nowrap">+827萬 (+25.5%)</td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td><span class="tag g">已實現</span></td>
+              </tr>
+              <tr>
+                <td>5月</td>
+                <td>$3,397萬</td>
+                <td>$3,455萬</td>
+                <td style="font-weight:600">$4,017萬</td>
+                <td class="cell-good" style="font-size:11px;white-space:nowrap">+620萬 (+18.3%)</td>
+                <td class="cell-good" style="font-size:11px;white-space:nowrap">+562萬 (+16.3%)</td>
+                <td><span class="tag g">已實現</span></td>
+              </tr>
+              <tr>
+                <td>6月</td>
+                <td>$3,201萬</td>
+                <td>$3,498萬</td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td><span class="tag y">FC已發布</span></td>
+              </tr>
+              <tr>
+                <td>7月</td>
+                <td>$3,795萬</td>
+                <td>$3,325萬</td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td><span class="tag y">FC已發布</span></td>
+              </tr>
+              <tr>
+                <td>8月</td>
+                <td>$2,214萬</td>
+                <td>$2,545萬</td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td><span class="tag y">FC已發布</span></td>
+              </tr>
+              <tr>
+                <td>9月</td>
+                <td>$3,037萬</td>
+                <td>$2,879萬</td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td><span class="tag y">FC已發布</span></td>
+              </tr>
+              <tr>
+                <td>10月</td>
+                <td>$3,536萬</td>
+                <td>$3,359萬</td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td><span class="tag y">FC已發布</span></td>
+              </tr>
+              <tr>
+                <td>11月</td>
+                <td>$3,286萬</td>
+                <td>$3,201萬</td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td><span class="tag y">FC已發布</span></td>
+              </tr>
+              <tr>
+                <td>12月</td>
+                <td>$3,208萬</td>
+                <td>$3,107萬</td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td class="n-clr" style="font-size:11px">—</td>
+                <td><span class="tag y">FC已發布</span></td>
+              </tr>
+              <tr style="font-weight:700;border-top:2px solid var(--border)">
+                <td>4-5月合計</td>
+                <td>$6,644萬</td>
+                <td>$3,455萬<span style="font-size:9px;color:var(--text3)">(僅5月)</span></td>
+                <td>$8,091萬</td>
+                <td class="cell-good">+1447萬 (+21.8%)</td>
+                <td class="cell-good">+4636萬<span style="font-size:9px;color:var(--text3)">(僅5月比較)</span></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table></div>
+          <div class="note">
+            <b>🟢 4-5月實際銷售大幅超越計畫與預測：</b>實績 $8,091萬 vs 事業計畫 $6,644萬（<b>+21.8%</b>），vs 5月 OTW Forecast $3,455萬（5月單月實績 $4,017萬，<b>+16.3%</b>）。代表客戶實際下單動能比業務原計畫與客戶自己提供的 Forecast 都更強，是非常正向的訊號。<br><br>
+            <b>⚠️ 6月以後尚無實績可比對：</b>因現在時間為2026年6月，6-12月銷售尚未發生，僅能比較「事業計畫」與「OTW Forecast」兩者；其中 <b>7月吻合度最低</b>（計畫$3,795萬 vs FC $3,325萬，差距-470萬/-12.4%），建議特別留意7月是否會重演4-5月「實績超預期」的模式，或反而因客戶下修需求而不如預期。
+          </div>
+        </div>
+
+        <div class="sec-label">每月對照：事業計畫（CPC予測売上）vs OTW Forecast（需求量×銷售單價）</div>
+        <div class="box">
+          <div class="box-head"><h3>FY27 5月-12月 完整月度金額對照</h3><span style="font-size:10px;color:var(--text3)">🟢 ≥95% ｜ 🟡 85-94% ｜ 🔴 &lt;85%　每月採當時可取得的最新版OTW Forecast</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>月份</th><th>事業計畫<br><span style="font-size:9px;font-weight:400;color:var(--text3)">CPC予測売上</span></th><th>OTW Forecast<br><span style="font-size:9px;font-weight:400;color:var(--text3)">需求量×銷售單價</span></th><th>差異金額</th><th>吻合度</th><th>資料來源版本</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>5月</td>
+                <td>$3,397萬</td>
+                <td>$3,455萬</td>
+                <td class="cell-good">+58萬</td>
+                <td class="cell-good">101.7%</td>
+                <td style="font-size:10px;color:var(--text3)">2604版(4月發布)</td>
+              </tr>
+              <tr>
+                <td>6月</td>
+                <td>$3,201萬</td>
+                <td>$3,498萬</td>
+                <td class="cell-good">+297萬</td>
+                <td class="cell-good">109.3%</td>
+                <td style="font-size:10px;color:var(--text3)">2605版(5月發布)</td>
+              </tr>
+              <tr>
+                <td>7月</td>
+                <td>$3,795萬</td>
+                <td>$3,325萬</td>
+                <td class="cell-bad">-470萬</td>
+                <td class="cell-warn">87.6%</td>
+                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+              </tr>
+              <tr>
+                <td>8月</td>
+                <td>$2,214萬</td>
+                <td>$2,545萬</td>
+                <td class="cell-good">+331萬</td>
+                <td class="cell-good">115.0%</td>
+                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+              </tr>
+              <tr>
+                <td>9月</td>
+                <td>$3,037萬</td>
+                <td>$2,879萬</td>
+                <td class="cell-bad">-158萬</td>
+                <td class="cell-warn">94.8%</td>
+                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+              </tr>
+              <tr>
+                <td>10月</td>
+                <td>$3,536萬</td>
+                <td>$3,359萬</td>
+                <td class="cell-bad">-177萬</td>
+                <td class="cell-warn">95.0%</td>
+                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+              </tr>
+              <tr>
+                <td>11月</td>
+                <td>$3,286萬</td>
+                <td>$3,201萬</td>
+                <td class="cell-bad">-85萬</td>
+                <td class="cell-good">97.4%</td>
+                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+              </tr>
+              <tr>
+                <td>12月</td>
+                <td>$3,208萬</td>
+                <td>$3,107萬</td>
+                <td class="cell-bad">-101萬</td>
+                <td class="cell-good">96.9%</td>
+                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+              </tr>
+              <tr style="font-weight:700;border-top:2px solid var(--border)">
+                <td>合計（5-12月）</td>
+                <td>$25,674萬</td>
+                <td>$25,369萬</td>
+                <td class="cell-bad">-305萬</td>
+                <td class="cell-good">98.8%</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table></div>
+          <div class="note">
+            <b>8個月完整對照，整體吻合度高達 98.8%</b>（差距僅 $305萬）。逐月來看：
+            <b>5月、6月 OTW 略高於計畫</b>（+58萬、+297萬），<b>7月 OTW 明顯低於計畫</b>（-470萬，吻合度僅87.6%，為全期最低），8月則 OTW 反而高於計畫 +331萬（115%），9-12月則相對穩定收斂在 95-97% 區間。
+            <br><br>
+            <b>⚠️ 7月落差需特別關注：</b>對照前述「Forecast 滾動修正追蹤」可知，客戶對 7月的需求已從4月發布時的 $3,729萬，逐版下修到6月最新版 $3,325萬（-10.8%），但事業計畫的 7月 $3,795萬 可能仍沿用較早期、未下修的假設，是兩者落差的根本原因。建議將事業計畫 7月數字依最新 Forecast 校正。
+          </div>
+        </div>
+        <div class="sec-label">月度趨勢圖</div>
+        <div class="box">
+          <div class="box-head"><h3>事業計畫 vs OTW Forecast 月度趨勢</h3><div class="legend-row"><div class="leg-item"><div class="leg-rect" style="background:#6FAEE8"></div>CPC事業計畫</div><div class="leg-item"><div class="leg-rect" style="background:#34C28F"></div>OTW Forecast</div></div></div>
+          <div class="chart-wrap"><div class="chart-tip" id="tip-fc2"></div>
+<svg viewBox="0 0 600 150" class="trend-line-svg" preserveAspectRatio="xMidYMid meet" onmouseleave="hideTip('tip-fc2')">
+  <line x1="50" y1="15" x2="585" y2="15" stroke="#3A3F48"/>
+  <line x1="50" y1="68" x2="585" y2="68" stroke="#3A3F48"/>
+  <line x1="50" y1="120" x2="585" y2="120" stroke="#3A3F48"/>
+  <polyline points="50,41 126,54 203,15 279,120 356,65 432,32 509,49 585,54" fill="none" stroke="#6FAEE8" stroke-width="2.5"/>
+  <polyline points="50,38 126,35 203,46 279,98 356,76 432,44 509,54 585,61" fill="none" stroke="#34C28F" stroke-width="2.5"/>
+  <circle cx="50" cy="41" r="4" fill="#6FAEE8" onmouseenter="showTip('tip-fc2','CPC計畫 5月','$3397萬')"/><circle cx="50" cy="38" r="4" fill="#34C28F" onmouseenter="showTip('tip-fc2','OTW需求 5月','$3455萬')"/><circle cx="126" cy="54" r="4" fill="#6FAEE8" onmouseenter="showTip('tip-fc2','CPC計畫 6月','$3201萬')"/><circle cx="126" cy="35" r="4" fill="#34C28F" onmouseenter="showTip('tip-fc2','OTW需求 6月','$3498萬')"/><circle cx="203" cy="15" r="4" fill="#6FAEE8" onmouseenter="showTip('tip-fc2','CPC計畫 7月','$3795萬')"/><circle cx="203" cy="46" r="4" fill="#34C28F" onmouseenter="showTip('tip-fc2','OTW需求 7月','$3325萬')"/><circle cx="279" cy="120" r="4" fill="#6FAEE8" onmouseenter="showTip('tip-fc2','CPC計畫 8月','$2214萬')"/><circle cx="279" cy="98" r="4" fill="#34C28F" onmouseenter="showTip('tip-fc2','OTW需求 8月','$2545萬')"/><circle cx="356" cy="65" r="4" fill="#6FAEE8" onmouseenter="showTip('tip-fc2','CPC計畫 9月','$3037萬')"/><circle cx="356" cy="76" r="4" fill="#34C28F" onmouseenter="showTip('tip-fc2','OTW需求 9月','$2879萬')"/><circle cx="432" cy="32" r="4" fill="#6FAEE8" onmouseenter="showTip('tip-fc2','CPC計畫 10月','$3536萬')"/><circle cx="432" cy="44" r="4" fill="#34C28F" onmouseenter="showTip('tip-fc2','OTW需求 10月','$3359萬')"/><circle cx="509" cy="49" r="4" fill="#6FAEE8" onmouseenter="showTip('tip-fc2','CPC計畫 11月','$3286萬')"/><circle cx="509" cy="54" r="4" fill="#34C28F" onmouseenter="showTip('tip-fc2','OTW需求 11月','$3201萬')"/><circle cx="585" cy="54" r="4" fill="#6FAEE8" onmouseenter="showTip('tip-fc2','CPC計畫 12月','$3208萬')"/><circle cx="585" cy="61" r="4" fill="#34C28F" onmouseenter="showTip('tip-fc2','OTW需求 12月','$3107萬')"/><text x="50" y="140" fill="#928F89" font-size="9" text-anchor="middle">5月</text><text x="126" y="140" fill="#928F89" font-size="9" text-anchor="middle">6月</text><text x="203" y="140" fill="#928F89" font-size="9" text-anchor="middle">7月</text><text x="279" y="140" fill="#928F89" font-size="9" text-anchor="middle">8月</text><text x="356" y="140" fill="#928F89" font-size="9" text-anchor="middle">9月</text><text x="432" y="140" fill="#928F89" font-size="9" text-anchor="middle">10月</text><text x="509" y="140" fill="#928F89" font-size="9" text-anchor="middle">11月</text><text x="585" y="140" fill="#928F89" font-size="9" text-anchor="middle">12月</text>
+  <text x="46" y="19" fill="#928F89" font-size="8" text-anchor="end">$3795萬</text>
+  <text x="46" y="124" fill="#928F89" font-size="8" text-anchor="end">$2214萬</text>
+</svg></div>
+          <div class="note">兩條線走勢高度貼合，5-6月OTW略高於計畫，7月出現明顯交叉（OTW低於計畫），8月後逐漸收斂吻合。整體驗證 OTW Forecast 與事業計畫在時間分布上具高度一致性，僅7月需特別關注。</div>
+        </div>
+
+        <div class="sec-label">📐 規格消長分析（品項層級，CPC vs OTW 落差最大者）</div>
+        <div class="row2">
+          <div class="box">
+            <h3>OTW 顯著高於計畫 — 客戶實際需求超出預期</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th style="width:90px">品號</th><th>品名</th><th>CPC計畫</th><th>OTW需求</th><th>差異</th></tr></thead>
+              <tbody><tr><td><code style="font-size:10px;color:var(--teal-dark)">RC487800</code></td><td style="font-size:11px">ｽﾗｲﾀﾞｳｹSBF</td><td>$619.4萬</td><td>$1061.9萬</td><td class="cell-good">+$442.4萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">DP159400</code></td><td style="font-size:11px">ｺﾝﾊﾞｰﾀ</td><td>$124.7萬</td><td>$268.4萬</td><td class="cell-good">+$143.6萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">GV407500</code></td><td style="font-size:11px">ｷｬｯﾌﾟU MH-946</td><td>$365.0萬</td><td>$446.1萬</td><td class="cell-good">+$81.1萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">GR349200-2</code></td><td style="font-size:11px">Sﾋﾟｽﾄﾝ</td><td>$351.4萬</td><td>$416.7萬</td><td class="cell-good">+$65.4萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">RC110500</code></td><td style="font-size:11px">ｽﾗｲﾀﾞｳｹOE</td><td>$179.5萬</td><td>$242.0萬</td><td class="cell-good">+$62.5萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">DP154500</code></td><td style="font-size:11px">ｺﾝﾊﾞｰﾀ</td><td>$46.0萬</td><td>$92.0萬</td><td class="cell-good">+$46.0萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">DP174000</code></td><td style="font-size:11px">ｺﾝﾊﾞｰﾀ</td><td>$42.7萬</td><td>$85.4萬</td><td class="cell-good">+$42.7萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">DL472700</code></td><td style="font-size:11px">ｺｲﾙ</td><td>$9.4萬</td><td>$40.4萬</td><td class="cell-good">+$30.9萬</td></tr></tbody>
+            </table></div>
+            <div class="note">🟢 RC487800（滑塊承SBF）需求遠超計畫 +$442萬，是最大正向落差，建議確認是否需要提前備料或調整供應商產能。</div>
+          </div>
+          <div class="box">
+            <h3>CPC 顯著高於 OTW — 計畫樂觀但客戶 forecast 保守</h3>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th style="width:90px">品號</th><th>品名</th><th>CPC計畫</th><th>OTW需求</th><th>差異</th></tr></thead>
+              <tbody><tr><td><code style="font-size:10px;color:var(--teal-dark)">RC132900</code></td><td style="font-size:11px">ｽﾗｲﾀﾞｳｹF</td><td>$686.1萬</td><td>$294.0萬</td><td class="cell-bad">$-392.0萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">GV173601</code></td><td style="font-size:11px">ｷｰﾄｯﾌﾟU XQ140</td><td>$642.2萬</td><td>$519.0萬</td><td class="cell-bad">$-123.3萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">GK484100</code></td><td style="font-size:11px">ｵｻｴﾊﾟｲﾌﾟ</td><td>$363.3萬</td><td>$311.4萬</td><td class="cell-bad">$-51.9萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">GK298600</code></td><td style="font-size:11px">ﾌﾟﾗｸﾞ</td><td>$94.0萬</td><td>$62.0萬</td><td class="cell-bad">$-31.9萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">GE7877SS</code></td><td style="font-size:11px">Kﾌﾞﾝｷ CYF-V2R</td><td>$42.5萬</td><td>$21.2萬</td><td class="cell-bad">$-21.2萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">RC955300-X</code></td><td style="font-size:11px">WｸﾁｶﾞﾈIN</td><td>$20.0萬</td><td>$0.0萬</td><td class="cell-bad">$-20.0萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">GE916800</code></td><td style="font-size:11px">AWJｸﾁｶﾞﾈ90</td><td>$142.1萬</td><td>$123.2萬</td><td class="cell-bad">$-19.0萬</td></tr><tr><td><code style="font-size:10px;color:var(--teal-dark)">GE916700</code></td><td style="font-size:11px">AWｸﾁｶﾞﾈ90</td><td>$192.3萬</td><td>$174.9萬</td><td class="cell-bad">$-17.5萬</td></tr></tbody>
+            </table></div>
+            <div class="note">⚠️ RC132900（滑塊承F）計畫高於客戶實際需求 $392萬，可能是計畫過於樂觀，或客戶尚未釋出完整 forecast，建議與業務/客戶確認後續訂單動向。</div>
+          </div>
+        </div>
+
+        <div class="sec-label">🔄 Forecast 滾動修正追蹤（同月份在不同版本間的預測變化）</div>
+        <div class="box">
+          <div class="box-head"><h3>7月需求預測：三版 Forecast 演變</h3><span style="font-size:10px;color:var(--text3)">客戶每月滾動更新 Forecast，可觀察預測穩定度</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Forecast版本</th><th>發布月份</th><th>對7月的需求量</th><th>對7月的需求金額</th><th>較前版變化</th></tr></thead>
+            <tbody>
+              <tr><td>2604版</td><td>4月發布</td><td>2,887,693</td><td>$3,729萬</td><td class="n-clr">基準版</td></tr>
+              <tr><td>2605版</td><td>5月發布</td><td>2,717,580</td><td>$3,749萬</td><td class="cell-warn">數量-5.9%／金額+0.5%</td></tr>
+              <tr><td>2606版</td><td>6月發布（最新）</td><td>2,576,379</td><td>$3,325萬</td><td class="cell-bad">數量-5.2%／金額-11.3%</td></tr>
+              <tr style="font-weight:700;border-top:2px solid var(--border)">
+                <td colspan="2">累積變化（4月版→6月版）</td>
+                <td class="cell-bad">-10.8%</td>
+                <td class="cell-bad">-10.8%</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table></div>
+          <div class="note">⚠️ 客戶對 7 月的需求預測<b>持續向下修正</b>，4月發布時預估 $3,729萬，到6月最新版下修至 $3,325萬（-10.8%）。這與「事業計畫 vs OTW」月度對照中 7月吻合度僅 87.6% 的現象相互呼應——事業計畫可能仍採用較早期、較高的預測基準，而客戶最新 Forecast 已下修。建議下次更新事業計畫時，以最新版 OTW Forecast 為準校正 7月數字。</div>
+        </div>
+      </div>
+
       <!-- ===== 新增：供應鏈風險雷達分頁 ===== -->
       <div class="view" id="v-news">
         <div class="news-head-row">
@@ -2256,7 +2529,7 @@ tbody tr:hover td{background:var(--bg3)}
 </div>
 
 <script>
-const roleLabels = {exec:'總覽 ｜ 📊 核心指標追蹤',customer:'客戶 ｜ 👥 需求與交期追蹤',['supplier-track']:'🏢 供應商績效監控',single:'🔍 供應商深度剖析',inventory:'📦 庫存分析',sales:'📈 銷售預測分析',news:'🚨 供應鏈風險預警雷達'};
+const roleLabels = {exec:'總覽 ｜ 📊 核心指標追蹤',customer:'客戶 ｜ 👥 需求與交期追蹤',['supplier-track']:'🏢 供應商績效監控',single:'🔍 供應商深度剖析',inventory:'📦 庫存分析',sales:'📈 銷售預測分析',forecast:'📋 客戶FORECAST物料分析',news:'🚨 供應鏈風險預警雷達'};
 function switchRole(r, btn) {
   document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.rtab').forEach(el => el.classList.remove('active'));
