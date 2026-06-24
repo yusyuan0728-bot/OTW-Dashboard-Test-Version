@@ -329,7 +329,7 @@ tbody tr:hover td{background:var(--bg3)}
     <div class="nav-item" data-role="single" onclick="switchRole('single',this)"><span class="nav-dot"></span>個別 ｜ 🔍 供應商深度剖析</div>
     <div class="nav-item" data-role="inventory" onclick="switchRole('inventory',this)"><span class="nav-dot"></span>📦 庫存分析</div>
     <div class="nav-item" data-role="sales" onclick="switchRole('sales',this)"><span class="nav-dot"></span>📈 銷售預測分析</div>
-    <div class="nav-item" data-role="forecast" onclick="switchRole('forecast',this)"><span class="nav-dot"></span>📋 客戶FORECAST物料分析</div>
+    <div class="nav-item" data-role="forecast" onclick="switchRole('forecast',this)"><span class="nav-dot"></span>📋 滾動計劃分析</div>
     <div class="nav-item" data-role="news" onclick="switchRole('news',this)"><span class="nav-dot"></span>🚨 供應鏈風險預警雷達</div>
     <div class="sidebar-footer">最後更新：2026-06-15 09:59<br>資料來源：品質月報 / 銷貨實績 / 庫存表</div>
   </aside>
@@ -345,7 +345,7 @@ tbody tr:hover td{background:var(--bg3)}
           <button class="rtab" data-role="single" onclick="switchRole('single',this)">個別 ｜ 🔍 供應商深度剖析</button>
           <button class="rtab" data-role="inventory" onclick="switchRole('inventory',this)">📦 庫存</button>
           <button class="rtab" data-role="sales" onclick="switchRole('sales',this)">📈 銷售分析</button>
-          <button class="rtab" data-role="forecast" onclick="switchRole('forecast',this)">📋 FORECAST</button>
+          <button class="rtab" data-role="forecast" onclick="switchRole('forecast',this)">📋 滾動計劃</button>
           <button class="rtab" data-role="news" onclick="switchRole('news',this)">🚨 風險雷達</button>
         </div>
         <span class="update-tag" style="font-size:10px;color:var(--text3);padding:3px 8px;border:1px solid var(--border);border-radius:10px">2026-06-15 09:59</span>
@@ -2217,210 +2217,202 @@ tbody tr:hover td{background:var(--bg3)}
           <span style="font-size:11px;color:var(--text3)">範圍：FY27 5-12月（8個月）／ 每月採當時最新可得版本（5-6月來自2604/2605版，7-12月來自2606版）／ 689個OTW品項 ／ 684個與CPC共同品項</span>
         </div>
         <div class="hero-grid">
-          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">事業計畫 CPC表（5-12月）</div><div class="hero-val" style="color:var(--text)">$25,674萬</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">予測売上加總</span></div></div>
-          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">OTW Forecast（5-12月）</div><div class="hero-val" style="color:var(--text)">$25,369萬</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">需求量×銷售單價</span></div></div>
+          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">事業計畫 CPC表（5-12月）</div><div class="hero-val" style="color:var(--text)">$2.57億</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">予測売上加總</span></div></div>
+          <div class="hero-card n-clr" style="border:1px solid var(--border)"><div class="hero-label">OTW Forecast（5-12月）</div><div class="hero-val" style="color:var(--text)">$2.54億</div><div class="hero-meta"><span class="hero-badge" style="background:var(--bg3);color:var(--text2)">需求量×銷售單價</span></div></div>
           <div class="hero-card ok"><div class="hero-label">整體吻合度</div><div class="hero-val">98.8%</div><div class="hero-meta"><span class="hero-badge">差距僅 $305萬</span><span class="hero-status">✅</span></div></div>
           <div class="hero-card warn"><div class="hero-label">最大落差月份</div><div class="hero-val">7月</div><div class="hero-meta"><span class="hero-badge">吻合度僅87.6%</span><span class="hero-status">⚠️</span></div></div>
         </div>
 
 
-        <div class="sec-label">🔺 三方完整比對：事業計畫 ／ OTW Forecast ／ 銷售實績</div>
+
+        <div class="sec-label">🔺 三方完整比對：事業計畫 ／ OTW Forecast ／ 銷售實績（含數量與金額）</div>
         <div class="box">
-          <div class="box-head"><h3>FY27 4月-12月 三方金額對照</h3><span style="font-size:10px;color:var(--text3)">銷售實績為已發生的真實出貨（目前僅4-5月已結束）；OTW Forecast 採每月最新可得版本</span></div>
+          <div class="box-head"><h3>FY27 4月-12月 三方數量與金額對照</h3><span style="font-size:10px;color:var(--text3)">每格上方為金額、下方為數量(件)；銷售實績為已發生的真實出貨（目前僅4-5月已結束）</span></div>
           <div class="tbl-wrap"><table>
             <thead><tr>
               <th>月份</th>
               <th>事業計畫<br><span style="font-size:9px;font-weight:400;color:var(--text3)">CPC予測売上</span></th>
               <th>OTW Forecast<br><span style="font-size:9px;font-weight:400;color:var(--text3)">需求量×銷售單價</span></th>
               <th>銷售實績<br><span style="font-size:9px;font-weight:400;color:var(--text3)">已發生</span></th>
-              <th>實績 vs 計畫</th>
-              <th>實績 vs FC</th>
+              <th>實績vs計畫<br><span style="font-size:9px;font-weight:400;color:var(--text3)">金額</span></th>
+              <th>實績vs計畫<br><span style="font-size:9px;font-weight:400;color:var(--text3)">數量</span></th>
               <th>狀態</th>
             </tr></thead>
             <tbody>
               <tr>
                 <td>4月</td>
-                <td>$3,247萬</td>
-                <td><span style="color:var(--text3)">—</span></td>
-                <td style="font-weight:600">$4,074萬</td>
-                <td class="cell-good" style="font-size:11px;white-space:nowrap">+827萬 (+25.5%)</td>
-                <td class="n-clr" style="font-size:11px">—</td>
+                <td>$3,247萬<br><span style="font-size:9px;color:var(--text3)">2,467,612件</span></td>
+                <td><span style="color:var(--text3)">—</span><br><span style="font-size:9px;color:var(--text3)"><span style="color:var(--text3)">—</span>件</span></td>
+                <td style="font-weight:600">$4,074萬<br><span style="font-size:9px;color:var(--text3)">2,619,158件</span></td>
+                <td class="cell-good" style="font-size:10px;white-space:nowrap">+827萬 (+25.5%)</td>
+                <td class="cell-good" style="font-size:10px;white-space:nowrap">+151,546 (+6.1%)</td>
                 <td><span class="tag g">已實現</span></td>
               </tr>
               <tr>
                 <td>5月</td>
-                <td>$3,397萬</td>
-                <td>$3,455萬</td>
-                <td style="font-weight:600">$4,017萬</td>
-                <td class="cell-good" style="font-size:11px;white-space:nowrap">+620萬 (+18.3%)</td>
-                <td class="cell-good" style="font-size:11px;white-space:nowrap">+562萬 (+16.3%)</td>
+                <td>$3,397萬<br><span style="font-size:9px;color:var(--text3)">2,639,934件</span></td>
+                <td>$3,455萬<br><span style="font-size:9px;color:var(--text3)">2,485,708件</span></td>
+                <td style="font-weight:600">$4,017萬<br><span style="font-size:9px;color:var(--text3)">2,804,198件</span></td>
+                <td class="cell-good" style="font-size:10px;white-space:nowrap">+620萬 (+18.3%)</td>
+                <td class="cell-good" style="font-size:10px;white-space:nowrap">+164,264 (+6.2%)</td>
                 <td><span class="tag g">已實現</span></td>
               </tr>
               <tr>
                 <td>6月</td>
-                <td>$3,201萬</td>
-                <td>$3,498萬</td>
-                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
-                <td class="n-clr" style="font-size:11px">—</td>
-                <td class="n-clr" style="font-size:11px">—</td>
+                <td>$3,201萬<br><span style="font-size:9px;color:var(--text3)">2,536,580件</span></td>
+                <td>$3,498萬<br><span style="font-size:9px;color:var(--text3)">2,640,248件</span></td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span><br><span style="font-size:9px;color:var(--text3)"><span style="color:var(--text3)">—</span>件</span></td>
+                <td class="n-clr" style="font-size:10px">—</td>
+                <td class="n-clr" style="font-size:10px">—</td>
                 <td><span class="tag y">FC已發布</span></td>
               </tr>
               <tr>
                 <td>7月</td>
-                <td>$3,795萬</td>
-                <td>$3,325萬</td>
-                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
-                <td class="n-clr" style="font-size:11px">—</td>
-                <td class="n-clr" style="font-size:11px">—</td>
+                <td>$3,795萬<br><span style="font-size:9px;color:var(--text3)">2,817,694件</span></td>
+                <td>$3,325萬<br><span style="font-size:9px;color:var(--text3)">2,576,379件</span></td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span><br><span style="font-size:9px;color:var(--text3)"><span style="color:var(--text3)">—</span>件</span></td>
+                <td class="n-clr" style="font-size:10px">—</td>
+                <td class="n-clr" style="font-size:10px">—</td>
                 <td><span class="tag y">FC已發布</span></td>
               </tr>
               <tr>
                 <td>8月</td>
-                <td>$2,214萬</td>
-                <td>$2,545萬</td>
-                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
-                <td class="n-clr" style="font-size:11px">—</td>
-                <td class="n-clr" style="font-size:11px">—</td>
+                <td>$2,214萬<br><span style="font-size:9px;color:var(--text3)">1,733,238件</span></td>
+                <td>$2,545萬<br><span style="font-size:9px;color:var(--text3)">2,030,534件</span></td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span><br><span style="font-size:9px;color:var(--text3)"><span style="color:var(--text3)">—</span>件</span></td>
+                <td class="n-clr" style="font-size:10px">—</td>
+                <td class="n-clr" style="font-size:10px">—</td>
                 <td><span class="tag y">FC已發布</span></td>
               </tr>
               <tr>
                 <td>9月</td>
-                <td>$3,037萬</td>
-                <td>$2,879萬</td>
-                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
-                <td class="n-clr" style="font-size:11px">—</td>
-                <td class="n-clr" style="font-size:11px">—</td>
+                <td>$3,037萬<br><span style="font-size:9px;color:var(--text3)">2,339,207件</span></td>
+                <td>$2,879萬<br><span style="font-size:9px;color:var(--text3)">2,439,157件</span></td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span><br><span style="font-size:9px;color:var(--text3)"><span style="color:var(--text3)">—</span>件</span></td>
+                <td class="n-clr" style="font-size:10px">—</td>
+                <td class="n-clr" style="font-size:10px">—</td>
                 <td><span class="tag y">FC已發布</span></td>
               </tr>
               <tr>
                 <td>10月</td>
-                <td>$3,536萬</td>
-                <td>$3,359萬</td>
-                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
-                <td class="n-clr" style="font-size:11px">—</td>
-                <td class="n-clr" style="font-size:11px">—</td>
+                <td>$3,536萬<br><span style="font-size:9px;color:var(--text3)">2,686,382件</span></td>
+                <td>$3,359萬<br><span style="font-size:9px;color:var(--text3)">2,736,940件</span></td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span><br><span style="font-size:9px;color:var(--text3)"><span style="color:var(--text3)">—</span>件</span></td>
+                <td class="n-clr" style="font-size:10px">—</td>
+                <td class="n-clr" style="font-size:10px">—</td>
                 <td><span class="tag y">FC已發布</span></td>
               </tr>
               <tr>
                 <td>11月</td>
-                <td>$3,286萬</td>
-                <td>$3,201萬</td>
-                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
-                <td class="n-clr" style="font-size:11px">—</td>
-                <td class="n-clr" style="font-size:11px">—</td>
+                <td>$3,286萬<br><span style="font-size:9px;color:var(--text3)">2,588,218件</span></td>
+                <td>$3,201萬<br><span style="font-size:9px;color:var(--text3)">2,638,825件</span></td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span><br><span style="font-size:9px;color:var(--text3)"><span style="color:var(--text3)">—</span>件</span></td>
+                <td class="n-clr" style="font-size:10px">—</td>
+                <td class="n-clr" style="font-size:10px">—</td>
                 <td><span class="tag y">FC已發布</span></td>
               </tr>
               <tr>
                 <td>12月</td>
-                <td>$3,208萬</td>
-                <td>$3,107萬</td>
-                <td style="font-weight:600"><span style="color:var(--text3)">—</span></td>
-                <td class="n-clr" style="font-size:11px">—</td>
-                <td class="n-clr" style="font-size:11px">—</td>
+                <td>$3,208萬<br><span style="font-size:9px;color:var(--text3)">2,456,570件</span></td>
+                <td>$3,107萬<br><span style="font-size:9px;color:var(--text3)">2,308,969件</span></td>
+                <td style="font-weight:600"><span style="color:var(--text3)">—</span><br><span style="font-size:9px;color:var(--text3)"><span style="color:var(--text3)">—</span>件</span></td>
+                <td class="n-clr" style="font-size:10px">—</td>
+                <td class="n-clr" style="font-size:10px">—</td>
                 <td><span class="tag y">FC已發布</span></td>
               </tr>
               <tr style="font-weight:700;border-top:2px solid var(--border)">
                 <td>4-5月合計</td>
-                <td>$6,644萬</td>
-                <td>$3,455萬<span style="font-size:9px;color:var(--text3)">(僅5月)</span></td>
-                <td>$8,091萬</td>
-                <td class="cell-good">+1447萬 (+21.8%)</td>
-                <td class="cell-good">+4636萬<span style="font-size:9px;color:var(--text3)">(僅5月比較)</span></td>
+                <td>$6,644萬<br><span style="font-size:9px;color:var(--text3)">5,107,546件</span></td>
+                <td>$3,455萬<span style="font-size:9px;color:var(--text3)">(僅5月)</span><br><span style="font-size:9px;color:var(--text3)">2,485,708件</span></td>
+                <td>$8,091萬<br><span style="font-size:9px;color:var(--text3)">5,423,356件</span></td>
+                <td class="cell-good" style="font-size:10px">+1447萬 (+21.8%)</td>
+                <td class="cell-good" style="font-size:10px">+315,810 (+6.2%)</td>
                 <td></td>
               </tr>
             </tbody>
           </table></div>
           <div class="note">
-            <b>🟢 4-5月實際銷售大幅超越計畫與預測：</b>實績 $8,091萬 vs 事業計畫 $6,644萬（<b>+21.8%</b>），vs 5月 OTW Forecast $3,455萬（5月單月實績 $4,017萬，<b>+16.3%</b>）。代表客戶實際下單動能比業務原計畫與客戶自己提供的 Forecast 都更強，是非常正向的訊號。<br><br>
-            <b>⚠️ 6月以後尚無實績可比對：</b>因現在時間為2026年6月，6-12月銷售尚未發生，僅能比較「事業計畫」與「OTW Forecast」兩者；其中 <b>7月吻合度最低</b>（計畫$3,795萬 vs FC $3,325萬，差距-470萬/-12.4%），建議特別留意7月是否會重演4-5月「實績超預期」的模式，或反而因客戶下修需求而不如預期。
+            <b>🟢 4-5月實際銷售在「數量」與「金額」上都大幅超越計畫：</b>金額實績 $8,091萬 vs 計畫 $6,644萬（<b>+21.8%</b>），數量實績 5,423,356件 vs 計畫 5,107,546件（<b>+6.2%</b>）。兩個維度同步超預期，代表不是「平均單價提升」而是「真實下單量增加」，訊號更為扎實。<br><br>
+            <b>⚠️ 6月以後僅能比較事業計畫與OTW Forecast：</b>因現在時間為2026年6月，6-12月銷售尚未發生。觀察「數量」維度，7月OTW數量(2,576,379件)低於計畫數量(2,817,694件)達8.6%，與金額面的-12.4%落差方向一致，顯示7月落差是「真實需求量下滑」而非單價或產品結構變化所致。
           </div>
         </div>
 
         <div class="sec-label">每月對照：事業計畫（CPC予測売上）vs OTW Forecast（需求量×銷售單價）</div>
         <div class="box">
-          <div class="box-head"><h3>FY27 5月-12月 完整月度金額對照</h3><span style="font-size:10px;color:var(--text3)">🟢 ≥95% ｜ 🟡 85-94% ｜ 🔴 &lt;85%　每月採當時可取得的最新版OTW Forecast</span></div>
+          <div class="box-head"><h3>FY27 5月-12月 完整月度數量與金額對照</h3><span style="font-size:10px;color:var(--text3)">🟢 ≥95% ｜ 🟡 85-94% ｜ 🔴 &lt;85%　每月採當時可取得的最新版OTW Forecast</span></div>
           <div class="tbl-wrap"><table>
-            <thead><tr><th>月份</th><th>事業計畫<br><span style="font-size:9px;font-weight:400;color:var(--text3)">CPC予測売上</span></th><th>OTW Forecast<br><span style="font-size:9px;font-weight:400;color:var(--text3)">需求量×銷售單價</span></th><th>差異金額</th><th>吻合度</th><th>資料來源版本</th></tr></thead>
+            <thead><tr><th>月份</th><th>事業計畫<br><span style="font-size:9px;font-weight:400;color:var(--text3)">CPC予測売上</span></th><th>OTW Forecast<br><span style="font-size:9px;font-weight:400;color:var(--text3)">需求量×銷售單價</span></th><th>金額差異<br><span style="font-size:9px;font-weight:400;color:var(--text3)">吻合度</span></th><th>數量差異<br><span style="font-size:9px;font-weight:400;color:var(--text3)">吻合度</span></th></tr></thead>
             <tbody>
               <tr>
                 <td>5月</td>
-                <td>$3,397萬</td>
-                <td>$3,455萬</td>
-                <td class="cell-good">+58萬</td>
-                <td class="cell-good">101.7%</td>
-                <td style="font-size:10px;color:var(--text3)">2604版(4月發布)</td>
+                <td>$3,397萬<br><span style="font-size:9px;color:var(--text3)">2,639,934件</span></td>
+                <td>$3,455萬<br><span style="font-size:9px;color:var(--text3)">2,485,708件</span></td>
+                <td class="cell-good" style="font-size:10px">+58萬<br>(101.7%)</td>
+                <td class="cell-warn" style="font-size:10px">-154,226 件<br>(94.2%)</td>
               </tr>
               <tr>
                 <td>6月</td>
-                <td>$3,201萬</td>
-                <td>$3,498萬</td>
-                <td class="cell-good">+297萬</td>
-                <td class="cell-good">109.3%</td>
-                <td style="font-size:10px;color:var(--text3)">2605版(5月發布)</td>
+                <td>$3,201萬<br><span style="font-size:9px;color:var(--text3)">2,536,580件</span></td>
+                <td>$3,498萬<br><span style="font-size:9px;color:var(--text3)">2,640,248件</span></td>
+                <td class="cell-good" style="font-size:10px">+297萬<br>(109.3%)</td>
+                <td class="cell-good" style="font-size:10px">+103,668 件<br>(104.1%)</td>
               </tr>
               <tr>
                 <td>7月</td>
-                <td>$3,795萬</td>
-                <td>$3,325萬</td>
-                <td class="cell-bad">-470萬</td>
-                <td class="cell-warn">87.6%</td>
-                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+                <td>$3,795萬<br><span style="font-size:9px;color:var(--text3)">2,817,694件</span></td>
+                <td>$3,325萬<br><span style="font-size:9px;color:var(--text3)">2,576,379件</span></td>
+                <td class="cell-warn" style="font-size:10px">-470萬<br>(87.6%)</td>
+                <td class="cell-warn" style="font-size:10px">-241,315 件<br>(91.4%)</td>
               </tr>
               <tr>
                 <td>8月</td>
-                <td>$2,214萬</td>
-                <td>$2,545萬</td>
-                <td class="cell-good">+331萬</td>
-                <td class="cell-good">115.0%</td>
-                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+                <td>$2,214萬<br><span style="font-size:9px;color:var(--text3)">1,733,238件</span></td>
+                <td>$2,545萬<br><span style="font-size:9px;color:var(--text3)">2,030,534件</span></td>
+                <td class="cell-good" style="font-size:10px">+331萬<br>(115.0%)</td>
+                <td class="cell-good" style="font-size:10px">+297,296 件<br>(117.2%)</td>
               </tr>
               <tr>
                 <td>9月</td>
-                <td>$3,037萬</td>
-                <td>$2,879萬</td>
-                <td class="cell-bad">-158萬</td>
-                <td class="cell-warn">94.8%</td>
-                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+                <td>$3,037萬<br><span style="font-size:9px;color:var(--text3)">2,339,207件</span></td>
+                <td>$2,879萬<br><span style="font-size:9px;color:var(--text3)">2,439,157件</span></td>
+                <td class="cell-warn" style="font-size:10px">-158萬<br>(94.8%)</td>
+                <td class="cell-good" style="font-size:10px">+99,950 件<br>(104.3%)</td>
               </tr>
               <tr>
                 <td>10月</td>
-                <td>$3,536萬</td>
-                <td>$3,359萬</td>
-                <td class="cell-bad">-177萬</td>
-                <td class="cell-warn">95.0%</td>
-                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+                <td>$3,536萬<br><span style="font-size:9px;color:var(--text3)">2,686,382件</span></td>
+                <td>$3,359萬<br><span style="font-size:9px;color:var(--text3)">2,736,940件</span></td>
+                <td class="cell-warn" style="font-size:10px">-177萬<br>(95.0%)</td>
+                <td class="cell-good" style="font-size:10px">+50,558 件<br>(101.9%)</td>
               </tr>
               <tr>
                 <td>11月</td>
-                <td>$3,286萬</td>
-                <td>$3,201萬</td>
-                <td class="cell-bad">-85萬</td>
-                <td class="cell-good">97.4%</td>
-                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+                <td>$3,286萬<br><span style="font-size:9px;color:var(--text3)">2,588,218件</span></td>
+                <td>$3,201萬<br><span style="font-size:9px;color:var(--text3)">2,638,825件</span></td>
+                <td class="cell-good" style="font-size:10px">-85萬<br>(97.4%)</td>
+                <td class="cell-good" style="font-size:10px">+50,607 件<br>(102.0%)</td>
               </tr>
               <tr>
                 <td>12月</td>
-                <td>$3,208萬</td>
-                <td>$3,107萬</td>
-                <td class="cell-bad">-101萬</td>
-                <td class="cell-good">96.9%</td>
-                <td style="font-size:10px;color:var(--text3)">2606版(6月發布·最新)</td>
+                <td>$3,208萬<br><span style="font-size:9px;color:var(--text3)">2,456,570件</span></td>
+                <td>$3,107萬<br><span style="font-size:9px;color:var(--text3)">2,308,969件</span></td>
+                <td class="cell-good" style="font-size:10px">-101萬<br>(96.9%)</td>
+                <td class="cell-warn" style="font-size:10px">-147,601 件<br>(94.0%)</td>
               </tr>
               <tr style="font-weight:700;border-top:2px solid var(--border)">
                 <td>合計（5-12月）</td>
-                <td>$25,674萬</td>
-                <td>$25,369萬</td>
-                <td class="cell-bad">-305萬</td>
-                <td class="cell-good">98.8%</td>
-                <td></td>
+                <td>$25,674萬<br><span style="font-size:9px;color:var(--text3)">19,797,823件</span></td>
+                <td>$25,369萬<br><span style="font-size:9px;color:var(--text3)">19,856,760件</span></td>
+                <td class="cell-good" style="font-size:10px">-305萬<br>(98.8%)</td>
+                <td class="cell-good" style="font-size:10px">+58,937 件<br>(100.3%)</td>
               </tr>
             </tbody>
           </table></div>
           <div class="note">
-            <b>8個月完整對照，整體吻合度高達 98.8%</b>（差距僅 $305萬）。逐月來看：
-            <b>5月、6月 OTW 略高於計畫</b>（+58萬、+297萬），<b>7月 OTW 明顯低於計畫</b>（-470萬，吻合度僅87.6%，為全期最低），8月則 OTW 反而高於計畫 +331萬（115%），9-12月則相對穩定收斂在 95-97% 區間。
+            <b>8個月完整對照，金額吻合度 98.8%、數量吻合度 100.3%</b>，兩個維度幾乎一致，顯示落差主要來自需求量本身的變化，而非單價結構改變。逐月來看：
+            <b>5月、6月 OTW 略高於計畫</b>（金額與數量同步增加），<b>7月 OTW 明顯低於計畫</b>（金額-12.4%、數量-8.6%，為全期最低），8月則反向超出（+15%／+17.2%），9-12月則相對穩定收斂在 95-97% 區間。
             <br><br>
-            <b>⚠️ 7月落差需特別關注：</b>對照前述「Forecast 滾動修正追蹤」可知，客戶對 7月的需求已從4月發布時的 $3,729萬，逐版下修到6月最新版 $3,325萬（-10.8%），但事業計畫的 7月 $3,795萬 可能仍沿用較早期、未下修的假設，是兩者落差的根本原因。建議將事業計畫 7月數字依最新 Forecast 校正。
+            <b>⚠️ 7月落差需特別關注：</b>對照前述「Forecast 滾動修正追蹤」可知，客戶對 7月的需求已從4月發布時的 $3,729萬，逐版下修到6月最新版 $3,325萬（-10.8%），數量同步從高點下修，但事業計畫的 7月數字可能仍沿用較早期、未下修的假設，是兩者落差的根本原因。建議將事業計畫 7月數字依最新 Forecast 校正。
           </div>
         </div>
         <div class="sec-label">月度趨勢圖</div>
@@ -2483,12 +2475,12 @@ tbody tr:hover td{background:var(--bg3)}
         <div class="sec-label">各供應商需求金額預估（依銷售單價換算）</div>
         <div class="box">
           <div class="box-head"><h3>各供應商需求金額佔比（FY27下半年 7-12月）</h3></div>
-          <div class="bar-row"><span class="bar-lbl">賢隆</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#34C28F">$5,184萬</div></div></div>
-          <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track"><div class="bar-fill" style="width:68%;background:#F06548">$3,566萬</div></div></div>
-          <div class="bar-row"><span class="bar-lbl">億誠</span><div class="bar-track"><div class="bar-fill" style="width:51%;background:#B98AE0">$2,676萬</div></div></div>
-          <div class="bar-row"><span class="bar-lbl">記豪</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#6FAEE8">$2,622萬</div></div></div>
-          <div class="bar-row"><span class="bar-lbl">順翊</span><div class="bar-track"><div class="bar-fill" style="width:45%;background:#F0B254">$2,368萬</div></div></div>
-          <div class="note">賢隆需求金額最高（$5,184萬），其次為利貫（$3,566萬）。五大供應商合計 FY27 下半年預估需求 $16,416萬元（依銷貨實績「售價定價一」換算）。</div>
+          <div class="bar-row"><span class="bar-lbl">賢隆</span><div class="bar-track" style="max-width:55%"><div class="bar-fill" style="width:100%;background:#34C28F"></div></div><span class="bar-pct g-clr" style="font-size:11px;white-space:nowrap">$5,184萬 (31.6%)</span></div>
+          <div class="bar-row"><span class="bar-lbl">利貫</span><div class="bar-track" style="max-width:55%"><div class="bar-fill" style="width:68%;background:#F06548"></div></div><span class="bar-pct" style="color:#F06548;font-size:11px;white-space:nowrap">$3,566萬 (21.7%)</span></div>
+          <div class="bar-row"><span class="bar-lbl">億誠</span><div class="bar-track" style="max-width:55%"><div class="bar-fill" style="width:51%;background:#B98AE0"></div></div><span class="bar-pct" style="color:#B98AE0;font-size:11px;white-space:nowrap">$2,676萬 (16.3%)</span></div>
+          <div class="bar-row"><span class="bar-lbl">記豪</span><div class="bar-track" style="max-width:55%"><div class="bar-fill" style="width:50%;background:#6FAEE8"></div></div><span class="bar-pct" style="color:#6FAEE8;font-size:11px;white-space:nowrap">$2,622萬 (16.0%)</span></div>
+          <div class="bar-row"><span class="bar-lbl">順翊</span><div class="bar-track" style="max-width:55%"><div class="bar-fill" style="width:45%;background:#F0B254"></div></div><span class="bar-pct cell-warn" style="font-size:11px;white-space:nowrap">$2,368萬 (14.4%)</span></div>
+          <div class="note">賢隆需求金額最高（$5,184萬，佔31.6%），其次為利貫（$3,566萬，佔21.7%）。五大供應商合計 FY27 下半年預估需求 $1.64億元（依銷貨實績「售價定價一」換算）。</div>
         </div>
 
         <div class="sec-label">⚠️ 基準值 GAP 分析（最新預測 vs 5月舊基準）</div>
@@ -2673,7 +2665,7 @@ tbody tr:hover td{background:var(--bg3)}
 </div>
 
 <script>
-const roleLabels = {exec:'總覽 ｜ 📊 核心指標追蹤',customer:'客戶 ｜ 👥 需求與交期追蹤',['supplier-track']:'🏢 供應商績效監控',single:'🔍 供應商深度剖析',inventory:'📦 庫存分析',sales:'📈 銷售預測分析',forecast:'📋 客戶FORECAST物料分析',news:'🚨 供應鏈風險預警雷達'};
+const roleLabels = {exec:'總覽 ｜ 📊 核心指標追蹤',customer:'客戶 ｜ 👥 需求與交期追蹤',['supplier-track']:'🏢 供應商績效監控',single:'🔍 供應商深度剖析',inventory:'📦 庫存分析',sales:'📈 銷售預測分析',forecast:'📋 滾動計劃分析',news:'🚨 供應鏈風險預警雷達'};
 function switchRole(r, btn) {
   document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.rtab').forEach(el => el.classList.remove('active'));
